@@ -31,6 +31,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="CONST.h" />
+		<Unit filename="STRUCTURES.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
