@@ -27,9 +27,9 @@ Student stud2 = {
 
 int nbrStudent = 2;
 
-Student tab[2] = {
-  stud1,
-  stud2,
+Student *tab[2] = {
+  &stud1,
+  &stud2,
 }
 
 #endif // STUDENTS_LIST_H_INCLUDED
