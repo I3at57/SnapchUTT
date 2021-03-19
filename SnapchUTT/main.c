@@ -2,7 +2,7 @@
 
 int main()
 {
-
+//Un commentaire
   int action;
 
   init_glossary();
