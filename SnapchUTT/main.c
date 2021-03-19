@@ -20,6 +20,7 @@ int main()
         case 4:
             break;
         case 5:
+            action++;
             break;
         default:
             printf("Please enter a valid propostion !\n");
@@ -27,4 +28,5 @@ int main()
     }
   }while((action < 5)&&(action>0));
 
+  return(0);
 }

@@ -15,7 +15,7 @@ Student stud1 = {
 };
 
 Student stud2 = {
-  "Martinez LUCAS",
+  "Lucas MARTINEZ",
   19,
   2020,
   "Mecanical Engineering",
