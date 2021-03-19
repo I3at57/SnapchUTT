@@ -16,9 +16,4 @@ struct Student {
   Student *followStudent;
 };
 
-struct EntryGlossary {
-  char letter;
-  Student *beginAlphabeticallyChain;
-};
-
 #endif // STRUCTURES_H_INCLUDED
