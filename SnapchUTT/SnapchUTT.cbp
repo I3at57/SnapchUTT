@@ -32,10 +32,14 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="CONST.h" />
+		<Unit filename="DISPLAY_FONC.h" />
 		<Unit filename="STRUCTURES.h" />
+		<Unit filename="STUDENTS_FONC.h" />
+		<Unit filename="STUDENTS_LIST.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="main.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

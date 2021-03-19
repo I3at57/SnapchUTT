@@ -1,6 +1,8 @@
 #ifndef STUDENTS_LIST_H_INCLUDED
 #define STUDENTS_LIST_H_INCLUDED
 
+#include "STRUCTURES.h"
+
 Student stud1 = {
   "Baptiste TOUSSAINT",
   19,
@@ -12,10 +14,22 @@ Student stud1 = {
   NULL,
 };
 
-Student tab[50] = {
+Student stud2 = {
+  "Martinez LUCAS",
+  19,
+  2020,
+  "Mecanical Engineering",
+  "Troyes",
+  {5, 8, 1},
+  NULL,
+  NULL,
+};
+
+int nbrStudent = 2;
+
+Student tab[2] = {
   stud1,
   stud2,
-  stud3,
 }
 
 #endif // STUDENTS_LIST_H_INCLUDED

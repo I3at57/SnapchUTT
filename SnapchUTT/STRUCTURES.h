@@ -1,8 +1,6 @@
 #ifndef STRUCTURES_H_INCLUDED
 #define STRUCTURES_H_INCLUDED
 
-
-
 typedef struct Student Student
 struct Student {
   /* This is the main structure of the project*/
@@ -15,5 +13,11 @@ struct Student {
   Student *nextAlphaStudent;
   Student *followStudent;
 };
+
+typedef struct LineGlossary LineGlossary
+struct LineGlossary {
+  char letter;
+  Student *beginList;
+}
 
 #endif // STRUCTURES_H_INCLUDED
