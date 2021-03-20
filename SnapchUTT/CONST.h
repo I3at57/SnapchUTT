@@ -5,16 +5,14 @@
 
 /*This file is used to declare constants*/
 
-const char interst1 = "Sport";
-const char interst2 = "Cinema";
-const char interst3 = "Art";
-const char interst4 = "Health";
-const char interst5 = "Technology";
-const char interst6 = "DIY";
-const char interst7 = "Cooking";
-const char interst8 = "Travel";
-
-
+const FieldOfInterest interst1 = {1, "Sport"};
+const FieldOfInterest interst2 = {2, "Cinema"};
+const FieldOfInterest interst3 = {3, "Art"};
+const FieldOfInterest interst4 = {4, "Health"};
+const FieldOfInterest interst5 = {5, "Technology"};
+const FieldOfInterest interst6 = {6, "DIY"};
+const FieldOfInterest interst7 = {7, "Cooking"};
+const FieldOfInterest interst8 = {8, "Travel"};
 
 LineGlossary Glossary[26] = {
   {'A', NULL}, {'B', NULL}, {'C', NULL}, {'D', NULL}, {'E', NULL}, {'F', NULL},
