@@ -3,6 +3,18 @@
 
 #include <stdio.h>
 
+void array_char_display(char tab[]){
+    if(tab[0] != '\n'){
+        int i=0;
+        char nextChar = tab[i];
+        do{
+            printf("%c", nextChar);
+            i++;
+            nextChar = tab[i];
+
+        }while(nextChar != '\0');
+    }
+}
 
 void menu_display(){
     printf("***************************************************************\n");
@@ -36,12 +48,12 @@ void student_display(Student *stu){
         array_char_display(stu->cityResidence);
         printf("\n");
         printf("**   Interst in : ");
-//        array_char_display(stu->interest[0].field);
-//        printf(", ");
-//        array_char_display(stu->interest[1].field);
-//        printf(", ");
-//        array_char_display(stu->interest[2].field);
-//        printf(", ");
+        array_char_display(stu->interest[0].field);
+        printf(", ");
+        array_char_display(stu->interest[1].field);
+        printf(", ");
+        array_char_display(stu->interest[2].field);
+        printf(", ");
     }
 }
 
