@@ -1,8 +1,8 @@
-//#include "main.h"
-#include "DISPLAY_FONC.h"
+#include "main.h"
 
 int main()
 {
+    /*
     int action;
     //init_glossary();
 
@@ -29,7 +29,11 @@ int main()
                 );
                 break;
         }
-    }while(action !=5);
+    }while(action !=5);*/
+
+    student_display(&stud1);
+    printf("\n\n");
+    student_display(&stud2);
 
     return(0);
 }
