@@ -3,7 +3,7 @@
 
 #include "STRUCTURES.h"
 
-//This file is used to declare constants
+// This file is used to declare constants
 
 LineGlossary Glossary[26] = {
   {'A', NULL}, {'B', NULL}, {'C', NULL}, {'D', NULL}, {'E', NULL}, {'F', NULL},
