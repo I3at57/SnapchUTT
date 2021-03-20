@@ -1,29 +1,26 @@
 #ifndef STRUCTURES_H_INCLUDED
 #define STRUCTURES_H_INCLUDED
 
-typedef struct Student Student
-struct Student {
+typedef struct FieldOfInterest {
+    int nbr;
+    char field[20];
+}FieldOfInterest;
+
+typedef struct Student {
   /* This is the main structure of the project*/
   char name [50];
   int age;
   int yearStudy;
   char fieldStudy [50];
   char cityResidence [100];
-  int interest [8];
-  Student *nextAlphaStudent;
-  Student *followStudent;
-};
+  struct Student *nextAlphaStudent;
+  struct Student *followStudent;
+  FieldOfInterest interest[3];
+}Student;
 
-typedef struct LineGlossary LineGlossary
-struct LineGlossary {
+typedef struct LineGlossary {
   char letter;
   Student *beginList;
-}
-
-struct FieldOfInterest {
-    int nbr;
-    char field[];
-};
-typedef struct FieldOfInterest FieldOfInterest
+}LineGlossary;
 
 #endif // STRUCTURES_H_INCLUDED
