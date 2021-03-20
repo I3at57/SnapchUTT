@@ -2,9 +2,14 @@
 
 int main()
 {
-    /*
-    int action;
-    //init_glossary();
+    printf("0\n");
+    init_glossary(tab, nbrStudent);
+    printf("1\n");
+    Student *ptr = Glossary[1].beginList;
+    printf("2\n");
+    printf("%s", ptr->name);
+/*
+  int action;
 
     do {
         menu_display();
@@ -29,11 +34,10 @@ int main()
                 );
                 break;
         }
-    }while(action !=5);*/
-
+    }while(action !=5);
     student_display(&stud1);
     printf("\n\n");
     student_display(&stud2);
-
+*/
     return(0);
 }
