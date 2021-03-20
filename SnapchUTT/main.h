@@ -8,5 +8,6 @@
 #include "CONST.h"
 #include "DISPLAY_FONC.h"
 #include "STUDENTS_LIST.h"
+#include "STUDENTS_FONC.h"
 
 #endif // MAIN_H_INCLUDED

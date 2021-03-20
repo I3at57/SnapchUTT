@@ -5,3 +5,31 @@
 1616239237 c:\users\batto\documents\github\snapchutt\snapchutt\display_fonc.h
 	<stdio.h>
 
+1616251370 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\main.c
+	"main.h"
+
+1616250996 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\main.h
+	<stdio.h>
+	<stdlib.h>
+	"STRUCTURES.h"
+	"CONST.h"
+	"DISPLAY_FONC.h"
+	"STUDENTS_LIST.h"
+	"STUDENTS_FONC.h"
+
+1616250497 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\structures.h
+
+1616250266 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\const.h
+	"STRUCTURES.h"
+
+1616250114 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\display_fonc.h
+	<stdio.h>
+
+1616250792 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\students_list.h
+	"STRUCTURES.h"
+	"CONST.h"
+
+1616251401 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\students_fonc.h
+	"CONST.h"
+	"STUDENTS_LIST.h"
+

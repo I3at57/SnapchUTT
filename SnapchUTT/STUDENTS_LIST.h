@@ -32,9 +32,9 @@ Student stud3 = {
   2020,
   "Industrial Engineering",
   "Lille",
-  {2, 3, 5},
   NULL,
   NULL,
+  {interst4, interst6, interst5}
 };
 
 Student stud4 = {
@@ -43,9 +43,9 @@ Student stud4 = {
   2020,
   "Industrial Engineering",
   "Lille",
-  {2, 3, 5},
   NULL,
   NULL,
+  {interst2, interst8, interst5}
 };
 
 int nbrStudent = 4;

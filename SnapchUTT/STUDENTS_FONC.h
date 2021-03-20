@@ -23,7 +23,7 @@ int add_student(Student *stud){
     Student *travelPtr;
     // Finding the right chapter in the Glossary
     char readChar = stud->name[0];
-    printf("readChar = %c", readChar);
+    printf("readChar = %c\n", readChar);
     int i = 0;
     while (readChar != Glossary[i].letter && i < 27){
         i++;
@@ -71,7 +71,7 @@ int add_student(Student *stud){
     }
 }
 
-int init_glossary(Student* tab[],int nbrStudent){ // Those parameters could be removed by using global variables
+int init_glossary(Student *tab[],int nbrStudent){ // Those parameters could be removed by using global variables
     for (int i = 0; i < nbrStudent; i++){
         printf("01\n");
         add_student(tab[i]);
