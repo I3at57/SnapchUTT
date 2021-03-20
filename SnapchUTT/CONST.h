@@ -3,7 +3,18 @@
 
 #include "STRUCTURES.h"
 
-//This file is used to declare constants
+/*This file is used to declare constants*/
+
+const char interst1 = "Sport";
+const char interst2 = "Cinema";
+const char interst3 = "Art";
+const char interst4 = "Health";
+const char interst5 = "Technology";
+const char interst6 = "DIY";
+const char interst7 = "Cooking";
+const char interst8 = "Travel";
+
+
 
 LineGlossary Glossary[26] = {
   {'A', NULL}, {'B', NULL}, {'C', NULL}, {'D', NULL}, {'E', NULL}, {'F', NULL},

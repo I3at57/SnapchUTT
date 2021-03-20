@@ -20,4 +20,10 @@ struct LineGlossary {
   Student *beginList;
 }
 
+struct FieldOfInterest {
+    int nbr;
+    char field[];
+};
+typedef struct FieldOfInterest FieldOfInterest
+
 #endif // STRUCTURES_H_INCLUDED
