@@ -5,7 +5,12 @@
 #include "STUDENTS_LIST"
 
 int init_glossary(){
-  
+
+}
+
+Student *create_student(){
+
+    return(/*pointeur sur student*/)
 }
 
 #endif // STUDENTS_FONC_H_INCLUDED
