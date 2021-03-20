@@ -1,15 +1,25 @@
 #include "main.h"
+#include "STRUCTURES.h"
+#include "CONST.h"
+#include "STUDENTS_FONC.h"
+#include "STUDENTS_LIST.h"
 
 int main()
 {
-//Un commentaire
+    printf("0\n");
+    init_glossary(*tab, nbrStudent);
+    printf("1\n");
+    Student *ptr = Glossary[1].beginList;
+    printf("2\n");
+    printf("%s", ptr->name);
+/*
   int action;
 
   init_glossary();
 
   do {
     menu_display();
-    scanf("d", &action),
+    scanf("d", &action);
     switch(action){
         case 1:
             break;
@@ -27,6 +37,6 @@ int main()
             break;
     }
   }while((action < 5)&&(action>0));
-
+*/
   return(0);
 }
