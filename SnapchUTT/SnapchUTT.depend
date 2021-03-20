@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1616248081 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\main.c
+	"main.h"
+	"STRUCTURES.h"
+	"CONST.h"
+	"STUDENTS_FONC.h"
+	"STUDENTS_LIST.h"
+
+1616184591 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\main.h
+	<stdio.h>
+	<stdlib.h>
+
+1616246888 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\structures.h
+
+1616231975 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\const.h
+	"STRUCTURES.h"
+
+1616248995 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\students_fonc.h
+	"CONST.h"
+	"STUDENTS_LIST.h"
+
+1616246873 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\students_list.h
+	"STRUCTURES.h"
+
