@@ -22,4 +22,27 @@ void menu_display(){
     printf("***************************************************************\n");
 }
 
+void student_display(Student *stu){
+    if (stu != NULL){
+        printf("**   ");
+        array_char_display(stu->name);
+        printf("\n");
+        printf("**   Age : %d\n", stu->age);
+        printf("**   Year of study : %d\n", stu->yearStudy);
+        printf("**   ");
+        array_char_display(stu->fieldStudy);
+        printf("\n");
+        printf("**   ");
+        array_char_display(stu->cityResidence);
+        printf("\n");
+        printf("**   Interst in : ");
+//        array_char_display(stu->interest[0].field);
+//        printf(", ");
+//        array_char_display(stu->interest[1].field);
+//        printf(", ");
+//        array_char_display(stu->interest[2].field);
+//        printf(", ");
+    }
+}
+
 #endif // DISPLAY_FONC_H_INCLUDED]
