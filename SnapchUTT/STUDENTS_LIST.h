@@ -25,11 +25,35 @@ Student stud2 = {
   NULL,
 };
 
-int nbrStudent = 2;
+Student stud3 = {
+  "Baptist TOUSSAINT",
+  19,
+  2020,
+  "Industrial Engineering",
+  "Lille",
+  {2, 3, 5},
+  NULL,
+  NULL,
+};
 
-Student *tab[2] = {
+Student stud4 = {
+  "Baptistee TOUSSAINT",
+  19,
+  2020,
+  "Industrial Engineering",
+  "Lille",
+  {2, 3, 5},
+  NULL,
+  NULL,
+};
+
+int nbrStudent = 4;
+
+Student *tab[4] = {
   &stud1,
   &stud2,
-}
+  &stud3,
+  &stud4,
+};
 
 #endif // STUDENTS_LIST_H_INCLUDED
