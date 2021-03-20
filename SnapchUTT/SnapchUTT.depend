@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1616239607 source:c:\users\batto\documents\github\snapchutt\snapchutt\main.c
+	"DISPLAY_FONC.h"
+
+1616239237 c:\users\batto\documents\github\snapchutt\snapchutt\display_fonc.h
+	<stdio.h>
+
