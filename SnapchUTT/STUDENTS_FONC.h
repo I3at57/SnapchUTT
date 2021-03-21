@@ -34,12 +34,14 @@ int add_student(Student *stud){
         if (Glossary[i].beginList == NULL){
             stud->nextAlphaStudent = NULL;
             Glossary[i].beginList = stud;
+            printf("ok1\n");
             return 0;
         } else {
             travelPtr = Glossary[i].beginList;
             int compare = compare_strings(stud->name, travelPtr->name);
             // If the chapter contains 1 element that comes after stud
-            if (compare == -1 && compare == 0){
+            if (compare == -1 || compare == 0){
+                printf("ok2\n");
                 stud->nextAlphaStudent = Glossary[i].beginList;
                 Glossary[i].beginList = stud; // necessary step because Glossary[i].beginList is not a Student element
                 return 0;
@@ -48,7 +50,8 @@ int add_student(Student *stud){
                     Student nextElement = *(travelPtr->nextAlphaStudent);
                     int compare = compare_strings(stud->name, nextElement.name);
                     // If stud comes before nextElement
-                    if (compare == -1 && compare == 0){
+                    if (compare == -1 || compare == 0){
+                        printf("ok3\n");
                         stud->nextAlphaStudent = travelPtr->nextAlphaStudent;
                         travelPtr->nextAlphaStudent = stud;
                         return 0;
@@ -59,6 +62,7 @@ int add_student(Student *stud){
                 }
                 // If stud is the last element of the chapter
                 if (travelPtr->nextAlphaStudent == NULL) {
+                    printf("ok4\n");
                     stud->nextAlphaStudent = NULL;
                     travelPtr->nextAlphaStudent = stud;
                     return 0;
