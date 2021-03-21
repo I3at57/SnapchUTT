@@ -1,3 +1,8 @@
+/*******************************************************************************
+This list is the firt test of a file with data base of student.
+init_glossary() (in STUDENTS_FONC.h) read this file to fil the glossary
+*******************************************************************************/
+
 #ifndef STUDENTS_LIST_H_INCLUDED
 #define STUDENTS_LIST_H_INCLUDED
 

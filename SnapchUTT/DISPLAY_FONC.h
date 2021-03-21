@@ -1,22 +1,29 @@
+/*******************************************************************************
+All the fonctions relative to display. If a feature have to display something
+the relative fonction is here.
+*******************************************************************************/
+
 #ifndef DISPLAY_FONC_H_INCLUDED
 #define DISPLAY_FONC_H_INCLUDED
 
 #include <stdio.h>
 
 void array_char_display(char tab[]){
-    if(tab[0] != '\n'){
+    /*This fonction is used to display an entire array of character at screen.
+    This fonction dont include '\n' so we must use some print in complement*/
+    if(tab[0] != '\0'){
         int i=0;
         char nextChar = tab[i];
         do{
             printf("%c", nextChar);
             i++;
             nextChar = tab[i];
-
         }while(nextChar != '\0');
     }
 }
 
 void menu_display(){
+    /*This fonction display the main menu of Snapch'UTT. */
     printf("***************************************************************\n");
     printf("***************************************************************\n");
     printf("**                                                           **\n");
@@ -35,6 +42,8 @@ void menu_display(){
 }
 
 void student_display(Student *stu){
+    /*This fonction display all information about a student, exept the follow
+    List.*/
     if (stu != NULL){
         printf("**   ");
         array_char_display(stu->name);
