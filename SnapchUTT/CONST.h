@@ -15,11 +15,12 @@ const FieldOfInterest interst7 = {7, "Cooking"};
 const FieldOfInterest interst8 = {8, "Travel"};
 
 LineGlossary glossary[26] = {
-  {'A', NULL}, {'B', NULL}, {'C', NULL}, {'D', NULL}, {'E', NULL}, {'F', NULL},
-  {'G', NULL}, {'H', NULL}, {'I', NULL}, {'J', NULL}, {'K', NULL}, {'L', NULL},
-  {'M', NULL}, {'N', NULL}, {'O', NULL}, {'P', NULL}, {'Q', NULL}, {'R', NULL},
-  {'S', NULL}, {'T', NULL}, {'U', NULL}, {'V', NULL}, {'W', NULL}, {'X', NULL},
-  {'Y', NULL}, {'Z', NULL},
+    {'A', NULL}, {'B', NULL}, {'C', NULL}, {'D', NULL}, {'E', NULL},
+    {'F', NULL}, {'G', NULL}, {'H', NULL}, {'I', NULL}, {'J', NULL},
+    {'K', NULL}, {'L', NULL}, {'M', NULL}, {'N', NULL}, {'O', NULL},
+    {'P', NULL}, {'Q', NULL}, {'R', NULL}, {'S', NULL}, {'T', NULL},
+    {'U', NULL}, {'V', NULL}, {'W', NULL}, {'X', NULL}, {'Y', NULL},
+    {'Z', NULL},
 };
 
 #endif // CONST_H_INCLUDED

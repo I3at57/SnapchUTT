@@ -32,34 +32,34 @@ Student stud2 = {
 };
 
 Student stud3 = {
-  "Baptist TOUSSAINT",
-  19,
-  2020,
-  "Industrial Engineering",
-  "Lille",
-  NULL,
-  NULL,
-  {interst4, interst6, interst5}
+    "Baptist TOUSSAINT",
+    19,
+    2020,
+    "Industrial Engineering",
+    "Lille",
+    NULL,
+    NULL,
+    {interst4, interst6, interst5}
 };
 
 Student stud4 = {
-  "Baptistee TOUSSAINT",
-  19,
-  2020,
-  "Industrial Engineering",
-  "Lille",
-  NULL,
-  NULL,
-  {interst2, interst8, interst5}
+    "Baptistee TOUSSAINT",
+    19,
+    2020,
+    "Industrial Engineering",
+    "Lille",
+    NULL,
+    NULL,
+    {interst2, interst8, interst5}
 };
 
 int nbrStudent = 4;
 
 Student *stutab[4] = {
-  &stud1,
-  &stud2,
-  &stud3,
-  &stud4,
+    &stud1,
+    &stud2,
+    &stud3,
+    &stud4,
 };
 
 #endif // STUDENTS_LIST_H_INCLUDED

@@ -2,15 +2,15 @@
 
 int main()
 {
+    /*
     printf("0\n");
     init_glossary(stutab, nbrStudent);
     printf("1\n");
     Student *ptr = glossary[1].beginList;
     printf("2\n");
     printf("%s", ptr->name);
-/*
-  int action;
-
+    */
+    int action;
     do {
         menu_display();
         printf("\nEnter your choise : ");
@@ -29,8 +29,8 @@ int main()
                 break;
             default:
                 printf(
-                       "Please enter a valid propostion !\n"
-                       "\n\n\n\n\n\n\n\n\n"
+                        "Please enter a valid propostion !\n"
+                        "\n\n\n\n\n\n\n\n\n"
                 );
                 break;
         }
@@ -38,6 +38,6 @@ int main()
     student_display(&stud1);
     printf("\n\n");
     student_display(&stud2);
-*/
+
     return(0);
 }
