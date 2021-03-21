@@ -55,7 +55,7 @@ Student stud4 = {
 
 int nbrStudent = 4;
 
-Student *tab[4] = {
+Student *stutab[4] = {
   &stud1,
   &stud2,
   &stud3,
