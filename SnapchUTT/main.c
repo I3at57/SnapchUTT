@@ -3,9 +3,9 @@
 int main()
 {
     printf("0\n");
-    init_glossary(tab, nbrStudent);
+    init_glossary(stutab, nbrStudent);
     printf("1\n");
-    Student *ptr = Glossary[1].beginList;
+    Student *ptr = glossary[1].beginList;
     printf("2\n");
     printf("%s", ptr->name);
 /*

@@ -1,3 +1,7 @@
+/*******************************************************************************
+STUDENTS_FONC.h contain all the fonction relative to the gestion of a student.
+*******************************************************************************/
+
 #ifndef STUDENTS_FONC_H_INCLUDED
 #define STUDENTS_FONC_H_INCLUDED
 
@@ -5,6 +9,7 @@
 #include "STUDENTS_LIST.h"
 
 int compare_strings(char *str1, char *str2){
+    /**/
     int k = 1;
     while (str1[k] == str2[k] && str1[k] != '\0' && str2[k] != '\0'){
         k++;
@@ -21,34 +26,37 @@ int compare_strings(char *str1, char *str2){
 int add_student(Student *stud){
     printf("001\n");
     Student *travelPtr;
-    // Finding the right chapter in the Glossary
+    // Finding the right chapter in the glossary
     char readChar = stud->name[0];
     printf("readChar = %c\n", readChar);
     int i = 0;
-    while (readChar != Glossary[i].letter && i < 27){
+    while (readChar != glossary[i].letter && i < 27){
         i++;
     }
     printf("%d", i);
-    if (readChar == Glossary[i].letter){
-        // If the chapter of Glossary does not contain any element
-        if (Glossary[i].beginList == NULL){
+    if (readChar == glossary[i].letter){
+        // If the chapter of glossary does not contain any element
+        if (glossary[i].beginList == NULL){
             stud->nextAlphaStudent = NULL;
-            Glossary[i].beginList = stud;
+            glossary[i].beginList = stud;
+            printf("ok1\n");
             return 0;
         } else {
-            travelPtr = Glossary[i].beginList;
+            travelPtr = glossary[i].beginList;
             int compare = compare_strings(stud->name, travelPtr->name);
             // If the chapter contains 1 element that comes after stud
-            if (compare == -1 && compare == 0){
-                stud->nextAlphaStudent = Glossary[i].beginList;
-                Glossary[i].beginList = stud; // necessary step because Glossary[i].beginList is not a Student element
+            if (compare == -1 || compare == 0){
+                printf("ok2\n");
+                stud->nextAlphaStudent = glossary[i].beginList;
+                glossary[i].beginList = stud; // necessary step because glossary[i].beginList is not a Student element
                 return 0;
             } else {
                 while (travelPtr->nextAlphaStudent != NULL){
                     Student nextElement = *(travelPtr->nextAlphaStudent);
                     int compare = compare_strings(stud->name, nextElement.name);
                     // If stud comes before nextElement
-                    if (compare == -1 && compare == 0){
+                    if (compare == -1 || compare == 0){
+                        printf("ok3\n");
                         stud->nextAlphaStudent = travelPtr->nextAlphaStudent;
                         travelPtr->nextAlphaStudent = stud;
                         return 0;
@@ -59,6 +67,7 @@ int add_student(Student *stud){
                 }
                 // If stud is the last element of the chapter
                 if (travelPtr->nextAlphaStudent == NULL) {
+                    printf("ok4\n");
                     stud->nextAlphaStudent = NULL;
                     travelPtr->nextAlphaStudent = stud;
                     return 0;
