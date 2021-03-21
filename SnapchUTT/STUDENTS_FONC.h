@@ -25,7 +25,6 @@ int compare_strings(char *str1, char *str2){
 
 int add_student(Student *stud){
     printf("001\n");
-    Student *travelPtr;
     // Finding the right chapter in the glossary
     char readChar = stud->name[0];
     printf("readChar = %c\n", readChar);
@@ -42,8 +41,8 @@ int add_student(Student *stud){
             printf("ok1\n");
             return 0;
         } else {
-            travelPtr = glossary[i].beginList;
-            int compare = compare_strings(stud->name, travelPtr->name);
+            Student *ptr = glossary[i].beginList;
+            int compare = compare_strings(stud->name, ptr->name);
             // If the chapter contains 1 element that comes after stud
             if (compare == -1 || compare == 0){
                 printf("ok2\n");
@@ -51,25 +50,25 @@ int add_student(Student *stud){
                 glossary[i].beginList = stud; // necessary step because glossary[i].beginList is not a Student element
                 return 0;
             } else {
-                while (travelPtr->nextAlphaStudent != NULL){
-                    Student nextElement = *(travelPtr->nextAlphaStudent);
+                while (ptr->nextAlphaStudent != NULL){
+                    Student nextElement = *(ptr->nextAlphaStudent);
                     int compare = compare_strings(stud->name, nextElement.name);
                     // If stud comes before nextElement
                     if (compare == -1 || compare == 0){
                         printf("ok3\n");
-                        stud->nextAlphaStudent = travelPtr->nextAlphaStudent;
-                        travelPtr->nextAlphaStudent = stud;
+                        stud->nextAlphaStudent = ptr->nextAlphaStudent;
+                        ptr->nextAlphaStudent = stud;
                         return 0;
                     } else {
                         // If stud comes after nextElement
-                        travelPtr = travelPtr->nextAlphaStudent;
+                        ptr = ptr->nextAlphaStudent;
                     }
                 }
                 // If stud is the last element of the chapter
-                if (travelPtr->nextAlphaStudent == NULL) {
+                if (ptr->nextAlphaStudent == NULL){
                     printf("ok4\n");
                     stud->nextAlphaStudent = NULL;
-                    travelPtr->nextAlphaStudent = stud;
+                    ptr->nextAlphaStudent = stud;
                     return 0;
                 }
             }
@@ -86,6 +85,48 @@ int init_glossary(Student *tab[],int nbrStudent){ // Those parameters could be r
         add_student(tab[i]);
     }
     return 0;
+}
+
+int find_student(char *name){
+    int i = 0;
+    while (glossary[i].letter != name[0] && i < 27){
+        i++;
+    }
+    if (glossary[i].letter == name[0]){
+        if (glossary[i].beginList == NULL){
+            printf("This student does not exist\n");
+            // Return not found
+        } else {
+            int compare = compare_strings(glossary[i].beginList->name, name);
+            if (compare == 0){
+                // Display informations
+                // Return informations
+            } else if (compare == -1){
+                printf("This student does not exist\n");
+                // Return not found
+            } else {
+                Student *ptr = glossary[i].beginList->nextAlphaStudent;
+                while (ptr != NULL){
+                    compare = compare_strings(ptr->name, name);
+                    if (compare == 0){
+                        // Display informations
+                        // Return informations
+                    } else if (compare == -1){
+                        printf("This student does not exist\n");
+                        // Return not found
+                    } else {
+                        ptr = ptr->nextAlphaStudent;
+                    }
+                }
+                if (ptr == NULL){
+                    printf("This student does not exist\n");
+                    // Return not found
+                }
+            }
+        }
+    } else {
+        printf("Invalid syntax\n")
+    }
 }
 
 #endif // STUDENTS_FONC_H_INCLUDED
