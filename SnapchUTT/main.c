@@ -4,7 +4,7 @@ int main()
 {
     /*
     printf("0\n");
-    init_glossary(stutab, nbrStudent);
+    init_glossary(stuTab, nbrStudent);
     printf("1\n");
     Student *ptr = glossary[1].beginList;
     printf("2\n");
