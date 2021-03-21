@@ -22,6 +22,8 @@ void array_char_display(char tab[]){
     }
 }
 
+
+
 void menu_display(){
     /*This fonction display the main menu of Snapch'UTT. */
     printf("***************************************************************\n");

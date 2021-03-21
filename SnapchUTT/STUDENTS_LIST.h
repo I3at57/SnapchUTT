@@ -32,25 +32,25 @@ Student stud2 = {
 };
 
 Student stud3 = {
-    "Baptist TOUSSAINT",
+    "Alexis POCHARD",
     19,
     2020,
     "Industrial Engineering",
     "Lille",
     NULL,
     NULL,
-    {interst4, interst6, interst5}
+    {interst7, interst4, interst5}
 };
 
 Student stud4 = {
-    "Baptistee TOUSSAINT",
-    19,
-    2020,
+    "Florimon LALANDE",
+    22,
+    2016,
     "Industrial Engineering",
     "Lille",
     NULL,
     NULL,
-    {interst2, interst8, interst5}
+    {interst5, interst6, interst7}
 };
 
 int nbrStudent = 4;

@@ -35,9 +35,15 @@ int main()
                 break;
         }
     }while(action !=5);
-    student_display(&stud1);
+    student_display(stuTab[0]);
     printf("\n\n");
-    student_display(&stud2);
+    student_display(stuTab[1]);
+    printf("\n\n");
+    student_display(stuTab[2]);
+    printf("\n\n");
+    student_display(stuTab[3]);
+    printf("\n\n");
+
 
     return(0);
 }

@@ -48,7 +48,9 @@ int add_student(Student *stud){
             if (compare == -1 || compare == 0){
                 printf("ok2\n");
                 stud->nextAlphaStudent = glossary[i].beginList;
-                glossary[i].beginList = stud; // necessary step because glossary[i].beginList is not a Student element
+                glossary[i].beginList = stud;
+                // necessary step because glossary[i].beginList is not a Student
+                // element
                 return 0;
             } else {
                 while (travelPtr->nextAlphaStudent != NULL){
@@ -80,7 +82,8 @@ int add_student(Student *stud){
     }
 }
 
-int init_glossary(Student *tab[],int nbrStudent){ // Those parameters could be removed by using global variables
+int init_glossary(Student *tab[],int nbrStudent){
+    // Those parameters could be removed by using global variables
     for (int i = 0; i < nbrStudent; i++){
         printf("01\n");
         add_student(tab[i]);

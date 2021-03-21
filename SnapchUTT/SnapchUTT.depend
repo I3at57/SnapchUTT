@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1616239607 source:c:\users\batto\documents\github\snapchutt\snapchutt\main.c
-	"DISPLAY_FONC.h"
+1616318125 source:c:\users\batto\documents\github\snapchutt\snapchutt\main.c
+	"main.h"
 
-1616239237 c:\users\batto\documents\github\snapchutt\snapchutt\display_fonc.h
+1616316976 c:\users\batto\documents\github\snapchutt\snapchutt\display_fonc.h
 	<stdio.h>
 
 1616251370 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\main.c
@@ -30,6 +30,28 @@
 	"CONST.h"
 
 1616286352 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\students_fonc.h
+	"CONST.h"
+	"STUDENTS_LIST.h"
+
+1616316976 c:\users\batto\documents\github\snapchutt\snapchutt\main.h
+	<stdio.h>
+	<stdlib.h>
+	"STRUCTURES.h"
+	"CONST.h"
+	"DISPLAY_FONC.h"
+	"STUDENTS_LIST.h"
+	"STUDENTS_FONC.h"
+
+1616316976 c:\users\batto\documents\github\snapchutt\snapchutt\structures.h
+
+1616317566 c:\users\batto\documents\github\snapchutt\snapchutt\const.h
+	"STRUCTURES.h"
+
+1616318367 c:\users\batto\documents\github\snapchutt\snapchutt\students_list.h
+	"STRUCTURES.h"
+	"CONST.h"
+
+1616318281 c:\users\batto\documents\github\snapchutt\snapchutt\students_fonc.h
 	"CONST.h"
 	"STUDENTS_LIST.h"
 
