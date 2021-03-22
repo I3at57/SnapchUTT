@@ -87,7 +87,7 @@ int init_glossary(Student *tab[],int nbrStudent){ // Those parameters could be r
     return 0;
 }
 
-int find_student(char *name){
+int find_student(Student *foundStudent,char *name){
     int i = 0;
     while (glossary[i].letter != name[0] && i < 27){
         i++;
@@ -95,37 +95,40 @@ int find_student(char *name){
     if (glossary[i].letter == name[0]){
         if (glossary[i].beginList == NULL){
             printf("This student does not exist\n");
-            // Return not found
+            return 1;
         } else {
             int compare = compare_strings(glossary[i].beginList->name, name);
             if (compare == 0){
-                // Display informations
-                // Return informations
+                foundStudent = glossary[i].beginList;
+                student_display(foundStudent);
+                return 0;
             } else if (compare == -1){
                 printf("This student does not exist\n");
-                // Return not found
+                return 1;
             } else {
                 Student *ptr = glossary[i].beginList->nextAlphaStudent;
                 while (ptr != NULL){
                     compare = compare_strings(ptr->name, name);
                     if (compare == 0){
-                        // Display informations
-                        // Return informations
+                        foundStudent = ptr;
+                        student_display(foundStudent);
+                        return 0;
                     } else if (compare == -1){
                         printf("This student does not exist\n");
-                        // Return not found
+                        return 1;
                     } else {
                         ptr = ptr->nextAlphaStudent;
                     }
                 }
                 if (ptr == NULL){
                     printf("This student does not exist\n");
-                    // Return not found
+                    return 1;
                 }
             }
         }
     } else {
-        printf("Invalid syntax\n")
+        printf("Invalid syntax\n");
+        return 1;
     }
 }
 
