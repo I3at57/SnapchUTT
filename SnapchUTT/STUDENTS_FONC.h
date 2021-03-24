@@ -43,17 +43,6 @@ Student *create_student(){
     printf("- ");
     scanf("%d", &ind5);
 
-    struct Student studdd = {
-        str1,
-        ind1,
-        ind2,
-        str2,
-        str3,
-        NULL,
-        NULL,
-        {tabOfInterest[ind3-1], tabOfInterest[ind4-1], tabOfInterest[ind5-1]}
-    };
-
     return(&studdd);
 }
 
