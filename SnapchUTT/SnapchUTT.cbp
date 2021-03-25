@@ -37,6 +37,7 @@
 		<Unit filename="STRUCTURES.h" />
 		<Unit filename="STUDENTS_FONC.h" />
 		<Unit filename="STUDENTS_LIST.h" />
+		<Unit filename="UTILITARY_FONC.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
