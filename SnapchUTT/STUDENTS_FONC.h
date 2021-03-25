@@ -197,4 +197,63 @@ int find_student(Student *foundStudent,char *name){
     }
 }
 
+int remove_from_glossary(Student *stud){
+    // Finding the right chapter in the glossary
+    char readChar = stud->name[0];
+    int i = 0;
+    while (readChar != glossary[i].letter && i < 27){
+        i++;
+    }
+    if (readChar == glossary[i].letter){
+        if (glossary[i].beginList == NULL){
+            return 1;
+        } else {
+            Student *ptr = glossary[i].beginList;
+            if (ptr == stud){
+                glossary[i].beginList = stud.nextAlphaStudent;
+                clear_links(stud);
+                clear_list_followers(stud);
+                stud.nextAlphaStudent = NULL;
+                return 0;
+            } else {
+                while (ptr->nextAlphaStudent != stud && ptr->nextAlphaStudent != NULL && compare_strings(stud->name, ptr->nextAlphaStudent.name) >= 0){
+                    ptr = ptr->nextAlphaStudent;
+                }
+                if (ptr->nextAlphaStudent == stud){
+                    ptr->nextAlphaStudent = stud.nextAlphaStudent;
+                    clear_links(stud);
+                    clear_list_followers(stud);
+                    stud.nextAlphaStudent = NULL;
+                    return 0;
+                } else if (ptr->nextAlphaStudent == NULL || compare_strings(stud->name, ptr->nextAlphaStudent.name) < 0){
+                    return 1;
+                }
+            }
+        }
+    } else {
+        return 1;
+    }
+}
+
+void clear_links(Student *stud){
+    // Remove the pointers which point to stud
+}
+
+void clear_list_followers(Student *stud){
+    // Remove the pointers contained in the list of followers of stud
+}
+
+int quit(){
+    for (int i = 0; i < 27; i++){
+        while (glossary[i].beginList != NULL){
+            Student *ptr = glossary[i].beginList;
+            clear_links(ptr);
+            glossary[i].beginList = glossary[i].beginList->nextAlphaStudent;
+            clear_list_followers(ptr);
+            ptr.nextAlphaStudent = NULL;
+            free(ptr);
+        }
+    }
+}
+
 #endif // STUDENTS_FONC_H_INCLUDED
