@@ -43,7 +43,23 @@ Student *create_student(){
     printf("- ");
     scanf("%d", &ind5);
 
-    return(&studdd);
+    printf("%s\n", str1);
+    printf("%d\n", ind1);
+    printf("%d\n", ind2);
+    printf("%s\n", str2);
+    printf("%s\n", str3);
+    printf("%s %s %s", tabOfInterest[ind3-1].field, tabOfInterest[ind4-1].field, tabOfInterest[ind5-1].field);
+
+    Student stur {
+        str1,
+        ind1,
+        ind2,
+        str2,
+        str3,
+        {tabOfInterest[ind3-1], tabOfInterest[ind4-1], tabOfInterest[ind5-1]}
+    };
+
+    return(&stur);
 }
 
 int compare_strings(char *str1, char *str2){
