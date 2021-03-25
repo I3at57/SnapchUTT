@@ -5,8 +5,78 @@ STUDENTS_FONC.h contain all the fonction relative to the gestion of a student.
 #ifndef STUDENTS_FONC_H_INCLUDED
 #define STUDENTS_FONC_H_INCLUDED
 
+#include <stdlib.h>
+#include <stdio.h>
+
 #include "CONST.h"
 #include "STUDENTS_LIST.h"
+#include "DISPLAY_FONC.h"
+
+int copy_array_char(char *targetArray, char *contentArray, int lth1, int lth2){
+    if (lth2>lth1){
+        return(1);
+    }
+    else {
+        int i = 0;
+        char lastChar;
+        do {
+            lastChar = contentArray[i];
+            targetArray[i] = lastChar;
+            i++;
+        } while (lastChar != '\0');
+    }
+}
+
+Student *create_student(){
+    /*This fonction is used to create a Student variable and return is pointer*/
+
+    Student *stud;
+    stud = malloc(sizeof(Student));
+
+    char str1[50], str2[50], str3[100];
+    int ind1, ind2, ind3, ind4, ind5;
+
+    fflush(stdin);
+    printf("\nName : ");
+    scanf("%[^\n%]*c", str1);
+    printf("\nAge : ");
+    scanf("%d", &ind1);
+    printf("\nYear of study : ");
+    scanf("%d", &ind2);
+    fflush(stdin);
+    printf("\nField of study : ");
+    scanf("%[^\n%]*c", str2);
+    fflush(stdin);
+    printf("\nCity of residence : ");
+    scanf("%[^\n%]*c", str3);
+    printf(
+        "\nChoose one field of interest :\n\t1. Sport\n\t2. Cinema"
+        "\n\t3. Art\n\t4. Health\n\t5. Technology\n\t6. DIY"
+        "\n\t7. Cooking\n\t8. Travel\n\n"
+    );
+    fflush(stdin);
+    printf("- ");
+    scanf("%d", &ind3);
+    printf("- ");
+    scanf("%d", &ind4);
+    printf("- ");
+    scanf("%d", &ind5);
+
+    Student stur={
+        .age = ind1,
+        .yearStudy = ind2,
+        .interest = {
+          tabOfInterest[ind3-1], tabOfInterest[ind4-1], tabOfInterest[ind5-1]
+        },
+    };
+    copy_array_char(&stur.name, &str1, 50, 50);
+    copy_array_char(&stur.fieldStudy, &str2, 50, 50);
+    copy_array_char(&stur.cityResidence, &str3, 50, 50);
+
+    *stud = stur;
+
+    return(stud);
+}
 
 int compare_strings(char *str1, char *str2){
     /**/
@@ -47,7 +117,9 @@ int add_student(Student *stud){
             if (compare == -1 || compare == 0){
                 printf("ok2\n");
                 stud->nextAlphaStudent = glossary[i].beginList;
-                glossary[i].beginList = stud; // necessary step because glossary[i].beginList is not a Student element
+                glossary[i].beginList = stud;
+                // necessary step because glossary[i].beginList is not a Student
+                // element
                 return 0;
             } else {
                 while (ptr->nextAlphaStudent != NULL){
@@ -79,7 +151,8 @@ int add_student(Student *stud){
     }
 }
 
-int init_glossary(Student *tab[],int nbrStudent){ // Those parameters could be removed by using global variables
+int init_glossary(Student *tab[],int nbrStudent){
+    // Those parameters could be removed by using global variables
     for (int i = 0; i < nbrStudent; i++){
         printf("01\n");
         add_student(tab[i]);

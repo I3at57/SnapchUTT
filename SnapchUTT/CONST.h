@@ -14,12 +14,18 @@ const FieldOfInterest interst6 = {6, "DIY"};
 const FieldOfInterest interst7 = {7, "Cooking"};
 const FieldOfInterest interst8 = {8, "Travel"};
 
+FieldOfInterest tabOfInterest [8] = {
+    interst1, interst2, interst3, interst4, interst5, interst6, interst7,
+    interst8
+};
+
 LineGlossary glossary[26] = {
-  {'A', NULL}, {'B', NULL}, {'C', NULL}, {'D', NULL}, {'E', NULL}, {'F', NULL},
-  {'G', NULL}, {'H', NULL}, {'I', NULL}, {'J', NULL}, {'K', NULL}, {'L', NULL},
-  {'M', NULL}, {'N', NULL}, {'O', NULL}, {'P', NULL}, {'Q', NULL}, {'R', NULL},
-  {'S', NULL}, {'T', NULL}, {'U', NULL}, {'V', NULL}, {'W', NULL}, {'X', NULL},
-  {'Y', NULL}, {'Z', NULL},
+    {'A', NULL}, {'B', NULL}, {'C', NULL}, {'D', NULL}, {'E', NULL},
+    {'F', NULL}, {'G', NULL}, {'H', NULL}, {'I', NULL}, {'J', NULL},
+    {'K', NULL}, {'L', NULL}, {'M', NULL}, {'N', NULL}, {'O', NULL},
+    {'P', NULL}, {'Q', NULL}, {'R', NULL}, {'S', NULL}, {'T', NULL},
+    {'U', NULL}, {'V', NULL}, {'W', NULL}, {'X', NULL}, {'Y', NULL},
+    {'Z', NULL},
 };
 
 #endif // CONST_H_INCLUDED
