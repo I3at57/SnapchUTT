@@ -94,28 +94,23 @@ int compare_strings(char *str1, char *str2){
 }
 
 int add_student(Student *stud){
-    printf("001\n");
     // Finding the right chapter in the glossary
     char readChar = stud->name[0];
-    printf("readChar = %c\n", readChar);
     int i = 0;
     while (readChar != glossary[i].letter && i < 27){
         i++;
     }
-    printf("%d", i);
     if (readChar == glossary[i].letter){
         // If the chapter of glossary does not contain any element
         if (glossary[i].beginList == NULL){
             stud->nextAlphaStudent = NULL;
             glossary[i].beginList = stud;
-            printf("ok1\n");
             return 0;
         } else {
             Student *ptr = glossary[i].beginList;
             int compare = compare_strings(stud->name, ptr->name);
             // If the chapter contains 1 element that comes after stud
             if (compare == -1 || compare == 0){
-                printf("ok2\n");
                 stud->nextAlphaStudent = glossary[i].beginList;
                 glossary[i].beginList = stud;
                 // necessary step because glossary[i].beginList is not a Student
@@ -127,7 +122,6 @@ int add_student(Student *stud){
                     int compare = compare_strings(stud->name, nextElement.name);
                     // If stud comes before nextElement
                     if (compare == -1 || compare == 0){
-                        printf("ok3\n");
                         stud->nextAlphaStudent = ptr->nextAlphaStudent;
                         ptr->nextAlphaStudent = stud;
                         return 0;
@@ -138,7 +132,6 @@ int add_student(Student *stud){
                 }
                 // If stud is the last element of the chapter
                 if (ptr->nextAlphaStudent == NULL){
-                    printf("ok4\n");
                     stud->nextAlphaStudent = NULL;
                     ptr->nextAlphaStudent = stud;
                     return 0;
@@ -154,7 +147,6 @@ int add_student(Student *stud){
 int init_glossary(Student *tab[],int nbrStudent){
     // Those parameters could be removed by using global variables
     for (int i = 0; i < nbrStudent; i++){
-        printf("01\n");
         add_student(tab[i]);
     }
     return 0;
