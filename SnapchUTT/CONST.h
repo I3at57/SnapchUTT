@@ -5,6 +5,10 @@
 
 /*This file is used to declare constants*/
 
+char beaSep[]=
+      "\n\n\n\n\n\n\n\n\n\n"
+      "           ~~~~~     *********************     ~~~~~           \n\n";
+
 const FieldOfInterest interst1 = {1, "Sport"};
 const FieldOfInterest interst2 = {2, "Cinema"};
 const FieldOfInterest interst3 = {3, "Art"};

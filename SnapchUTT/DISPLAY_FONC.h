@@ -37,7 +37,7 @@ void menu_display(){
     printf("**   1. Add a student in the database                        **\n");
     printf("**   2. Find a specific student                              **\n");
     printf("**   3. Do a research by cathegorize                         **\n");
-    printf("**   5. Quit                                                 **\n");
+    printf("**   4. Quit                                                 **\n");
     printf("**                                                           **\n");
     printf("***************************************************************\n");
     printf("***************************************************************\n");
@@ -65,6 +65,9 @@ void student_display(Student *stu){
         printf(", ");
         array_char_display(stu->interest[2].field);
         printf(", ");
+    }
+    else {
+        printf("\nNo informations about this person. \n");
     }
 }
 
