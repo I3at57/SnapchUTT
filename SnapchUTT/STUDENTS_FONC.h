@@ -123,7 +123,8 @@ int init_glossary(Student *tab[],int nbrStudent){
     return 0;
 }
 
-int find_student(Student *foundStudent,char *name){
+Student *find_student(char *name){
+    Student *foundStudent;
     int i = 0;
     while (glossary[i].letter != name[0] && i < 27){
         i++;
@@ -135,7 +136,7 @@ int find_student(Student *foundStudent,char *name){
             int compare = compare_strings(glossary[i].beginList->name, name);
             if (compare == 0){
                 foundStudent = glossary[i].beginList;
-                return 0;
+                return (foundStudent);
             } else if (compare == -1){
                 return 1;
             } else {
@@ -144,7 +145,7 @@ int find_student(Student *foundStudent,char *name){
                     compare = compare_strings(ptr->name, name);
                     if (compare == 0){
                         foundStudent = ptr;
-                        return 0;
+                        return (foundStudent);
                     } else if (compare == -1){
                         return 1;
                     } else {
