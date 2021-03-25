@@ -33,6 +33,7 @@
 		</Compiler>
 		<Unit filename="CONST.h" />
 		<Unit filename="DISPLAY_FONC.h" />
+		<Unit filename="MENU.h" />
 		<Unit filename="STRUCTURES.h" />
 		<Unit filename="STUDENTS_FONC.h" />
 		<Unit filename="STUDENTS_LIST.h" />
