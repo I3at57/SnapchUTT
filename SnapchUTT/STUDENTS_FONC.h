@@ -10,9 +10,28 @@ STUDENTS_FONC.h contain all the fonction relative to the gestion of a student.
 
 #include "CONST.h"
 #include "STUDENTS_LIST.h"
+#include "DISPLAY_FONC.h"
+
+int copy_array_char(char *targetArray, char *contentArray, int lth1, int lth2){
+    if (lth2>lth1){
+        return(1);
+    }
+    else {
+        int i = 0;
+        char lastChar;
+        do {
+            lastChar = contentArray[i];
+            targetArray[i] = lastChar;
+            i++;
+        } while (lastChar != '\0');
+    }
+}
 
 Student *create_student(){
     /*This fonction is used to create a Student variable and return is pointer*/
+
+    Student *stud;
+    stud = malloc(sizeof(Student));
 
     char str1[50], str2[50], str3[100];
     int ind1, ind2, ind3, ind4, ind5;
@@ -43,23 +62,20 @@ Student *create_student(){
     printf("- ");
     scanf("%d", &ind5);
 
-    printf("%s\n", str1);
-    printf("%d\n", ind1);
-    printf("%d\n", ind2);
-    printf("%s\n", str2);
-    printf("%s\n", str3);
-    printf("%s %s %s", tabOfInterest[ind3-1].field, tabOfInterest[ind4-1].field, tabOfInterest[ind5-1].field);
-
-    Student stur {
-        str1,
-        ind1,
-        ind2,
-        str2,
-        str3,
-        {tabOfInterest[ind3-1], tabOfInterest[ind4-1], tabOfInterest[ind5-1]}
+    Student stur={
+        .age = ind1,
+        .yearStudy = ind2,
+        .interest = {
+          tabOfInterest[ind3-1], tabOfInterest[ind4-1], tabOfInterest[ind5-1]
+        },
     };
+    copy_array_char(&stur.name, &str1, 50, 50);
+    copy_array_char(&stur.fieldStudy, &str2, 50, 50);
+    copy_array_char(&stur.cityResidence, &str3, 50, 50);
 
-    return(&stur);
+    *stud = stur;
+
+    return(stud);
 }
 
 int compare_strings(char *str1, char *str2){

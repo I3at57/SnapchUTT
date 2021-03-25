@@ -44,18 +44,6 @@ int main()
 //    student_display(stuTab[3]);
 //    printf("\n\n");
 
-Student studf = {
-    "Lucos MARTINEZ",
-    19,
-    2120,
-    "Meamical Engineering",
-    "Troes",
-    NULL,
-    NULL,
-    {interst5, interst8, interst1}
-};
-
-
     Student *eleve;
     eleve = create_student();
     student_display(eleve);

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1616420835 source:c:\users\batto\documents\github\snapchutt\snapchutt\main.c
+1616691419 source:c:\users\batto\documents\github\snapchutt\snapchutt\main.c
 	"main.h"
 
 1616325474 c:\users\batto\documents\github\snapchutt\snapchutt\display_fonc.h
@@ -51,15 +51,16 @@
 	"STRUCTURES.h"
 	"CONST.h"
 
-1616619111 c:\users\batto\documents\github\snapchutt\snapchutt\students_fonc.h
+1616693098 c:\users\batto\documents\github\snapchutt\snapchutt\students_fonc.h
 	<stdlib.h>
 	<stdio.h>
 	"CONST.h"
 	"STUDENTS_LIST.h"
+	"DISPLAY_FONC.h"
 
-1616416885 c:\users\batto\documents\github\snapchutt\snapchutt\utilitary_fonc.h
+1616691858 c:\users\batto\documents\github\snapchutt\snapchutt\utilitary_fonc.h
+	<stdbool.h>
+	<stddef.h>
 	<stdio.h>
 	<stdlib.h>
-	"STRUCTURES.h"
-	"CONST.h"
 
