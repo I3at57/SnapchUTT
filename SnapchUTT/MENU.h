@@ -48,22 +48,23 @@ int add_menu() {
 
 int find_one_menu() {
 
-//    Student *eleve;
-//    char nameStr[50];
-//    int ind = 1;
-//
-//    do {
-//        fflush(stdin);
-//        printf("\nEnter a name : ");
-//        scanf("%[^\n%]*c", nameStr);
-//        if (find_student(eleve, nameStr) == 0) {
-//            student_display(eleve);
-//            ind++;
-//        }
-//        else {
-//            printf("\nThis student doesn't exist :/\n");
-//        }
-//    }while(ind == 1);
+    Student *eleve;
+    char nameStr[50];
+    int ind = 1;
+
+    do {
+        fflush(stdin);
+        printf("\nEnter a name : ");
+        scanf("%[^\n%]*c", nameStr);
+        eleve = find_student(nameStr);
+        if (eleve == NULL) {
+            printf("\nThis student doesn't exist :/\n");
+        }
+        else {
+            student_display(eleve);
+            ind++;
+        }
+    }while(ind == 1);
 
     return(0);
 }
