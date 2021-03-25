@@ -8,24 +8,10 @@ STUDENTS_FONC.h contain all the fonction relative to the gestion of a student.
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "UTILITARY_FONC.h"
 #include "CONST.h"
 #include "STUDENTS_LIST.h"
 #include "DISPLAY_FONC.h"
-
-int copy_array_char(char *targetArray, char *contentArray, int lth1, int lth2){
-    if (lth2>lth1){
-        return(1);
-    }
-    else {
-        int i = 0;
-        char lastChar;
-        do {
-            lastChar = contentArray[i];
-            targetArray[i] = lastChar;
-            i++;
-        } while (lastChar != '\0');
-    }
-}
 
 Student *create_student(){
     /*This fonction is used to create a Student variable and return is pointer*/
@@ -76,21 +62,6 @@ Student *create_student(){
     *stud = stur;
 
     return(stud);
-}
-
-int compare_strings(char *str1, char *str2){
-    /**/
-    int k = 1;
-    while (str1[k] == str2[k] && str1[k] != '\0' && str2[k] != '\0'){
-        k++;
-    }
-    if (str1[k] < str2[k] || (str1[k] == '\0' && str2[k] != '\0')){
-        return -1; // str1 comes before str2
-    } else if (str1[k] > str2[k] || (str1[k] != '\0' && str2[k] == '\0')){
-        return 1; // str1 comes after str2
-    } else {
-        return 0; // str1 is equal to str2
-    }
 }
 
 int add_student(Student *stud){
@@ -159,16 +130,13 @@ int find_student(Student *foundStudent,char *name){
     }
     if (glossary[i].letter == name[0]){
         if (glossary[i].beginList == NULL){
-            printf("This student does not exist\n");
             return 1;
         } else {
             int compare = compare_strings(glossary[i].beginList->name, name);
             if (compare == 0){
                 foundStudent = glossary[i].beginList;
-                student_display(foundStudent);
                 return 0;
             } else if (compare == -1){
-                printf("This student does not exist\n");
                 return 1;
             } else {
                 Student *ptr = glossary[i].beginList->nextAlphaStudent;
@@ -176,17 +144,14 @@ int find_student(Student *foundStudent,char *name){
                     compare = compare_strings(ptr->name, name);
                     if (compare == 0){
                         foundStudent = ptr;
-                        student_display(foundStudent);
                         return 0;
                     } else if (compare == -1){
-                        printf("This student does not exist\n");
                         return 1;
                     } else {
                         ptr = ptr->nextAlphaStudent;
                     }
                 }
                 if (ptr == NULL){
-                    printf("This student does not exist\n");
                     return 1;
                 }
             }
