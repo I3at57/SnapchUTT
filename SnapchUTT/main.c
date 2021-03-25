@@ -2,14 +2,12 @@
 
 int main()
 {
-    /*
-    printf("0\n");
     init_glossary(stuTab, nbrStudent);
-    printf("1\n");
-    Student *ptr = glossary[1].beginList;
-    printf("2\n");
-    printf("%s", ptr->name);
-    */
+
+    Student *eleve = NULL;
+    find_student(eleve, "Baptiste TOUSSAINT");
+
+
 //    int action;
 //    do {
 //        menu_display();
@@ -44,9 +42,5 @@ int main()
 //    student_display(stuTab[3]);
 //    printf("\n\n");
 
-    Student *eleve;
-    eleve = create_student();
-    student_display(eleve);
-    free(eleve);
     return(0);
 }
