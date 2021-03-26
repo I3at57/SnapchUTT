@@ -197,6 +197,7 @@ int find_student(Student *foundStudent,char *name){
     }
 }
 
+// This function does not free any pointer
 int remove_from_glossary(Student *stud){
     // Finding the right chapter in the glossary
     char readChar = stud->name[0];
@@ -212,7 +213,6 @@ int remove_from_glossary(Student *stud){
             if (ptr == stud){
                 glossary[i].beginList = stud.nextAlphaStudent;
                 clear_links(stud);
-                clear_list_followers(stud);
                 stud.nextAlphaStudent = NULL;
                 return 0;
             } else {
@@ -222,7 +222,6 @@ int remove_from_glossary(Student *stud){
                 if (ptr->nextAlphaStudent == stud){
                     ptr->nextAlphaStudent = stud.nextAlphaStudent;
                     clear_links(stud);
-                    clear_list_followers(stud);
                     stud.nextAlphaStudent = NULL;
                     return 0;
                 } else if (ptr->nextAlphaStudent == NULL || compare_strings(stud->name, ptr->nextAlphaStudent.name) < 0){
@@ -235,12 +234,8 @@ int remove_from_glossary(Student *stud){
     }
 }
 
+// Remove the pointers which point to stud
 void clear_links(Student *stud){
-    // Remove the pointers which point to stud
-}
-
-void clear_list_followers(Student *stud){
-    // Remove the pointers contained in the list of followers of stud
 }
 
 int quit(){
@@ -249,7 +244,6 @@ int quit(){
             Student *ptr = glossary[i].beginList;
             clear_links(ptr);
             glossary[i].beginList = glossary[i].beginList->nextAlphaStudent;
-            clear_list_followers(ptr);
             ptr.nextAlphaStudent = NULL;
             free(ptr);
         }
