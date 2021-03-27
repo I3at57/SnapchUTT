@@ -1,10 +1,13 @@
 #ifndef CONST_H_INCLUDED
 #define CONST_H_INCLUDED
 
+/*******************************************************************************
+This file is used to declare constants
+*******************************************************************************/
+
 #include "STRUCTURES.h"
 
-/*This file is used to declare constants*/
-
+char quitString[] = "Quit";
 char beaSep[]=
       "\n\n\n"
       "           ~~~~~     *********************     ~~~~~           \n\n";
