@@ -1,5 +1,5 @@
 # Code::Block file
-.exe
-.o
-.depend
-.layout
+*.exe
+*.o
+*.depend
+*.layout
