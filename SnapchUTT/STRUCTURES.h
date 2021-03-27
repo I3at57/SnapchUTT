@@ -19,6 +19,12 @@ typedef struct FieldOfInterest {
     char field[20]; //Ex : 'Art'
 }FieldOfInterest;
 
+typedef struct ListOfFollower {
+    int maxElement;
+    int nbrFollower;
+    struct Student *listFollower;
+}ListOfFollower;
+
 typedef struct Student {
     /*This is the main structure of the project.*/
     char name [50];
@@ -27,7 +33,7 @@ typedef struct Student {
     char fieldStudy [50];
     char cityResidence [100];
     struct Student *nextAlphaStudent; //Next student per alphabetic.
-    struct Student *followStudent; //pointer to the follow list.
+    ListOfFollower follower;
     FieldOfInterest interest[3];
 }Student;
 
