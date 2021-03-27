@@ -131,14 +131,14 @@ Student *find_student(char *name){
     }
     if (glossary[i].letter == name[0]){
         if (glossary[i].beginList == NULL){
-            return 1;
+            return (NULL);
         } else {
             int compare = compare_strings(glossary[i].beginList->name, name);
             if (compare == 0){
                 foundStudent = glossary[i].beginList;
                 return (foundStudent);
             } else if (compare == -1){
-                return 1;
+                return (NULL);
             } else {
                 Student *ptr = glossary[i].beginList->nextAlphaStudent;
                 while (ptr != NULL){
@@ -147,19 +147,19 @@ Student *find_student(char *name){
                         foundStudent = ptr;
                         return (foundStudent);
                     } else if (compare == -1){
-                        return 1;
+                        return (NULL);
                     } else {
                         ptr = ptr->nextAlphaStudent;
                     }
                 }
                 if (ptr == NULL){
-                    return 1;
+                    return (NULL);
                 }
             }
         }
     } else {
         printf("Invalid syntax\n");
-        return 1;
+        return (NULL);
     }
 }
 
