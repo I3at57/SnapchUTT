@@ -15,54 +15,43 @@ STUDENTS_FONC.h contain all the fonction relative to the gestion of a student.
 
 Student *create_student(){
     /*This fonction is used to create a Student variable and return is pointer*/
-
     Student *stud;
     stud = malloc(sizeof(Student));
-
     char str1[sizeName], str2[sizeFieldStudi], str3[sizeStudentCity];
     int ind1, ind2, ind3, ind4, ind5;
 
+    fflush(stdin);  //Security
+    /* Enter all information of the new student */
+    printf("\nName : "); scanf("%[^\n%]*c", str1);
+    printf("\nAge : "); scanf("%d", &ind1);
+    printf("\nYear of study : "); scanf("%d", &ind2);
     fflush(stdin);
-    printf("\nName : ");
-    scanf("%[^\n%]*c", str1);
-    printf("\nAge : ");
-    scanf("%d", &ind1);
-    printf("\nYear of study : ");
-    scanf("%d", &ind2);
+    printf("\nField of study : "); scanf("%[^\n%]*c", str2);
     fflush(stdin);
-    printf("\nField of study : ");
-    scanf("%[^\n%]*c", str2);
-    fflush(stdin);
-    printf("\nCity of residence : ");
-    scanf("%[^\n%]*c", str3);
+    printf("\nCity of residence : "); scanf("%[^\n%]*c", str3);
     printf(
         "\nChoose one field of interest :\n\t1. Sport\n\t2. Cinema"
         "\n\t3. Art\n\t4. Health\n\t5. Technology\n\t6. DIY"
         "\n\t7. Cooking\n\t8. Travel\n\n"
     );
     fflush(stdin);
-    printf("- ");
-    scanf("%d", &ind3);
-    printf("- ");
-    scanf("%d", &ind4);
-    printf("- ");
-    scanf("%d", &ind5);
+    printf("- "); scanf("%d", &ind3);
+    printf("- "); scanf("%d", &ind4);
+    printf("- "); scanf("%d", &ind5);
 
+    /* Create this new student */
     Student stur={
-        .age = ind1,
-        .yearStudy = ind2,
-        .interest = {
-          tabOfInterest[ind3-1], tabOfInterest[ind4-1], tabOfInterest[ind5-1]
-        },
+        .age = ind1, .yearStudy = ind2, .interest = {
+        tabOfInterest[ind3-1], tabOfInterest[ind4-1], tabOfInterest[ind5-1]},
     };
     copy_array_char(&stur.name, &str1, sizeName, sizeName);
     copy_array_char(&stur.fieldStudy, &str2, sizeFieldStudi, sizeFieldStudi);
     copy_array_char(
         &stur.cityResidence, &str3, sizeStudentCity, sizeStudentCity
     );
-
+    
+    /* Copy of the new student in the returned adress */
     *stud = stur;
-
     return(stud);
 }
 

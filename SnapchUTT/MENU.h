@@ -61,7 +61,6 @@ int find_one_menu() {
 
     Student *eleve;
     char nameStr[sizeName];
-    int ind = 1;
 
     do {
         /* A loop to research for a specific student by name*/
@@ -74,9 +73,9 @@ int find_one_menu() {
             printf("Enter 'Quit' to quit.\n");
         } else {
             student_display(eleve);
-            ind++;
         }
-    }while(ind == 1 && compare_strings(&nameStr, &quitString) == 0);  //If nameStr is 'Quit' the loop end
+    }while(eleve == NULL && compare_strings_simple(nameStr, quitString));
+    //If nameStr is 'Quit' the loop end
     // eleve point on a student in glossary.
     return(0);
 }
