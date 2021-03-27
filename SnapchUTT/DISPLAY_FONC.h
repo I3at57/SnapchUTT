@@ -90,4 +90,11 @@ void student_display(Student *stu){
     }
 }
 
+void list_of_students_display(Student *stud){
+    for (int i = 0; i < stud->follower->nbrFollower; i++){
+        array_char_display(stud->follower->listFollower[i]->name);
+        printf("\n\n");
+    }
+}
+
 #endif // DISPLAY_FONC_H_INCLUDED]
