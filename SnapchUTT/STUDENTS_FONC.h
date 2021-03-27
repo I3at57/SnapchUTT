@@ -19,7 +19,7 @@ Student *create_student(){
     Student *stud;
     stud = malloc(sizeof(Student));
 
-    char str1[50], str2[50], str3[100];
+    char str1[sizeName], str2[sizeFieldStudi], str3[sizeStudentCity];
     int ind1, ind2, ind3, ind4, ind5;
 
     fflush(stdin);
@@ -55,9 +55,11 @@ Student *create_student(){
           tabOfInterest[ind3-1], tabOfInterest[ind4-1], tabOfInterest[ind5-1]
         },
     };
-    copy_array_char(&stur.name, &str1, 50, 50);
-    copy_array_char(&stur.fieldStudy, &str2, 50, 50);
-    copy_array_char(&stur.cityResidence, &str3, 50, 50);
+    copy_array_char(&stur.name, &str1, sizeName, sizeName);
+    copy_array_char(&stur.fieldStudy, &str2, sizeFieldStudi, sizeFieldStudi);
+    copy_array_char(
+        &stur.cityResidence, &str3, sizeStudentCity, sizeStudentCity
+    );
 
     *stud = stur;
 

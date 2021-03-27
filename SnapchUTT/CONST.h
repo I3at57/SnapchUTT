@@ -7,6 +7,12 @@ This file is used to declare constants
 
 #include "STRUCTURES.h"
 
+/* Cf STRUCTURES to change 
+int sizeName = 50;
+int sizeFieldStudi = 50;
+int sizeStudentCity = 100;
+*/
+
 char quitString[] = "Quit";
 char beaSep[]=
       "\n\n\n"

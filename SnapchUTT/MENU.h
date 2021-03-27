@@ -60,7 +60,7 @@ int add_menu() {
 int find_one_menu() {
 
     Student *eleve;
-    char nameStr[50];
+    char nameStr[sizeName];
     int ind = 1;
 
     do {
@@ -87,7 +87,7 @@ int find_all_menu() {
 
 int testzone () {
     Student *eleve = NULL;
-    char str[50];
+    char str[sizeName];
 
     fflush(stdin);
     scanf("%[^\n%]*c", str);
