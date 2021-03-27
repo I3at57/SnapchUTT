@@ -49,7 +49,7 @@ Student *create_student(){
     copy_array_char(
         &stur.cityResidence, &str3, sizeStudentCity, sizeStudentCity
     );
-    
+
     /* Copy of the new student in the returned adress */
     *stud = stur;
     return(stud);
@@ -154,7 +154,8 @@ Student *find_student(char *name){
     }
 }
 
-// This function does not free any pointer
+int
+
 int remove_from_glossary(Student *stud){
     // Finding the right chapter in the glossary
     char readChar = stud->name[0];
@@ -168,20 +169,20 @@ int remove_from_glossary(Student *stud){
         } else {
             Student *ptr = glossary[i].beginList;
             if (ptr == stud){
-                glossary[i].beginList = stud.nextAlphaStudent;
+                glossary[i].beginList = stud->nextAlphaStudent;
                 clear_links(stud);
-                stud.nextAlphaStudent = NULL;
+                free(stud);
                 return 0;
             } else {
-                while (ptr->nextAlphaStudent != stud && ptr->nextAlphaStudent != NULL && compare_strings(stud->name, ptr->nextAlphaStudent.name) >= 0){
+                while (ptr->nextAlphaStudent != stud && ptr->nextAlphaStudent != NULL && compare_strings(stud->name, ptr->nextAlphaStudent->name) >= 0){
                     ptr = ptr->nextAlphaStudent;
                 }
                 if (ptr->nextAlphaStudent == stud){
-                    ptr->nextAlphaStudent = stud.nextAlphaStudent;
+                    ptr->nextAlphaStudent = stud->nextAlphaStudent;
                     clear_links(stud);
-                    stud.nextAlphaStudent = NULL;
+                    free(stud);
                     return 0;
-                } else if (ptr->nextAlphaStudent == NULL || compare_strings(stud->name, ptr->nextAlphaStudent.name) < 0){
+                } else if (ptr->nextAlphaStudent == NULL || compare_strings(stud->name, ptr->nextAlphaStudent->name) < 0){
                     return 1;
                 }
             }
@@ -193,6 +194,17 @@ int remove_from_glossary(Student *stud){
 
 // Remove the pointers which point to stud
 void clear_links(Student *stud){
+    for (int i = 0; i < 27; i++){
+        Student *ptr = glossary[i].beginList;
+        while (ptr != NULL){
+            for (int j = 0; j < ptr->follower.nbrFollower){
+                if (ptr->follower->listFollower[j] == stud){
+                    ptr->follower->listFollower[j] = NULL;
+                }
+            }
+            ptr = ptr->nextAlphaStudent;
+        }
+    }
 }
 
 int quit(){
@@ -201,7 +213,6 @@ int quit(){
             Student *ptr = glossary[i].beginList;
             clear_links(ptr);
             glossary[i].beginList = glossary[i].beginList->nextAlphaStudent;
-            ptr.nextAlphaStudent = NULL;
             free(ptr);
         }
     }
