@@ -14,5 +14,6 @@ main.h is call only in main.c. The order of include is important.
 #include "DISPLAY_FONC.h"
 #include "STUDENTS_LIST.h"
 #include "STUDENTS_FONC.h"
+#include "MENU.h"
 
 #endif // MAIN_H_INCLUDED

@@ -6,6 +6,10 @@ It must be import at firts during execution.
 #ifndef STRUCTURES_H_INCLUDED
 #define STRUCTURES_H_INCLUDED
 
+int sizeName = 50;
+int sizeFieldStudi = 50;
+int sizeStudentCity = 100;
+
 typedef struct FieldOfInterest {
     /*FieldOfInterest represent a field of interest a student can have. It is
     compose by : 'nbr' and 'field'. Links a field with a number make it easier

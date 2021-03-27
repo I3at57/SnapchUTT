@@ -1,9 +1,22 @@
 #ifndef CONST_H_INCLUDED
 #define CONST_H_INCLUDED
 
+/*******************************************************************************
+This file is used to declare constants
+*******************************************************************************/
+
 #include "STRUCTURES.h"
 
-/*This file is used to declare constants*/
+/* Cf STRUCTURES to change
+int sizeName = 50;
+int sizeFieldStudi = 50;
+int sizeStudentCity = 100;
+*/
+
+char quitString[] = "Quit";
+char beaSep[]=
+      "\n\n\n"
+      "           ~~~~~     *********************     ~~~~~           \n\n";
 
 const FieldOfInterest interst1 = {1, "Sport"};
 const FieldOfInterest interst2 = {2, "Cinema"};
