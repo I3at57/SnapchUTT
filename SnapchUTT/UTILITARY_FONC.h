@@ -1,6 +1,10 @@
 #ifndef UTILITARY_FONC_H_INCLUDED
 #define UTILITARY_FONC_H_INCLUDED
 
+/*******************************************************************************
+All usefull fonctions wee use that ar not relative to structure 
+*******************************************************************************/
+
 #include <stdlib.h>
 #include <stdio.h>
 
