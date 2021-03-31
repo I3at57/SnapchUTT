@@ -1,19 +1,15 @@
 /*******************************************************************************
-STRUCTURES.h contain all personal type we've created.
-It must be import at firts during execution.
+STRUCTURES.h contain all personal types we have created.
+It must be imported at firt during execution.
 *******************************************************************************/
 
 #ifndef STRUCTURES_H_INCLUDED
 #define STRUCTURES_H_INCLUDED
 
-int sizeName = 50;
-int sizeFieldStudi = 50;
-int sizeStudentCity = 100;
-
 typedef struct FieldOfInterest {
-    /*FieldOfInterest represent a field of interest a student can have. It is
-    compose by : 'nbr' and 'field'. Links a field with a number make it easier
-    to find, with this methode we can made a recherche per int to find a field
+    /*FieldOfInterest represents a field of interest a student can have. It is
+    composed of : 'nbr' and 'field'. Links a field with a number make it easier
+    to find, with this method we can made a research per int to find a field
     Cf CONST.h for more information.*/
     int nbr;
     char field[20]; //Ex : 'Art'
@@ -22,7 +18,7 @@ typedef struct FieldOfInterest {
 typedef struct ListOfFollower {
     int maxElement;
     int nbrFollower;
-    struct Student *listFollower;
+    struct Student *listFollower[];
 }ListOfFollower;
 
 typedef struct Student {
