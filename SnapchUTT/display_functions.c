@@ -1,12 +1,6 @@
-/*******************************************************************************
-All the fonctions relative to display. If a feature have to display something
-the relative fonction is here.
-*******************************************************************************/
-
-#ifndef DISPLAY_FONC_H_INCLUDED
-#define DISPLAY_FONC_H_INCLUDED
-
 #include <stdio.h>
+#include <stdlib.h>
+#include "FUNCTIONS.h"
 
 void array_char_display(char tab[]){
     /*This fonction is used to display an entire array of character at screen.
@@ -91,10 +85,8 @@ void student_display(Student *stu){
 }
 
 void list_of_students_display(Student *stud){
-    for (int i = 0; i < stud->follower->nbrFollower; i++){
-        array_char_display(stud->follower->listFollower[i]->name);
+    for (int i = 0; i < stud->follower.nbrFollower; i++){
+        array_char_display(stud->follower.listFollower[i]->name);
         printf("\n\n");
     }
 }
-
-#endif // DISPLAY_FONC_H_INCLUDED]
