@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "FUNCTIONS.h"
 
+/*******************************************************************************
+All the fonctions relative to display. If a feature have to display something
+the relative fonction is here.
+*******************************************************************************/
+
 void array_char_display(char tab[]){
     /*This fonction is used to display an entire array of character at screen.
     This fonction dont include '\n' so we must use some print in complement*/
@@ -15,6 +20,17 @@ void array_char_display(char tab[]){
         }while(nextChar != '\0');
     }
 }
+
+/******************************************************************************/
+
+void display_interest() {
+    int i;
+    for (i=0; i<nbrInterest; i++){
+      printf("%d- %s\n", i+1, tabOfInterest[i].field);
+    }
+}
+
+/******************************************************************************/
 
 void menu_display(){
     /*This fonction display the main menu of Snapch'UTT. */
@@ -56,6 +72,44 @@ void find_menu_display(){
     printf("***************************************************************\n");
 }
 
+void display_perway_menu_display(){
+    printf("***************************************************************\n");
+    printf("***************************************************************\n");
+    printf("**                                                           **\n");
+    printf("**         ----- What do you want to Research ? -----        **\n");
+    printf("**                                                           **\n");
+    printf("**                                                           **\n");
+    printf("**   1. Age                                                  **\n");
+    printf("**   2. Year of Studies                                      **\n");
+    printf("**   3. City of residence                                    **\n");
+    printf("**   4. Field of studies                                     **\n");
+    printf("**   5. Field of interest                                    **\n");
+    printf("**   6. Quit                                                 **\n");
+    printf("**                                                           **\n");
+    printf("***************************************************************\n");
+    printf("***************************************************************\n");
+}
+
+void modify_menu_display(){
+    printf("***************************************************************\n");
+    printf("***************************************************************\n");
+    printf("**                                                           **\n");
+    printf("**          ----- What do you want to Change ? -----         **\n");
+    printf("**                                                           **\n");
+    printf("**                                                           **\n");
+    printf("**   1. Age                                                  **\n");
+    printf("**   2. Year of Studies                                      **\n");
+    printf("**   3. Field of studies                                     **\n");
+    printf("**   4. City of residence                                     **\n");
+    printf("**   5. Field of interest                                    **\n");
+    printf("**   6. Quit                                                 **\n");
+    printf("**                                                           **\n");
+    printf("***************************************************************\n");
+    printf("***************************************************************\n");
+}
+
+/******************************************************************************/
+
 void student_display(Student *stu){
     /*This fonction display all information about a student, exept the follow
     List.*/
@@ -77,16 +131,17 @@ void student_display(Student *stu){
         array_char_display(stu->interest[1].field);
         printf(", ");
         array_char_display(stu->interest[2].field);
-        printf(", ");
     }
     else {
         printf("\nNo informations about this person. \n");
     }
 }
 
-void list_of_students_display(Student *stud){
+/******************************************************************************/
+
+void display_follow_list(Student *stud){
     for (int i = 0; i < stud->follower.nbrFollower; i++){
-        array_char_display(stud->follower.listFollower[i]->name);
+        student_display(stud->follower.listFollower[i]);
         printf("\n\n");
     }
 }

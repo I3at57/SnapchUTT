@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include "FUNCTIONS.h"
 
+/*******************************************************************************
+All usefull fonctions wee use that ar not relative to structure
+*******************************************************************************/
+
 int compare_strings(char *str1, char *str2){
     /*Return -1 if str1<str2 ; Return 1 if str1>str2 ; Return -1 if str1=str2*/
     int k = 1;
@@ -17,6 +21,8 @@ int compare_strings(char *str1, char *str2){
     }
 }
 
+/******************************************************************************/
+
 int compare_strings_simple(char str1[], char str2[]){
     /*Return 0 if str1 = str2 else return 1*/
     int k = 1;
@@ -29,6 +35,8 @@ int compare_strings_simple(char str1[], char str2[]){
         return(1); //non equal
     }
 }
+
+/******************************************************************************/
 
 int copy_array_char(char *targetArray, char *contentArray, int lth1, int lth2){
     if (lth2 > lth1){

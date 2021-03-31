@@ -2,63 +2,9 @@
 #include <stdlib.h>
 #include "FUNCTIONS.h"
 
-Student *find_student(char *name){
-    Student *foundStudent;
-    int i = 0;
-    while (glossary[i].letter != name[0] && i < 27){
-        i++;
-    }
-    if (glossary[i].letter == name[0]){
-        if (glossary[i].beginList == NULL){
-            return (NULL);
-        } else {
-            int compare = compare_strings(glossary[i].beginList->name, name);
-            if (compare == 0){
-                foundStudent = glossary[i].beginList;
-                return (foundStudent);
-            } else if (compare == -1){
-                return (NULL);
-            } else {
-                Student *ptr = glossary[i].beginList->nextAlphaStudent;
-                while (ptr != NULL){
-                    compare = compare_strings(ptr->name, name);
-                    if (compare == 0){
-                        foundStudent = ptr;
-                        return (foundStudent);
-                    } else if (compare == -1){
-                        return (NULL);
-                    } else {
-                        ptr = ptr->nextAlphaStudent;
-                    }
-                }
-                if (ptr == NULL){
-                    return (NULL);
-                }
-            }
-        }
-    }
-    printf("Invalid syntax\n");
-    return (NULL);
-}
-
-void add_follow(Student *stud, Student *follow){
-    if (stud->follower.maxElement == 0){
-        Student *ptr = (Student *)malloc(20 * sizeof(Student *))
-        stud->follower.listFollower = ptr;
-        stud->follower.maxElement = 10;
-        stud->follower.listFollower[stud->follower.nbrFollower] = follow;
-        stud->follower.nbrFollower++;
-    } else if (stud->follower.nbrFollower < stud->follower.maxElement){
-        stud->follower.listFollower[stud->follower.nbrFollower] = follow;
-        stud->follower.nbrFollower++;
-    } else {
-        Student *ptr = (Student *)realloc(stud->follower.listFollower, 5 * sizeof(Student *));
-        stud->follower.listFollower = ptr;
-        stud->follower.maxElement += 5;
-        stud->follower.listFollower[stud->follower.nbrFollower] = follow;
-        stud->follower.nbrFollower++;
-    }
-}
+/*******************************************************************************
+STUDENTS_FONC.h contain all the fonction relative to the gestion of a student.
+*******************************************************************************/
 
 Student *create_student(){
     /*This fonction is used to create a Student variable and return is pointer*/
@@ -76,11 +22,7 @@ Student *create_student(){
     printf("\nField of study : "); scanf("%[^\n%]*c", str2);
     fflush(stdin);
     printf("\nCity of residence : "); scanf("%[^\n%]*c", str3);
-    printf(
-        "\nChoose one field of interest :\n\t1. Sport\n\t2. Cinema"
-        "\n\t3. Art\n\t4. Health\n\t5. Technology\n\t6. DIY"
-        "\n\t7. Cooking\n\t8. Travel\n\n"
-    );
+    display_interest(); printf("\n");
     fflush(stdin);
     printf("- "); scanf("%d", &ind3);
     printf("- "); scanf("%d", &ind4);
@@ -91,14 +33,18 @@ Student *create_student(){
         .age = ind1, .yearStudy = ind2, .interest = {
         tabOfInterest[ind3-1], tabOfInterest[ind4-1], tabOfInterest[ind5-1]},
     };
-    copy_array_char(stur.name, str1, sizeName, sizeName);
-    copy_array_char(stur.fieldStudy, str2, sizeFieldStudi, sizeFieldStudi);
-    copy_array_char(stur.cityResidence, str3, sizeStudentCity, sizeStudentCity);
+    copy_array_char(&stur.name, &str1, sizeName, sizeName);
+    copy_array_char(&stur.fieldStudy, &str2, sizeFieldStudi, sizeFieldStudi);
+    copy_array_char(
+        &stur.cityResidence, &str3, sizeStudentCity, sizeStudentCity
+    );
 
     /* Copy of the new student in the returned adress */
     *stud = stur;
     return(stud);
 }
+
+/******************************************************************************/
 
 int add_student(Student *stud){
     // Finding the right chapter in the glossary
@@ -145,10 +91,75 @@ int add_student(Student *stud){
                 }
             }
         }
+    } else {
+        // The chapter for stud has not been found
+        return 1;
     }
-    // The chapter for stud has not been found
-    return 1;
 }
+
+/******************************************************************************/
+
+Student *find_student(char *name){
+    Student *foundStudent;
+    int i = 0;
+    while (glossary[i].letter != name[0] && i < 27){
+        i++;
+    }
+    if (glossary[i].letter == name[0]){
+        if (glossary[i].beginList == NULL){
+            return (NULL);
+        } else {
+            int compare = compare_strings(glossary[i].beginList->name, name);
+            if (compare == 0){
+                foundStudent = glossary[i].beginList;
+                return (foundStudent);
+            } else if (compare == -1){
+                return (NULL);
+            } else {
+                Student *ptr = glossary[i].beginList->nextAlphaStudent;
+                while (ptr != NULL){
+                    compare = compare_strings(ptr->name, name);
+                    if (compare == 0){
+                        foundStudent = ptr;
+                        return (foundStudent);
+                    } else if (compare == -1){
+                        return (NULL);
+                    } else {
+                        ptr = ptr->nextAlphaStudent;
+                    }
+                }
+                if (ptr == NULL){
+                    return (NULL);
+                }
+            }
+        }
+    }
+    printf("Invalid syntax\n");
+    return (NULL);
+}
+
+/******************************************************************************/
+
+void add_follow(Student *stud, Student *follow){
+    if (stud->follower.maxElement == 0){
+        Student *ptr = (Student *)malloc(20 * sizeof(Student *));
+        stud->follower.listFollower = ptr;
+        stud->follower.maxElement = 10;
+        stud->follower.listFollower[stud->follower.nbrFollower] = follow;
+        stud->follower.nbrFollower++;
+    } else if (stud->follower.nbrFollower < stud->follower.maxElement){
+        stud->follower.listFollower[stud->follower.nbrFollower] = follow;
+        stud->follower.nbrFollower++;
+    } else {
+        Student *ptr = (Student *)realloc(stud->follower.listFollower, 5 * sizeof(Student *));
+        stud->follower.listFollower = ptr;
+        stud->follower.maxElement += 5;
+        stud->follower.listFollower[stud->follower.nbrFollower] = follow;
+        stud->follower.nbrFollower++;
+    }
+}
+
+/******************************************************************************/
 
 int init_glossary(Student *tab[],int nbrStudent){
     // Those parameters could be removed by using global variables
@@ -157,6 +168,9 @@ int init_glossary(Student *tab[],int nbrStudent){
     }
     return 0;
 }
+
+/******************************************************************************/
+
 
 int delete_student(Student *stud){
     // Finding the right chapter in the glossary

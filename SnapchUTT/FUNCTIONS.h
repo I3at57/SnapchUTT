@@ -36,9 +36,13 @@ extern void menu_display();
 
 extern void find_menu_display();
 
+extern void display_perway_menu_display();
+
+extern void modify_menu_display();
+
 extern void student_display(Student *stu);
 
-extern void list_of_students_display(Student *stud);
+extern void display_follow_list(Student *stud);
 
 /* To manipulate students */
 
@@ -55,5 +59,19 @@ extern int delete_student(Student *stud);
 extern void clear_links(Student *stud);
 
 extern void quit();
+
+/* To displays all student by specifics criteria*/
+
+extern int display_all_alpha();
+
+extern int display_all_age(int dage);
+
+extern int display_all_year(int dyear);
+
+extern int display_all_city(char *dcity);
+
+extern int display_all_field(char *dfield);
+
+extern int display_all_inter(int dinter);
 
 #endif // FUNCTIONS_H_INCLUDED
