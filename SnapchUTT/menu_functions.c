@@ -1,11 +1,6 @@
-#ifndef MENU_H_INCLUDED
-#define MENU_H_INCLUDED
-
-/*******************************************************************************
-MENU.h contain all the menu fonction which call other functions
-*******************************************************************************/
-
-#include "CONST.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "FUNCTIONS.h"
 
 int main_menu() {
     /*main_menu() is the principal menu loop, it allow to navigate into other
@@ -54,6 +49,7 @@ int main_menu() {
                 break;
          }
     }while(action !=5);
+    return 0;
 }
 
 int add_menu() {
@@ -130,6 +126,7 @@ int find_one_menu() {
             }
         }while(action !=6);
     }
+    return 0;
 }
 
 int find_all_menu() {
@@ -151,5 +148,3 @@ int testzone () {
     }
     return(0);
 }
-
-#endif // MENU_H_INCLUDED
