@@ -1,17 +1,64 @@
-/*******************************************************************************
-STUDENTS_FONC.h contain all the fonction relative to the gestion of a student.
-*******************************************************************************/
-
-#ifndef STUDENTS_FONC_H_INCLUDED
-#define STUDENTS_FONC_H_INCLUDED
-
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include "FUNCTIONS.h"
 
-#include "UTILITARY_FONC.h"
-#include "CONST.h"
-#include "STUDENTS_LIST.h"
-#include "DISPLAY_FONC.h"
+Student *find_student(char *name){
+    Student *foundStudent;
+    int i = 0;
+    while (glossary[i].letter != name[0] && i < 27){
+        i++;
+    }
+    if (glossary[i].letter == name[0]){
+        if (glossary[i].beginList == NULL){
+            return (NULL);
+        } else {
+            int compare = compare_strings(glossary[i].beginList->name, name);
+            if (compare == 0){
+                foundStudent = glossary[i].beginList;
+                return (foundStudent);
+            } else if (compare == -1){
+                return (NULL);
+            } else {
+                Student *ptr = glossary[i].beginList->nextAlphaStudent;
+                while (ptr != NULL){
+                    compare = compare_strings(ptr->name, name);
+                    if (compare == 0){
+                        foundStudent = ptr;
+                        return (foundStudent);
+                    } else if (compare == -1){
+                        return (NULL);
+                    } else {
+                        ptr = ptr->nextAlphaStudent;
+                    }
+                }
+                if (ptr == NULL){
+                    return (NULL);
+                }
+            }
+        }
+    }
+    printf("Invalid syntax\n");
+    return (NULL);
+}
+
+void add_follow(Student *stud, Student *follow){
+    if (stud->follower.maxElement == 0){
+        Student *ptr = (Student *)malloc(20 * sizeof(Student *))
+        stud->follower.listFollower = ptr;
+        stud->follower.maxElement = 10;
+        stud->follower.listFollower[stud->follower.nbrFollower] = follow;
+        stud->follower.nbrFollower++;
+    } else if (stud->follower.nbrFollower < stud->follower.maxElement){
+        stud->follower.listFollower[stud->follower.nbrFollower] = follow;
+        stud->follower.nbrFollower++;
+    } else {
+        Student *ptr = (Student *)realloc(stud->follower.listFollower, 5 * sizeof(Student *));
+        stud->follower.listFollower = ptr;
+        stud->follower.maxElement += 5;
+        stud->follower.listFollower[stud->follower.nbrFollower] = follow;
+        stud->follower.nbrFollower++;
+    }
+}
 
 Student *create_student(){
     /*This fonction is used to create a Student variable and return is pointer*/
@@ -44,11 +91,9 @@ Student *create_student(){
         .age = ind1, .yearStudy = ind2, .interest = {
         tabOfInterest[ind3-1], tabOfInterest[ind4-1], tabOfInterest[ind5-1]},
     };
-    copy_array_char(&stur.name, &str1, sizeName, sizeName);
-    copy_array_char(&stur.fieldStudy, &str2, sizeFieldStudi, sizeFieldStudi);
-    copy_array_char(
-        &stur.cityResidence, &str3, sizeStudentCity, sizeStudentCity
-    );
+    copy_array_char(stur.name, str1, sizeName, sizeName);
+    copy_array_char(stur.fieldStudy, str2, sizeFieldStudi, sizeFieldStudi);
+    copy_array_char(stur.cityResidence, str3, sizeStudentCity, sizeStudentCity);
 
     /* Copy of the new student in the returned adress */
     *stud = stur;
@@ -100,10 +145,9 @@ int add_student(Student *stud){
                 }
             }
         }
-    } else {
-        // The chapter for stud has not been found
-        return 1;
     }
+    // The chapter for stud has not been found
+    return 1;
 }
 
 int init_glossary(Student *tab[],int nbrStudent){
@@ -114,49 +158,7 @@ int init_glossary(Student *tab[],int nbrStudent){
     return 0;
 }
 
-Student *find_student(char *name){
-    Student *foundStudent;
-    int i = 0;
-    while (glossary[i].letter != name[0] && i < 27){
-        i++;
-    }
-    if (glossary[i].letter == name[0]){
-        if (glossary[i].beginList == NULL){
-            return (NULL);
-        } else {
-            int compare = compare_strings(glossary[i].beginList->name, name);
-            if (compare == 0){
-                foundStudent = glossary[i].beginList;
-                return (foundStudent);
-            } else if (compare == -1){
-                return (NULL);
-            } else {
-                Student *ptr = glossary[i].beginList->nextAlphaStudent;
-                while (ptr != NULL){
-                    compare = compare_strings(ptr->name, name);
-                    if (compare == 0){
-                        foundStudent = ptr;
-                        return (foundStudent);
-                    } else if (compare == -1){
-                        return (NULL);
-                    } else {
-                        ptr = ptr->nextAlphaStudent;
-                    }
-                }
-                if (ptr == NULL){
-                    return (NULL);
-                }
-            }
-        }
-    } else {
-        printf("Invalid syntax\n");
-        return (NULL);
-    }
-}
-
-int
-
-int remove_from_glossary(Student *stud){
+int delete_student(Student *stud){
     // Finding the right chapter in the glossary
     char readChar = stud->name[0];
     int i = 0;
@@ -187,9 +189,8 @@ int remove_from_glossary(Student *stud){
                 }
             }
         }
-    } else {
-        return 1;
     }
+    return 1;
 }
 
 // Remove the pointers which point to stud
@@ -197,9 +198,9 @@ void clear_links(Student *stud){
     for (int i = 0; i < 27; i++){
         Student *ptr = glossary[i].beginList;
         while (ptr != NULL){
-            for (int j = 0; j < ptr->follower.nbrFollower){
-                if (ptr->follower->listFollower[j] == stud){
-                    ptr->follower->listFollower[j] = NULL;
+            for (int j = 0; j < ptr->follower.nbrFollower; j++){
+                if (ptr->follower.listFollower[j] == stud){
+                    ptr->follower.listFollower[j] = NULL;
                 }
             }
             ptr = ptr->nextAlphaStudent;
@@ -207,7 +208,7 @@ void clear_links(Student *stud){
     }
 }
 
-int quit(){
+void quit(){
     for (int i = 0; i < 27; i++){
         while (glossary[i].beginList != NULL){
             Student *ptr = glossary[i].beginList;
@@ -217,6 +218,3 @@ int quit(){
         }
     }
 }
-
-
-#endif // STUDENTS_FONC_H_INCLUDED
