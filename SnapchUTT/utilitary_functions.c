@@ -1,12 +1,6 @@
-#ifndef UTILITARY_FONC_H_INCLUDED
-#define UTILITARY_FONC_H_INCLUDED
-
-/*******************************************************************************
-All usefull fonctions wee use that ar not relative to structure
-*******************************************************************************/
-
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include "FUNCTIONS.h"
 
 int compare_strings(char *str1, char *str2){
     /*Return -1 if str1<str2 ; Return 1 if str1>str2 ; Return -1 if str1=str2*/
@@ -37,18 +31,15 @@ int compare_strings_simple(char str1[], char str2[]){
 }
 
 int copy_array_char(char *targetArray, char *contentArray, int lth1, int lth2){
-    if (lth2>lth1){
-        return(1);
+    if (lth2 > lth1){
+        return 1;
     }
-    else {
-        int i = 0;
-        char lastChar;
-        do {
-            lastChar = contentArray[i];
-            targetArray[i] = lastChar;
-            i++;
-        } while (lastChar != '\0');
-    }
+    int i = 0;
+    char lastChar;
+    do {
+        lastChar = contentArray[i];
+        targetArray[i] = lastChar;
+        i++;
+    } while (lastChar != '\0');
+    return 0;
 }
-
-#endif // UTILITARY_FONC_H_INCLUDED
