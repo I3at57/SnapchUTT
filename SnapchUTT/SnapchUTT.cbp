@@ -34,6 +34,12 @@
 		<Unit filename="CONST.h" />
 		<Unit filename="FUNCTIONS.h" />
 		<Unit filename="STRUCTURES.h" />
+		<Unit filename="const.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="display_all_fonction.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="display_functions.c">
 			<Option compilerVar="CC" />
 		</Unit>

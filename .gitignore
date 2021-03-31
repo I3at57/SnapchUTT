@@ -38,10 +38,11 @@
 *.exe
 *.layout
 *.depend
+*.cbp
 SnapchUTT.exe
 SnapchUTT.layout
 SnapchUTT.depend
-
+SnapchUTT.cbp
 
 # Debug files
 *.dSYM/
