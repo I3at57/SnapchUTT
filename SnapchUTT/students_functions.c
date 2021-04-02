@@ -142,8 +142,7 @@ Student *find_student(char *name){
 
 void add_follow(Student *stud, Student *follow){
     if (stud->follower.maxElement == 0){
-        Student *ptr = (Student *)malloc(20 * sizeof(Student *));
-        stud->follower.listFollower = ptr;
+        stud->follower.listFollower = (Student *)malloc(20 * sizeof(Student *));
         stud->follower.maxElement = 10;
         stud->follower.listFollower[stud->follower.nbrFollower] = follow;
         stud->follower.nbrFollower++;
