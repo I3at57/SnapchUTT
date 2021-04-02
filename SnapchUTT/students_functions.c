@@ -32,6 +32,8 @@ Student *create_student(){
     Student stur={
         .age = ind1, .yearStudy = ind2, .interest = {
         tabOfInterest[ind3-1], tabOfInterest[ind4-1], tabOfInterest[ind5-1]},
+        .follower.maxElement = 0, .follower.nbrFollower = 0, .follower.known = 0,
+        .follower.suggestionCount = 0,
     };
     copy_array_char(&stur.name, &str1, sizeName, sizeName);
     copy_array_char(&stur.fieldStudy, &str2, sizeFieldStudi, sizeFieldStudi);
@@ -141,21 +143,120 @@ Student *find_student(char *name){
 /******************************************************************************/
 
 void add_follow(Student *stud, Student *follow){
-    if (stud->follower.maxElement == 0){
-        stud->follower.listFollower = (Student *)malloc(20 * sizeof(Student *));
-        stud->follower.maxElement = 10;
-        stud->follower.listFollower[stud->follower.nbrFollower] = follow;
-        stud->follower.nbrFollower++;
-    } else if (stud->follower.nbrFollower < stud->follower.maxElement){
-        stud->follower.listFollower[stud->follower.nbrFollower] = follow;
-        stud->follower.nbrFollower++;
+    if (follow != stud){
+            if (stud->follower.maxElement == 0){
+            stud->follower.listFollower = (Student *)malloc(20 * sizeof(Student *));
+            stud->follower.maxElement = 10;
+            stud->follower.listFollower[stud->follower.nbrFollower] = follow;
+            stud->follower.nbrFollower++;
+        } else if (stud->follower.nbrFollower < stud->follower.maxElement){
+            stud->follower.listFollower[stud->follower.nbrFollower] = follow;
+            stud->follower.nbrFollower++;
+        } else {
+            stud->follower.listFollower = (Student *)realloc(stud->follower.listFollower, 5 * sizeof(Student *));
+            stud->follower.maxElement += 5;
+            stud->follower.listFollower[stud->follower.nbrFollower] = follow;
+            stud->follower.nbrFollower++;
+        }
     } else {
-        stud->follower.listFollower = (Student *)realloc(stud->follower.listFollower, 5 * sizeof(Student *));
-        stud->follower.maxElement += 5;
-        stud->follower.listFollower[stud->follower.nbrFollower] = follow;
-        stud->follower.nbrFollower++;
+        //printf("you cannot follow yourself");
     }
 }
+
+void suggest_follows(Student *stud){
+    if (stud->follower.nbrFollower != 0){
+        int max = 0;
+        Student *bestFollow = NULL;
+        stud->follower.known = 1;
+        for (int i = 0; i < stud->follower.nbrFollower; i++){
+            stud->follower.listFollower[i]->follower.known = 1;
+        }
+        for (int i = 0; i < stud->follower.nbrFollower; i++){
+            for (int j = 0; j < stud->follower.listFollower[i]->follower.nbrFollower; j++){
+                if (stud->follower.listFollower[i]->follower.listFollower[j]->follower.known != 1){
+                    stud->follower.listFollower[i]->follower.listFollower[j]->follower.suggestionCount += 3;
+                    if (stud->follower.listFollower[i]->follower.listFollower[j]->follower.suggestionCount > max){
+                        max = stud->follower.listFollower[i]->follower.listFollower[j]->follower.suggestionCount;
+                        bestFollow = stud->follower.listFollower[i]->follower.listFollower[j];
+                    }
+                }
+                if (stud->follower.listFollower[i]->follower.listFollower[j] != stud){
+                    for (int k = 0; k < stud->follower.listFollower[i]->follower.listFollower[j]->follower.nbrFollower; k++){
+                        if (stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k] != 1){
+                            stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.suggestionCount += 2;
+                            if (stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.suggestionCount > max){
+                                max = stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.suggestionCount;
+                                bestFollow = stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k];
+                            }
+                        }
+                        if (stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k] != stud){
+                            for (int l = 0; l < stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.nbrFollower; l++){
+                                if (stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.listFollower[l] != 1){
+                                    stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.listFollower[l]->follower.suggestionCount += 1;
+                                    if (stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.listFollower[l]->follower.suggestionCount > max){
+                                        max = stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.listFollower[l]->follower.suggestionCount;
+                                        bestFollow = stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.listFollower[l];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        bestFollow->follower.known = 1;
+        Student *suggestionTab[5];
+        for (int t = 0; t < 5; t++){
+            suggestionTab[t] = NULL;
+        }
+        suggestionTab[0] = bestFollow;
+        int t = 1;
+        while (max > 0 && t < 5){
+            for (int i = 0; i < stud->follower.nbrFollower; i++){
+                // if (t < 5){}
+                for (int j = 0; j < stud->follower.listFollower[i]->follower.nbrFollower; j++){
+                    if (t < 5 && stud->follower.listFollower[i]->follower.listFollower[j]->follower.known != 1){
+                        if (stud->follower.listFollower[i]->follower.listFollower[j]->follower.suggestionCount == max){
+                            suggestionTab[t] = stud->follower.listFollower[i]->follower.listFollower[j];
+                            suggestionTab[t]->follower.known = 1;
+                            t++;
+                        }
+                    }
+                    if (t < 5 && stud->follower.listFollower[i]->follower.listFollower[j] != stud){
+                        for (int k = 0; k < stud->follower.listFollower[i]->follower.listFollower[j]->follower.nbrFollower; k++){
+                            if (t < 5 && stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k] != 1){
+                                if (stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.suggestionCount == max){
+                                    suggestionTab[t] = stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k];
+                                    suggestionTab[t] = stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k];
+                                    suggestionTab[t]->follower.known = 1;
+                                    t++;
+                                }
+                            }
+                            if (t < 5 && stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k] != stud){
+                                for (int l = 0; l < stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.nbrFollower; l++){
+                                    if (t < 5 && stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.listFollower[l] != 1){
+                                        if (stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.listFollower[l]->follower.suggestionCount == max){
+                                            suggestionTab[t] = stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.listFollower[l];
+                                            suggestionTab[t]->follower.known = 1;
+                                            t++;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            max--;
+        }
+
+
+
+
+    }
+}
+
+
 
 /******************************************************************************/
 
