@@ -151,8 +151,7 @@ void add_follow(Student *stud, Student *follow){
         stud->follower.listFollower[stud->follower.nbrFollower] = follow;
         stud->follower.nbrFollower++;
     } else {
-        Student *ptr = (Student *)realloc(stud->follower.listFollower, 5 * sizeof(Student *));
-        stud->follower.listFollower = ptr;
+        stud->follower.listFollower = (Student *)realloc(stud->follower.listFollower, 5 * sizeof(Student *));
         stud->follower.maxElement += 5;
         stud->follower.listFollower[stud->follower.nbrFollower] = follow;
         stud->follower.nbrFollower++;
@@ -220,6 +219,7 @@ void clear_links(Student *stud){
             ptr = ptr->nextAlphaStudent;
         }
     }
+    free(stud->follower.listFollower);
 }
 
 void quit(){
