@@ -98,7 +98,7 @@ void modify_menu_display(){
     printf("**                                                           **\n");
     printf("**                                                           **\n");
     printf("**   1. Age                                                  **\n");
-    printf("**   2. Year of Studies                                      **\n");
+    printf("**   2. Year of studies                                      **\n");
     printf("**   3. Field of studies                                     **\n");
     printf("**   4. City of residence                                     **\n");
     printf("**   5. Field of interest                                    **\n");
