@@ -163,7 +163,11 @@ void add_follow(Student *stud, Student *follow){
     }
 }
 
-void suggest_follows(Student *stud){
+Student *suggest_follows(Student *stud){
+    Student *suggestionTab[5];
+    for (int t = 0; t < 5; t++){
+        suggestionTab[t] = NULL;
+    }
     if (stud->follower.nbrFollower != 0){
         int max = 0;
         Student *bestFollow = NULL;
@@ -205,10 +209,6 @@ void suggest_follows(Student *stud){
             }
         }
         bestFollow->follower.known = 1;
-        Student *suggestionTab[5];
-        for (int t = 0; t < 5; t++){
-            suggestionTab[t] = NULL;
-        }
         suggestionTab[0] = bestFollow;
         int t = 1;
         while (max > 0 && t < 5){
@@ -275,8 +275,35 @@ void suggest_follows(Student *stud){
             }
         }
     } else {
-
+        int max = 0;
+        for (int i = 0; i < 27; i++){
+            Student *ptr = glossary[i].beginList;
+            while (ptr != NULL){
+                int compare = compare_fields_of_intersest(stud, ptr);
+                if (compare > max){
+                    max = compare;
+                    suggestionTab[0] = ptr;
+                }
+                ptr = ptr->nextAlphaStudent;
+            }
+        }
+        int t = 1;
+        while (max > 0 && t < 5){
+            for (int i = 0; i < 27; i++){
+                Student *ptr = glossary[i].beginList;
+                while (t < 5 && ptr != NULL){
+                    int compare = compare_fields_of_intersest(stud, ptr);
+                    if (compare == max){
+                        suggestionTab[t] = ptr;
+                        t++;
+                    }
+                    ptr = ptr->nextAlphaStudent;
+                }
+            }
+            max--;
+        }
     }
+    return tabOfInterest;
 }
 
 
