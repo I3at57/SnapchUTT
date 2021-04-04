@@ -357,19 +357,6 @@ int find_all_menu() {
 
 int testzone () {
 
-    Student *newOne;
-    printf("\n");
-    newOne = create_student();
-    printf("\n");
-    printf("\n");
-    student_display(newOne);
-    printf("\n");
-
-    free(newOne);
-    //printf("%d", newOne);
-    printf("\n");
-    student_display(newOne);
-    printf("\n");
 
     return(0);
 }
