@@ -35,10 +35,10 @@ Student *create_student(){
         .follower.maxElement = 0, .follower.nbrFollower = 0, .follower.known = 0,
         .follower.suggestionCount = 0,
     };
-    copy_array_char(&stur.name, &str1, sizeName, sizeName);
-    copy_array_char(&stur.fieldStudy, &str2, sizeFieldStudi, sizeFieldStudi);
+    copy_array_char(stur.name, str1, sizeName, sizeName);
+    copy_array_char(stur.fieldStudy, str2, sizeFieldStudi, sizeFieldStudi);
     copy_array_char(
-        &stur.cityResidence, &str3, sizeStudentCity, sizeStudentCity
+        stur.cityResidence, str3, sizeStudentCity, sizeStudentCity
     );
 
     /* Copy of the new student in the returned adress */
@@ -145,7 +145,7 @@ Student *find_student(char *name){
 void add_follow(Student *stud, Student *follow){
     if (follow != stud){
             if (stud->follower.maxElement == 0){
-            stud->follower.listFollower = (Student *)malloc(20 * sizeof(Student *));
+            stud->follower.listFollower = (Student **)malloc(20 * sizeof(Student *));
             stud->follower.maxElement = 10;
             stud->follower.listFollower[stud->follower.nbrFollower] = follow;
             stud->follower.nbrFollower++;
@@ -153,7 +153,7 @@ void add_follow(Student *stud, Student *follow){
             stud->follower.listFollower[stud->follower.nbrFollower] = follow;
             stud->follower.nbrFollower++;
         } else {
-            stud->follower.listFollower = (Student *)realloc(stud->follower.listFollower, 5 * sizeof(Student *));
+            stud->follower.listFollower = (Student **)realloc(stud->follower.listFollower, 5 * sizeof(Student *));
             stud->follower.maxElement += 5;
             stud->follower.listFollower[stud->follower.nbrFollower] = follow;
             stud->follower.nbrFollower++;
@@ -163,9 +163,8 @@ void add_follow(Student *stud, Student *follow){
     }
 }
 
-Student *suggest_follows(Student *stud){
-    Student *suggestionTab[5];
-    for (int t = 0; t < 5; t++){
+void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
+    for (int t = 0; t < nbrSuggestion; t++){
         suggestionTab[t] = NULL;
     }
     if (stud->follower.nbrFollower != 0){
@@ -211,7 +210,7 @@ Student *suggest_follows(Student *stud){
         bestFollow->follower.known = 1;
         suggestionTab[0] = bestFollow;
         int t = 1;
-        while (max > 0 && t < 5){
+        while (max > 0 && t < nbrSuggestion){
             for (int i = 0; i < stud->follower.nbrFollower; i++){
                 // if (t < 5){}
                 for (int j = 0; j < stud->follower.listFollower[i]->follower.nbrFollower; j++){
@@ -279,7 +278,7 @@ Student *suggest_follows(Student *stud){
         for (int i = 0; i < 27; i++){
             Student *ptr = glossary[i].beginList;
             while (ptr != NULL){
-                int compare = compare_fields_of_intersest(stud, ptr);
+                int compare = compare_fields_of_interest(stud, ptr);
                 if (compare > max){
                     max = compare;
                     suggestionTab[0] = ptr;
@@ -288,11 +287,11 @@ Student *suggest_follows(Student *stud){
             }
         }
         int t = 1;
-        while (max > 0 && t < 5){
+        while (max > 0 && t < nbrSuggestion){
             for (int i = 0; i < 27; i++){
                 Student *ptr = glossary[i].beginList;
                 while (t < 5 && ptr != NULL){
-                    int compare = compare_fields_of_intersest(stud, ptr);
+                    int compare = compare_fields_of_interest(stud, ptr);
                     if (compare == max){
                         suggestionTab[t] = ptr;
                         t++;
@@ -303,13 +302,40 @@ Student *suggest_follows(Student *stud){
             max--;
         }
     }
-    return tabOfInterest;
 }
 
 
 
 /******************************************************************************/
 
+void init_glossary(){
+    FILE *fileptr = fopen("variables.txt", "r");
+    if (fileptr){
+        int nbrStudent, createdStudent;
+        createdStudent = 0;
+        fscanf(fileptr, "%d", &nbrStudent);
+        while (!feof(fileptr) && createdStudent < nbrStudent){
+            Student *stud = (Student*)malloc(sizeof(Student));
+            fgets(stud->name, 50, fileptr);
+            fscanf(fileptr, "%d", &stud->age);
+            fscanf(fileptr, "%d", &stud->yearStudy);
+            fgets(stud->fieldStudy, 50, fileptr);
+            fgets(stud->cityResidence, 50, fileptr);
+            fscanf(fileptr, "%d", &stud->interest[0].nbr);
+            fscanf(fileptr, "%d", &stud->interest[1].nbr);
+            fscanf(fileptr, "%d", &stud->interest[3].nbr);
+            stud->follower.known = 0;
+            stud->follower.suggestionCount = 0;
+            stud->follower.maxElement = 0;
+            stud->follower.nbrFollower = 0;
+            stud->follower.listFollower = NULL;
+            add_student(stud);
+
+        }
+    }
+    fclose(fileptr);
+}
+/*
 int init_glossary(Student *tab[],int nbrStudent){
     // Those parameters could be removed by using global variables
     for (int i = 0; i < nbrStudent; i++){
@@ -317,7 +343,7 @@ int init_glossary(Student *tab[],int nbrStudent){
     }
     return 0;
 }
-
+*/
 /******************************************************************************/
 
 

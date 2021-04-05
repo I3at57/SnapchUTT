@@ -54,13 +54,14 @@ int copy_array_char(char *targetArray, char *contentArray, int lth1, int lth2){
 
 /******************************************************************************/
 
-int compare_fields_of_intersest(Student * stud1, Student *stud2){
+int compare_fields_of_interest(Student * stud1, Student *stud2){
     int sameInterest = 0;
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 3; j++){
-            if (stud1->interest[i] == stud2->interest[j]){
+            if (stud1->interest[i].nbr == stud2->interest[j].nbr){
                 sameInterest++;
             }
         }
     }
+    return sameInterest;
 }

@@ -29,7 +29,7 @@ typedef struct Student {
     int age;    //age of this student
     int yearStudy;    //year of studies begin
     char fieldStudy [50];   //name of the fild studied
-    char cityResidence [100];   //city of this student
+    char cityResidence [50];   //city of this student
     struct Student *nextAlphaStudent; //Next student per alphabetic.
     Follow follower;    //pointer to the follow list.
     FieldOfInterest interest[3];    //hobbys
