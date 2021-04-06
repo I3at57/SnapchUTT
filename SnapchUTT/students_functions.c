@@ -145,7 +145,7 @@ Student *find_student(char *name){
 void add_follow(Student *stud, Student *follow){
     if (follow != stud){
             if (stud->follower.maxElement == 0){
-            stud->follower.listFollower = (Student **)malloc(20 * sizeof(Student *));
+            stud->follower.listFollower = (Student **)malloc(10 * sizeof(Student *));
             stud->follower.maxElement = 10;
             stud->follower.listFollower[stud->follower.nbrFollower] = follow;
             stud->follower.nbrFollower++;
@@ -311,39 +311,47 @@ void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
 void init_glossary(){
     FILE *fileptr = fopen("variables.txt", "r");
     if (fileptr){
+        char singleLine[50];
         int nbrStudent, createdStudent;
         createdStudent = 0;
         fscanf(fileptr, "%d", &nbrStudent);
+        fgets(singleLine, 50, fileptr);
+        fgets(singleLine, 50, fileptr);
         while (!feof(fileptr) && createdStudent < nbrStudent){
             Student *stud = (Student*)malloc(sizeof(Student));
             fgets(stud->name, 50, fileptr);
-            fscanf(fileptr, "%d", &stud->age);
-            fscanf(fileptr, "%d", &stud->yearStudy);
+            stud->name[strlen(stud->name)-1] = '\0';
+            fscanf(fileptr, "%d", &(stud->age));
+            fscanf(fileptr, "%d", &(stud->yearStudy));
+            fgets(singleLine, 50, fileptr);
             fgets(stud->fieldStudy, 50, fileptr);
+            stud->fieldStudy[strlen(stud->fieldStudy)-1] = '\0';
             fgets(stud->cityResidence, 50, fileptr);
-            fscanf(fileptr, "%d", &stud->interest[0].nbr);
-            fscanf(fileptr, "%d", &stud->interest[1].nbr);
-            fscanf(fileptr, "%d", &stud->interest[3].nbr);
+            stud->cityResidence[strlen(stud->cityResidence)-1] = '\0';
+            int elt;
+            fscanf(fileptr, "%d", &elt);
+            stud->interest[0] = tabOfInterest[elt-1];
+            printf("%d\n", tabOfInterest[elt-1].nbr);
+            fscanf(fileptr, "%d", &elt);
+            stud->interest[1] = tabOfInterest[elt-1];
+            printf("%d\n", tabOfInterest[elt-1].nbr);
+            fscanf(fileptr, "%d", &elt);
+            stud->interest[2] = tabOfInterest[elt-1];
+            printf("%d\n", tabOfInterest[elt-1].nbr);
             stud->follower.known = 0;
             stud->follower.suggestionCount = 0;
             stud->follower.maxElement = 0;
             stud->follower.nbrFollower = 0;
             stud->follower.listFollower = NULL;
             add_student(stud);
-
+            createdStudent++;
+            fgets(singleLine, 50, fileptr);
+            fgets(singleLine, 50, fileptr);
         }
     }
     fclose(fileptr);
 }
-/*
-int init_glossary(Student *tab[],int nbrStudent){
-    // Those parameters could be removed by using global variables
-    for (int i = 0; i < nbrStudent; i++){
-        add_student(tab[i]);
-    }
-    return 0;
-}
-*/
+
 /******************************************************************************/
 
 
