@@ -34,7 +34,7 @@ const FieldOfInterest interst12 = {12, "Politic"};
 const FieldOfInterest interst13 = {13, "Economie"};
 const FieldOfInterest interst14 = {14, "Robotic"};
 
-const FieldOfInterest tabOfInterest [14] = {
+const FieldOfInterest tabOfInterest [13] = {
     interst1, interst2, interst3, interst4, interst5, interst6, interst7,
     interst8, interst9, interst10, interst11, interst12, interst13, interst14
 };
