@@ -59,7 +59,7 @@ int main_menu() {
 /******************************************************************************/
 
 int add_menu() {
-    printf("Work in progress ...\n");
+    add_student(create_student());
     return(0);
 }
 
@@ -104,7 +104,7 @@ int find_one_menu() {
                     modify_menu(eleve);
                     break;
                 case 2:
-                    printf("Work in progress ...\n");
+                    delete_student(eleve);
                     /*Delete the current student*/
                     break;
                 case 3:
@@ -122,20 +122,12 @@ int find_one_menu() {
                     }
                     break;
                 case 4:
-                    printf("Work in progress ...\n");
                     /**/
                     break;
                 case 5:
                     /*Display all student that the current student
                     'eleve' follow*/
-                    if (eleve->nextAlphaStudent == NULL) {
-                        printf(
-                            "\n%s is currently following no one !",
-                            eleve->name
-                        );
-                    } else {
-                        display_follow_list(eleve);
-                    }
+                    display_follow_list(eleve);
                     break;
                 case 6:
                     /* quit() is the only way to quit the application */
