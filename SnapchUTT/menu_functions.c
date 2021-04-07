@@ -124,7 +124,16 @@ int find_one_menu() {
                     }
                     break;
                 case 4:
-                    /**/
+                {
+                    Student **suggestTab[5];
+                    suggest_follows(eleve, suggestTab, 5);
+                    for (int i = 0; i < 5; i++){
+                        if (suggestTab[i] != NULL){
+                            student_display(suggestTab[i]);
+                            printf("\n\n");
+                        }
+                    }
+                }
                     break;
                 case 5:
                     /*Display all student that the current student
