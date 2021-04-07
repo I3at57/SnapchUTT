@@ -274,6 +274,7 @@ void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
             }
         }
     } else {
+        // checker les follows déjà existant et ne pas proposer 2 fois la même personne
         int max = 0;
         for (int i = 0; i < 27; i++){
             Student *ptr = glossary[i].beginList;
