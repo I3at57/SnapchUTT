@@ -331,13 +331,10 @@ void init_glossary(){
             int elt;
             fscanf(fileptr, "%d", &elt);
             stud->interest[0] = tabOfInterest[elt-1];
-            printf("%d\n", tabOfInterest[elt-1].nbr);
             fscanf(fileptr, "%d", &elt);
             stud->interest[1] = tabOfInterest[elt-1];
-            printf("%d\n", tabOfInterest[elt-1].nbr);
             fscanf(fileptr, "%d", &elt);
             stud->interest[2] = tabOfInterest[elt-1];
-            printf("%d\n", tabOfInterest[elt-1].nbr);
             stud->follower.known = 0;
             stud->follower.suggestionCount = 0;
             stud->follower.maxElement = 0;
