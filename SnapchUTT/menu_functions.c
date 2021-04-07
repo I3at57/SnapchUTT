@@ -104,7 +104,9 @@ int find_one_menu() {
                     modify_menu(eleve);
                     break;
                 case 2:
+                    printf("\n%s got removed\n", eleve->name);
                     delete_student(eleve);
+                    return 0;
                     /*Delete the current student*/
                     break;
                 case 3:
