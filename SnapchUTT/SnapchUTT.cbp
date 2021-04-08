@@ -43,16 +43,10 @@
 		<Unit filename="display_functions.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="list_of_students.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="menu_functions.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="students_functions.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="utilitary_functions.c">
