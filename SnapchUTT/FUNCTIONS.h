@@ -50,7 +50,7 @@ extern Student *create_student();
 
 extern int add_student(Student *stud);
 
-extern int init_glossary(Student *tab[],int nbrStudent);
+extern void init_glossary();
 
 extern Student *find_student(char *name);
 

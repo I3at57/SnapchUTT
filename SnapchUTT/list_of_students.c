@@ -22,7 +22,7 @@ add him in the tab
 //const FieldOfInterest interst12 = {12, "Politic"};
 //const FieldOfInterest interst13 = {13, "Economie"};
 //const FieldOfInterest interst14 = {14, "Robotic"};
-
+/*
 LineGlossary glossary[26] = {
     {'A', NULL}, {'B', NULL}, {'C', NULL}, {'D', NULL}, {'E', NULL},
     {'F', NULL}, {'G', NULL}, {'H', NULL}, {'I', NULL}, {'J', NULL},
@@ -31,8 +31,8 @@ LineGlossary glossary[26] = {
     {'U', NULL}, {'V', NULL}, {'W', NULL}, {'X', NULL}, {'Y', NULL},
     {'Z', NULL},
 };
-
-
+*/
+/*
 Student stud1 = {
     "Baptiste TOUSSAINT", 19, 2020, "Industrial Engineering", "Lille",
     NULL, {0, 0, NULL}, {interst12, interst11, interst13}
@@ -92,3 +92,4 @@ int nbrStudent = 7;
 const Student *stuTab[7] = {
     &stud1, &stud2, &stud3, &stud4, &stud5, &stud6, &stud7,
 };
+*/

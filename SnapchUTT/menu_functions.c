@@ -59,7 +59,7 @@ int main_menu() {
 /******************************************************************************/
 
 int add_menu() {
-    printf("Work in progress ...\n");
+    add_student(create_student());
     return(0);
 }
 
@@ -104,7 +104,9 @@ int find_one_menu() {
                     modify_menu(eleve);
                     break;
                 case 2:
-                    printf("Work in progress ...\n");
+                    printf("\n%s got removed\n", eleve->name);
+                    delete_student(eleve);
+                    return 0;
                     /*Delete the current student*/
                     break;
                 case 3:
@@ -122,20 +124,21 @@ int find_one_menu() {
                     }
                     break;
                 case 4:
-                    printf("Work in progress ...\n");
-                    /**/
+                {
+                    Student *suggestTab[5];
+                    suggest_follows(eleve, suggestTab, 5);
+                    for (int i = 0; i < 5; i++){
+                        if (suggestTab[i] != NULL){
+                            student_display(suggestTab[i]);
+                            printf("\n\n");
+                        }
+                    }
+                }
                     break;
                 case 5:
                     /*Display all student that the current student
                     'eleve' follow*/
-                    if (eleve->nextAlphaStudent == NULL) {
-                        printf(
-                            "\n%s is currently following no one !",
-                            eleve->name
-                        );
-                    } else {
-                        display_follow_list(eleve);
-                    }
+                    display_follow_list(eleve);
                     break;
                 case 6:
                     /* quit() is the only way to quit the application */
@@ -357,19 +360,6 @@ int find_all_menu() {
 
 int testzone () {
 
-    Student *newOne;
-    printf("\n");
-    newOne = create_student();
-    printf("\n");
-    printf("\n");
-    student_display(newOne);
-    printf("\n");
-
-    free(newOne);
-    //printf("%d", newOne);
-    printf("\n");
-    student_display(newOne);
-    printf("\n");
 
     return(0);
 }
