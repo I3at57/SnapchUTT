@@ -274,14 +274,18 @@ void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
             }
         }
     } else {
-        // checker les follows déjà existant et ne pas proposer 2 fois la même personne
         int max = 0;
+        stud->follower.known = 1;
         for (int i = 0; i < 27; i++){
             Student *ptr = glossary[i].beginList;
             while (ptr != NULL){
                 int compare = compare_fields_of_interest(stud, ptr);
-                if (compare > max){
+                if (ptr->follower.known != 1 && compare > max){
                     max = compare;
+                    ptr->follower.known = 1;
+                    if (suggestionTab[i] != NULL){
+                        suggestionTab[i]->follower.known = 0;
+                    }
                     suggestionTab[0] = ptr;
                 }
                 ptr = ptr->nextAlphaStudent;
@@ -293,7 +297,8 @@ void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
                 Student *ptr = glossary[i].beginList;
                 while (t < 5 && ptr != NULL){
                     int compare = compare_fields_of_interest(stud, ptr);
-                    if (compare == max){
+                    if (ptr->follower.known != 1 && compare == max){
+                        ptr->follower.known = 1;
                         suggestionTab[t] = ptr;
                         t++;
                     }
@@ -301,6 +306,12 @@ void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
                 }
             }
             max--;
+        }
+        stud->follower.known = 0;
+        for (int i = 0; i < nbrSuggestion; i++){
+            if (suggestionTab[i] != NULL){
+                suggestionTab[i]->follower.known = 0;
+            }
         }
     }
 }
