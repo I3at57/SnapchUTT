@@ -125,7 +125,7 @@ int find_one_menu() {
                     break;
                 case 4:
                 {
-                    Student **suggestTab[5];
+                    Student *suggestTab[5];
                     suggest_follows(eleve, suggestTab, 5);
                     for (int i = 0; i < 5; i++){
                         if (suggestTab[i] != NULL){
