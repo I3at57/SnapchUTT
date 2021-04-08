@@ -1,4 +1,4 @@
-3
+7
 
 Baptiste TOUSSAINT
 19
@@ -21,8 +21,44 @@ Troyes
 Alexis POCHARD
 19
 2020
-OK
+Industrial Engineering
 Troyes
 7
 4
 5
+
+Florimon LALANDE
+22
+2016
+Industrial Engineering
+Lille
+14
+5
+7
+
+Clemence COTTIGNY
+18
+2020
+Medicine
+Loos
+7
+9
+6
+
+Tancrede CATTEAU
+17
+2020
+Cinema
+Tournais
+2
+3
+12
+
+Louis FERRAND
+17
+2020
+Ingeniering
+Villeneuve d'Ascq
+10
+4
+8
