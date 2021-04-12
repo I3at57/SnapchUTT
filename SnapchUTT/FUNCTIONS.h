@@ -74,4 +74,8 @@ extern int display_all_field(char *dfield);
 
 extern int display_all_inter(int dinter);
 
+/* To read and wright in the file for student*/
+
+extern int researching_student(Student* target);
+
 #endif // FUNCTIONS_H_INCLUDED

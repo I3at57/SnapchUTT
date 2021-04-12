@@ -1,5 +1,6 @@
 7
 
+*
 Baptiste TOUSSAINT
 19
 2020
@@ -8,7 +9,8 @@ Lille
 12
 11
 13
-
+*
+*
 Lucas MARTINEZ
 19
 2020
@@ -17,7 +19,8 @@ Troyes
 11
 13
 10
-
+*
+*
 Alexis POCHARD
 19
 2020
@@ -26,7 +29,8 @@ Troyes
 7
 4
 5
-
+*
+*
 Florimon LALANDE
 22
 2016
@@ -35,7 +39,8 @@ Lille
 14
 5
 7
-
+*
+*
 Clemence COTTIGNY
 18
 2020
@@ -44,7 +49,8 @@ Loos
 7
 9
 6
-
+*
+*
 Tancrede CATTEAU
 17
 2020
@@ -53,7 +59,8 @@ Tournais
 2
 3
 12
-
+*
+*
 Louis FERRAND
 17
 2020
@@ -62,3 +69,4 @@ Villeneuve d'Ascq
 10
 4
 8
+*
