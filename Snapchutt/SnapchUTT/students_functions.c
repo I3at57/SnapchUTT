@@ -32,8 +32,8 @@ Student *create_student(){
     Student stur={
         .age = ind1, .yearStudy = ind2, .interest = {
         tabOfInterest[ind3-1], tabOfInterest[ind4-1], tabOfInterest[ind5-1]},
-        .follower.maxElement = 0, .follower.nbrFollower = 0, .follower.known = 0,
-        .follower.suggestionCount = 0,
+        .follower.maxElement = 0, .follower.nbrFollower = 0,
+        .follower.known = 0, .follower.suggestionCount = 0,
     };
     copy_array_char(stur.name, str1, sizeName, sizeName);
     copy_array_char(stur.fieldStudy, str2, sizeFieldStudi, sizeFieldStudi);
@@ -145,7 +145,8 @@ Student *find_student(char *name){
 void add_follow(Student *stud, Student *follow){
     if (follow != stud){
             if (stud->follower.maxElement == 0){
-            stud->follower.listFollower = (Student **)malloc(10 * sizeof(Student *));
+            stud->follower.listFollower = (
+                Student **)malloc(10 * sizeof(Student *));
             stud->follower.maxElement = 10;
             stud->follower.listFollower[stud->follower.nbrFollower] = follow;
             stud->follower.nbrFollower++;
@@ -153,7 +154,9 @@ void add_follow(Student *stud, Student *follow){
             stud->follower.listFollower[stud->follower.nbrFollower] = follow;
             stud->follower.nbrFollower++;
         } else {
-            stud->follower.listFollower = (Student **)realloc(stud->follower.listFollower, 5 * sizeof(Student *));
+            stud->follower.listFollower = (
+                Student **)realloc(
+                    stud->follower.listFollower, 5 * sizeof(Student *));
             stud->follower.maxElement += 5;
             stud->follower.listFollower[stud->follower.nbrFollower] = follow;
             stud->follower.nbrFollower++;
@@ -316,12 +319,10 @@ void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
     }
 }
 
-
-
 /******************************************************************************/
 
 void init_glossary(){
-    FILE *fileptr = fopen("variables.txt", "r");
+    FILE *fileptr = fopen("student-list.txt", "r");
     if (fileptr){
         char singleLine[50];
         int nbrStudent, createdStudent;
@@ -363,7 +364,6 @@ void init_glossary(){
 
 /******************************************************************************/
 
-
 int delete_student(Student *stud){
     // Finding the right chapter in the glossary
     char readChar = stud->name[0];
@@ -382,7 +382,10 @@ int delete_student(Student *stud){
                 free(stud);
                 return 0;
             } else {
-                while (ptr->nextAlphaStudent != stud && ptr->nextAlphaStudent != NULL && compare_strings(stud->name, ptr->nextAlphaStudent->name) >= 0){
+                while (ptr->nextAlphaStudent != stud
+                    && ptr->nextAlphaStudent != NULL && compare_strings(
+                        stud->name, ptr->nextAlphaStudent->name) >= 0)
+                {
                     ptr = ptr->nextAlphaStudent;
                 }
                 if (ptr->nextAlphaStudent == stud){
@@ -390,7 +393,10 @@ int delete_student(Student *stud){
                     clear_links(stud);
                     free(stud);
                     return 0;
-                } else if (ptr->nextAlphaStudent == NULL || compare_strings(stud->name, ptr->nextAlphaStudent->name) < 0){
+                } else if (ptr->nextAlphaStudent == NULL
+                      || compare_strings(
+                          stud->name, ptr->nextAlphaStudent->name) < 0)
+                {
                     return 1;
                 }
             }
