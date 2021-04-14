@@ -369,7 +369,6 @@ void init_glossary(){
             stud->nextAlphaStudent = NULL;
 
             add_student(stud);
-            free(stud);
         }
 
 //            fgets(stud->name, 50, fileptr);
