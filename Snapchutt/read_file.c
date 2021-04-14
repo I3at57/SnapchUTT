@@ -72,7 +72,8 @@ int errase_student(int position) {
     fgetc(openFile); fgetc(openFile);
     while (fgetc(openFile) != '*');
     fgetc(openFile);
-    while ((lastChar = fgetc(openFile)) != E0F) {
+    while (feof(openFile)) {
+        lastChar = fgetc(openFile);
         fprintf(transFile, "%d", lastChar);
     }
 
@@ -81,7 +82,8 @@ int errase_student(int position) {
     FILE* openFile = fopen("student-list.txt", "w");
     FILE* transFile = fopen("tran.txt", "r");
 
-    while ((lastChar = fgetc(transFile)) != E0F) {
-        fprintf(openFile, "%d", lastChar);
+    while (feof(openFile)) {
+        lastChar = fgetc(openFile);
+        fprintf(transFile, "%d", lastChar);
     }
 }
