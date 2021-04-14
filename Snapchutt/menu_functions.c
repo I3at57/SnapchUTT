@@ -361,5 +361,6 @@ int find_all_menu() {
 int testzone () {
     int place;
     place = researching_student(find_student("Clemence COTTIGNY"));
+    printf("%d\n", place);
     return(0);
 }

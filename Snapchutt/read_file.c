@@ -53,3 +53,35 @@ int researching_student(Student* target) {
     }
     fclose(ptrFile);
 }
+
+int errase_student(int position) {
+    FILE* openFile = fopen("student-list.txt", "r");
+    FILE* transFile = fopen("tran.txt", "w");
+
+    int nbrStar = 0, nbrStudent = 0;
+    char lastChar;
+
+    fscanf(openFile, "%d", &nbrStudent);
+    do {
+        lastChar = fgetc(openFile);
+        fprintf(transFile, "%d", lastChar);
+        if (lastChar == '\*') {
+            nbrStar++;
+        }
+    } while (nbrStar < (position-1)*2);
+    fgetc(openFile); fgetc(openFile);
+    while (fgetc(openFile) != '*');
+    fgetc(openFile);
+    while ((lastChar = fgetc(openFile)) != E0F) {
+        fprintf(transFile, "%d", lastChar);
+    }
+
+    fclose(openFile); fclose(transFile);
+
+    FILE* openFile = fopen("student-list.txt", "w");
+    FILE* transFile = fopen("tran.txt", "r");
+
+    while ((lastChar = fgetc(transFile)) != E0F) {
+        fprintf(openFile, "%d", lastChar);
+    }
+}

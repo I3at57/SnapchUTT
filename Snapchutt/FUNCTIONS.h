@@ -78,4 +78,6 @@ extern int display_all_inter(int dinter);
 
 extern int researching_student(Student* target);
 
+extern int errase_student(int position);
+
 #endif // FUNCTIONS_H_INCLUDED
