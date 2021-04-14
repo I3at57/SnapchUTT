@@ -359,7 +359,7 @@ int find_all_menu() {
 /******************************************************************************/
 
 int testzone () {
-
-    researching_student(find_student("Clemence COTTIGNY"));
+    int place;
+    place = researching_student(find_student("Clemence COTTIGNY"));
     return(0);
 }
