@@ -362,5 +362,6 @@ int testzone () {
     int place;
     place = researching_student(find_student("Clemence COTTIGNY"));
     printf("%d\n", place);
+    errase_student(place);
     return(0);
 }
