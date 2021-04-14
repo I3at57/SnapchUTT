@@ -79,8 +79,8 @@ int errase_student(int position) {
 
     fclose(openFile); fclose(transFile);
 
-    FILE* openFile = fopen("student-list.txt", "w");
-    FILE* transFile = fopen("tran.txt", "r");
+    openFile = fopen("student-list.txt", "w");
+    transFile = fopen("tran.txt", "r");
 
     while (feof(openFile)) {
         lastChar = fgetc(openFile);
