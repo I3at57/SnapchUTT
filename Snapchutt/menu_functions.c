@@ -359,9 +359,9 @@ int find_all_menu() {
 /******************************************************************************/
 
 int testzone () {
-    int place;
-    place = researching_student(find_student("Clemence COTTIGNY"));
-    printf("%d\n", place);
-    errase_student(place);
+    printf("%d\n", researching_student(find_student("Clemence COTTIGNY")));
+    errase_student(researching_student(find_student("Clemence COTTIGNY")));
+    printf("%d\n", researching_student(find_student("Baptiste TOUSSAINT")));
+    errase_student(researching_student(find_student("Baptiste TOUSSAINT")));
     return(0);
 }

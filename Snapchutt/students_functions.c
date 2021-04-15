@@ -43,6 +43,7 @@ Student *create_student(){
 
     /* Copy of the new student in the returned adress */
     *stud = stur;
+    ecrire_student(stud);
     return(stud);
 }
 
@@ -410,6 +411,9 @@ void init_glossary(){
 int delete_student(Student *stud){
     // Finding the right chapter in the glossary
     char readChar = stud->name[0];
+
+    errase_student(researching_student(stud->name));
+
     int i = 0;
     while (readChar != glossary[i].letter && i < 27){
         i++;
