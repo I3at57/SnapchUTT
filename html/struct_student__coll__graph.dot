@@ -1,0 +1,13 @@
+digraph "Student"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="Student",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" interest" ,fontname="Helvetica"];
+  Node2 [label="FieldOfInterest",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_field_of_interest.html",tooltip=" "];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" follower" ,fontname="Helvetica"];
+  Node3 [label="Follow",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_follow.html",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" listFollower" ,fontname="Helvetica"];
+  Node1 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" nextAlphaStudent" ,fontname="Helvetica"];
+}
