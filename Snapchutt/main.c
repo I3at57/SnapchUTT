@@ -7,7 +7,7 @@ int main()
     //Un commentaire
     /*Put every student of STUDENTS_LIST in glossary*/
     init_glossary();
-    init_followers();
+    //init_followers();
     main_menu();//The main menu of the application
     quit();
     return(0);

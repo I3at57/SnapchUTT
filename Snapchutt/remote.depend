@@ -6,14 +6,14 @@
 1618432863 c:\users\batto\documents\github\snapchutt\snapchutt\const.h
 	"STRUCTURES.h"
 
-1618432863 c:\users\batto\documents\github\snapchutt\snapchutt\structures.h
+1618924635 c:\users\batto\documents\github\snapchutt\snapchutt\structures.h
 
 1618432863 source:c:\users\batto\documents\github\snapchutt\snapchutt\display_all_fonction.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618518517 c:\users\batto\documents\github\snapchutt\snapchutt\functions.h
+1618943564 c:\users\batto\documents\github\snapchutt\snapchutt\functions.h
 	"CONST.h"
 	"STRUCTURES.h"
 
@@ -22,7 +22,7 @@
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618861614 source:c:\users\batto\documents\github\snapchutt\snapchutt\main.c
+1618943988 source:c:\users\batto\documents\github\snapchutt\snapchutt\main.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
@@ -32,17 +32,17 @@
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618923611 source:c:\users\batto\documents\github\snapchutt\snapchutt\read_file.c
+1618946024 source:c:\users\batto\documents\github\snapchutt\snapchutt\read_file.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618924273 source:c:\users\batto\documents\github\snapchutt\snapchutt\students_functions.c
+1618943564 source:c:\users\batto\documents\github\snapchutt\snapchutt\students_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618923847 source:c:\users\batto\documents\github\snapchutt\snapchutt\utilitary_functions.c
+1618943564 source:c:\users\batto\documents\github\snapchutt\snapchutt\utilitary_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"

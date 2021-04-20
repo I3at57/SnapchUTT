@@ -1,35 +1,5 @@
-7
-
-*
-Baptiste TOUSSAINT
-19
-2020
-Industrial Engineering
-Lille
-12
-11
-13
-*
-*
-Lucas MARTINEZ
-19
-2020
-Mechanical Engineering
-Troyes
-11
-13
 10
-*
-*
-Alexis POCHARD
-19
-2020
-Industrial Engineering
-Troyes
-7
-4
-5
-*
+
 *
 Florimon LALANDE
 22
@@ -88,5 +58,45 @@ Financial Ingeniering
 Troyes
 3
 1
+5
+*
+*
+Martin JEAN
+19
+2016
+Arts
+Rouen
+3
+2
+9
+*
+*
+Bob DYLAN
+18
+2019
+Cellular Biology
+Caen
+5
+10
+8
+*
+*
+Alix SCHARER
+17
+2021
+Medecine
+Lille
+4
+1
+7
+*
+*
+Baptiste TOUSSAINT
+19
+2020
+Industrial ingeniering
+Troyes
+13
+12
 5
 *
