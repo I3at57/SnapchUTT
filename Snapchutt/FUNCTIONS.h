@@ -96,4 +96,6 @@ extern void errase_student(int position);
 
 extern int ecrire_student(Student* stud);
 
+extern int change_student(int positon, Student* stud);
+
 #endif // FUNCTIONS_H_INCLUDED

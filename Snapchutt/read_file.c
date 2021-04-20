@@ -139,6 +139,8 @@ int researching_student(Student* target)
     fclose(ptrFile);
 }
 
+/*******************************************************************************/
+
 
 void errase_student(int position)
 {/*take the postion of a student in the file and errase it*/
@@ -219,5 +221,11 @@ int ecrire_student(Student* stud)
     fprintf(openFile, "%d\n", stud->interest[2].nbr);
     fprintf(openFile, "*");
     fclose(openFile);
+}
 
+
+int change_student(int positon, Student* stud)
+{/*Change the information of a student a cording to his news*/
+
+    
 }

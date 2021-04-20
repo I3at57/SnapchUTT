@@ -1,7 +1,7 @@
-10
+11
 
 *
-Florimon LALANDE
+Florimond LALANDE
 22
 2016
 Industrial Engineering
@@ -29,16 +29,6 @@ Tournais
 2
 3
 12
-*
-*
-Louis FERRAND
-17
-2020
-Ingeniering
-Villeneuve d'Ascq
-10
-4
-8
 *
 *
 Jean-Claude VANDAME
@@ -99,4 +89,24 @@ Troyes
 13
 12
 5
+*
+*
+Alexis POCHARD
+19
+2021
+Math
+Troyes
+10
+2
+5
+*
+*
+Louis FERRAND
+18
+2020
+Ingeniering
+Villeneuve d'Ascq
+10
+4
+8
 *
