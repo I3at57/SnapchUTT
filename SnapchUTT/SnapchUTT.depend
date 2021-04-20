@@ -1,0 +1,108 @@
+# depslib dependency file v1.0
+1616700662 source:c:\users\batto\documents\github\snapchutt\snapchutt\main.c
+	"main.h"
+
+1616700115 c:\users\batto\documents\github\snapchutt\snapchutt\display_fonc.h
+	<stdio.h>
+
+1617902667 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\main.c
+	<stdio.h>
+	<stdlib.h>
+	"FUNCTIONS.h"
+
+1616325508 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\main.h
+	<stdio.h>
+	<stdlib.h>
+	"STRUCTURES.h"
+	"CONST.h"
+	"DISPLAY_FONC.h"
+	"STUDENTS_LIST.h"
+	"STUDENTS_FONC.h"
+
+1617902667 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\structures.h
+
+1617214451 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\const.h
+	"STRUCTURES.h"
+
+1616705058 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\display_fonc.h
+	<stdio.h>
+
+1616862868 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\students_list.h
+	"STRUCTURES.h"
+	"CONST.h"
+
+1616863079 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\students_fonc.h
+	<stdlib.h>
+	<stdio.h>
+	"CONST.h"
+	"STUDENTS_LIST.h"
+	"DISPLAY_FONC.h"
+
+1616316976 c:\users\batto\documents\github\snapchutt\snapchutt\main.h
+	<stdio.h>
+	<stdlib.h>
+	"STRUCTURES.h"
+	"CONST.h"
+	"DISPLAY_FONC.h"
+	"STUDENTS_LIST.h"
+	"STUDENTS_FONC.h"
+
+1616316976 c:\users\batto\documents\github\snapchutt\snapchutt\structures.h
+
+1616700115 c:\users\batto\documents\github\snapchutt\snapchutt\const.h
+	"STRUCTURES.h"
+
+1616700115 c:\users\batto\documents\github\snapchutt\snapchutt\students_list.h
+	"STRUCTURES.h"
+	"CONST.h"
+
+1616700791 c:\users\batto\documents\github\snapchutt\snapchutt\students_fonc.h
+	<stdlib.h>
+	<stdio.h>
+	"CONST.h"
+	"STUDENTS_LIST.h"
+	"DISPLAY_FONC.h"
+
+1616691858 c:\users\batto\documents\github\snapchutt\snapchutt\utilitary_fonc.h
+	<stdbool.h>
+	<stddef.h>
+	<stdio.h>
+	<stdlib.h>
+
+1617903344 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\display_functions.c
+	<stdio.h>
+	<stdlib.h>
+	"FUNCTIONS.h"
+
+1617902667 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\functions.h
+	"CONST.h"
+	"STRUCTURES.h"
+
+1617902667 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\menu_functions.c
+	<stdio.h>
+	<stdlib.h>
+	"FUNCTIONS.h"
+
+1617901676 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\students_functions.c
+	<stdio.h>
+	<stdlib.h>
+	"FUNCTIONS.h"
+
+1617902667 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\utilitary_functions.c
+	<stdio.h>
+	<stdlib.h>
+	"FUNCTIONS.h"
+
+1617629096 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\list_of_students.c
+	<stdlib.h>
+	"CONST.h"
+
+1617902667 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\const.c
+	<stdlib.h>
+	"CONST.h"
+
+1617214451 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\display_all_fonction.c
+	<stdio.h>
+	<stdlib.h>
+	"FUNCTIONS.h"
+

@@ -3,7 +3,7 @@
 #include "FUNCTIONS.h"
 
 /*******************************************************************************
-All usefull fonctions wee use that ar not relative to structure
+All useful fonctions wee use that ar not relative to structure
 *******************************************************************************/
 
 int compare_strings(char *str1, char *str2){
@@ -64,4 +64,15 @@ int compare_fields_of_interest(Student * stud1, Student *stud2){
         }
     }
     return sameInterest;
+}
+
+/******************************************************************************/
+
+void fget_line(FILE* fptr, char* str){
+    char lastCharacter;
+    int i = 0;
+    while ((lastCharacter = fgetc(fptr)) != '\n'){
+        str[i] = lastCharacter;
+        i++;
+    }
 }

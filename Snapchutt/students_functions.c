@@ -144,7 +144,7 @@ Student *find_student(char *name){
 
 void add_follow(Student *stud, Student *follow){
     if (follow != stud){
-            if (stud->follower.maxElement == 0){
+        if (stud->follower.maxElement == 0){
             stud->follower.listFollower = (
                 Student **)malloc(10 * sizeof(Student *));
             stud->follower.maxElement = 10;
@@ -160,6 +160,14 @@ void add_follow(Student *stud, Student *follow){
             stud->follower.maxElement += 5;
             stud->follower.listFollower[stud->follower.nbrFollower] = follow;
             stud->follower.nbrFollower++;
+        }
+        FILE* fileptr = fopen("followers.txt", "w");
+        if (fileptr){
+            fseek(fileptr, 0, SEEK_END);
+            fprintf("%s>%s", stud->name, follow->name);
+            fclose(fileptr);
+        } else {
+            printf("The followers file has not been found\n");
         }
     } else {
         //printf("you cannot follow yourself");
@@ -396,10 +404,43 @@ void init_glossary(){
 //            createdStudent++;
 //            fgets(singleLine, 50, fileptr);
 //            fgets(singleLine, 50, fileptr);
+    } else {
+        printf("The student-list file has not been found\n");
     }
     fclose(fileptr);
 }
 
+void init_followers(){
+    FILE* fileptr = fopen("followers.txt", "r");
+    Student* ptrStud1, ptrStud2;
+    char lastCharacter;
+    int i = 0;
+    char studName[20];
+    fscanf(fileptr, "%d", &nbrFollows);
+    fgetc(fileptr); fgetc(fileptr);
+    if (fileptr){
+        while (!feof(fileptr) && i < nbrFollows){
+            int j = 0;
+            while ((lastCharacter = fgetc(fileptr)) != '>'){
+                studName[j] = lastCharacter;
+                j++;
+            }
+            studName[j] = '\0';
+            ptrStud1 = find_student(studName);
+            j = 0;
+            while ((lastCharacter = fgetc(fileptr)) != '\n'){
+                studName[j] = lastCharacter;
+                j++;
+            }
+            studName[j] = '\0';
+            ptrStud2 = find_student(studName);
+            add_follow(ptrStud1, ptrStud2);
+        }
+        fclose(fileptr);
+    } else {
+        printf("The followers file has not been found\n");
+    }
+}
 
 /******************************************************************************/
 

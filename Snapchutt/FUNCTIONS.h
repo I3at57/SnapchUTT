@@ -16,6 +16,10 @@ extern int compare_strings_simple(char str1[], char str2[]);
 
 extern int copy_array_char(char *targetArray, char *contentArray, int lth1, int lth2);
 
+extern int compare_fields_of_interest(Student * stud1, Student *stud2);
+
+extern void fget_line(FILE* fptr, char* str);
+
 /* Menu functions */
 
 extern int main_menu();
@@ -24,13 +28,17 @@ extern int add_menu();
 
 extern int find_one_menu();
 
+extern int modify_menu(Student *eleve);
+
 extern int find_all_menu();
 
-extern int testzone ();
+extern int testzone();
 
 /* To display */
 
 extern void array_char_display(char tab[]);
+
+extern void display_interest();
 
 extern void menu_display();
 
@@ -52,7 +60,13 @@ extern int add_student(Student *stud);
 
 extern void init_glossary();
 
+extern void init_followers();
+
 extern Student *find_student(char *name);
+
+extern void add_follow(Student *stud, Student *follow);
+
+extern void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion);
 
 extern int delete_student(Student *stud);
 
