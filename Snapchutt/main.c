@@ -4,6 +4,7 @@
 
 int main()
 {
+    //Un commentaire
     /*Put every student of STUDENTS_LIST in glossary*/
     init_glossary();
     main_menu();//The main menu of the application
