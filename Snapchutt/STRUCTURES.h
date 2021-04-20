@@ -6,16 +6,20 @@ It must be imported at firt during execution.
 #ifndef STRUCTURES_H_INCLUDED
 #define STRUCTURES_H_INCLUDED
 
-typedef struct FieldOfInterest {
+typedef struct FieldOfInterest
+{
     /*FieldOfInterest represents a field of interest a student can have. It is
     composed of : 'nbr' and 'field'. Links a field with a number make it easier
     to find, with this method we can made a research per int to find a field
     Cf CONST.h for more information.*/
+
     int nbr;
     char field[20]; //Ex : 'Art'
 }FieldOfInterest;
 
-typedef struct Follow {
+typedef struct Follow
+{
+
     int maxElement;
     int nbrFollower;
     struct Student **listFollower;
@@ -23,8 +27,10 @@ typedef struct Follow {
     int suggestionCount;
 }Follow;
 
-typedef struct Student {
+typedef struct Student
+{
     /*This is the main structure of the project.*/
+
     char name [50];   //name of this student
     int age;    //age of this student
     int yearStudy;    //year of studies begin
@@ -35,8 +41,10 @@ typedef struct Student {
     FieldOfInterest interest[3];    //hobbys
 }Student;
 
-typedef struct LineGlossary {
+typedef struct LineGlossary
+{
     /*We can associate a letter of the alphabet to a pointer in student*/
+
     char letter;
     Student *beginList;
 }LineGlossary;

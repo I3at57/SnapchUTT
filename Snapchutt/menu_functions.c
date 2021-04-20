@@ -6,9 +6,9 @@
 MENU.h contain all the menu fonction which call other functions
 *******************************************************************************/
 
-int main_menu() {
-    /*main_menu() is the main menu loop, it allow to navigate into other
-    sub-menu*/
+int main_menu()
+{/*main_menu() is the main menu loop. Allow to navigate into othersub-menu*/
+
     int action;
     char valid;
     do {
@@ -18,8 +18,8 @@ int main_menu() {
         scanf("%d", &action);
         switch(action){
             case 1:
-                /*sub-menu to add a student into glossary */
-                add_menu();
+                /*Fonction to add a student into glossary */
+                add_student(create_student());
                 break;
             case 2:
                 /*sub-menu find student, only on name based research*/
@@ -57,11 +57,11 @@ int main_menu() {
 }
 
 /******************************************************************************/
-
+/*
 int add_menu() {
     add_student(create_student());
     return(0);
-}
+}*/
 
 /******************************************************************************/
 
@@ -359,7 +359,9 @@ int find_all_menu() {
 /******************************************************************************/
 
 int testzone () {
-    int place;
-    place = researching_student(find_student("Clemence COTTIGNY"));
+    printf("%d\n", researching_student(find_student("Clemence COTTIGNY")));
+    errase_student(researching_student(find_student("Clemence COTTIGNY")));
+    printf("%d\n", researching_student(find_student("Baptiste TOUSSAINT")));
+    errase_student(researching_student(find_student("Baptiste TOUSSAINT")));
     return(0);
 }

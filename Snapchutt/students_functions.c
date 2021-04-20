@@ -6,6 +6,7 @@
 STUDENTS_FONC.h contain all the fonction relative to the gestion of a student.
 *******************************************************************************/
 
+
 Student *create_student(){
     /*This fonction is used to create a Student variable and return is pointer*/
     Student *stud;
@@ -43,10 +44,10 @@ Student *create_student(){
 
     /* Copy of the new student in the returned adress */
     *stud = stur;
+    ecrire_student(stud);
     return(stud);
 }
 
-/******************************************************************************/
 
 int add_student(Student *stud){
     // Finding the right chapter in the glossary
@@ -101,6 +102,7 @@ int add_student(Student *stud){
 
 /******************************************************************************/
 
+
 Student *find_student(char *name){
     Student *foundStudent;
     int i = 0;
@@ -142,6 +144,7 @@ Student *find_student(char *name){
 
 /******************************************************************************/
 
+
 void add_follow(Student *stud, Student *follow){
     if (follow != stud){
         if (stud->follower.maxElement == 0){
@@ -173,6 +176,7 @@ void add_follow(Student *stud, Student *follow){
         //printf("you cannot follow yourself");
     }
 }
+
 
 void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
     for (int t = 0; t < nbrSuggestion; t++){
@@ -329,124 +333,13 @@ void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
 
 /******************************************************************************/
 
-void init_glossary(){
-    FILE *fileptr = fopen("student-list.txt", "r");
-    if (fileptr){
-        char singleLine[100];
-        char lastChar;
-        int nbrStudent = 0, j;
-        fscanf(fileptr, "%d", &nbrStudent);
-        fgetc(fileptr); fgetc(fileptr);
-
-        for (int i=0; i<nbrStudent; i++) {
-            fgetc(fileptr);fgetc(fileptr);
-            Student *stud = (Student*)malloc(sizeof(Student));
-            j = 0;
-            while ((lastChar=fgetc(fileptr)) != '\n') {
-                stud->name[j] = lastChar;
-                j++;
-            }
-            stud->name[j] = '\0';
-            fscanf(fileptr, "%d", &stud->age); fgetc(fileptr);
-            fscanf(fileptr, "%d", &stud->yearStudy); fgetc(fileptr);
-            j = 0;
-            while ((lastChar=fgetc(fileptr)) != '\n') {
-                stud->fieldStudy[j] = lastChar;
-                j++;
-            }
-            stud->name[j] = '\0';
-            j = 0;
-            while ((lastChar=fgetc(fileptr)) != '\n') {
-                stud->cityResidence[j] = lastChar;
-                j++;
-            }
-            stud->name[j] = '\0';
-            fscanf(fileptr, "%d", &j); fgetc(fileptr);
-            stud->interest[0]=tabOfInterest[j-1];
-            fscanf(fileptr, "%d", &j); fgetc(fileptr);
-            stud->interest[0]=tabOfInterest[j-1];
-            fscanf(fileptr, "%d", &j); fgetc(fileptr);
-            stud->interest[0]=tabOfInterest[j-1];
-            fgetc(fileptr);fgetc(fileptr);
-
-            stud->follower.known = 0;
-            stud->follower.suggestionCount = 0;
-            stud->follower.maxElement = 0;
-            stud->follower.nbrFollower = 0;
-            stud->follower.listFollower = NULL;
-            stud->nextAlphaStudent = NULL;
-
-            add_student(stud);
-        }
-
-//            fgets(stud->name, 50, fileptr);
-//            stud->name[strlen(stud->name)-1] = '\0';
-//            fscanf(fileptr, "%d", &(stud->age));
-//            fscanf(fileptr, "%d", &(stud->yearStudy));
-//            fgets(singleLine, 50, fileptr);
-//            fgets(stud->fieldStudy, 50, fileptr);
-//            stud->fieldStudy[strlen(stud->fieldStudy)-1] = '\0';
-//            fgets(stud->cityResidence, 50, fileptr);
-//            stud->cityResidence[strlen(stud->cityResidence)-1] = '\0';
-//            int elt;
-//            fscanf(fileptr, "%d", &elt);
-//            stud->interest[0] = tabOfInterest[elt-1];
-//            fscanf(fileptr, "%d", &elt);
-//            stud->interest[1] = tabOfInterest[elt-1];
-//            fscanf(fileptr, "%d", &elt);
-//            stud->interest[2] = tabOfInterest[elt-1];
-//            stud->follower.known = 0;
-//            stud->follower.suggestionCount = 0;
-//            stud->follower.maxElement = 0;
-//            stud->follower.nbrFollower = 0;
-//            stud->follower.listFollower = NULL;
-//            add_student(stud);
-//            createdStudent++;
-//            fgets(singleLine, 50, fileptr);
-//            fgets(singleLine, 50, fileptr);
-    } else {
-        printf("The student-list file has not been found\n");
-    }
-    fclose(fileptr);
-}
-
-void init_followers(){
-    FILE* fileptr = fopen("followers.txt", "r");
-    Student* ptrStud1, ptrStud2;
-    char lastCharacter;
-    int i = 0;
-    char studName[20];
-    fscanf(fileptr, "%d", &nbrFollows);
-    fgetc(fileptr); fgetc(fileptr);
-    if (fileptr){
-        while (!feof(fileptr) && i < nbrFollows){
-            int j = 0;
-            while ((lastCharacter = fgetc(fileptr)) != '>'){
-                studName[j] = lastCharacter;
-                j++;
-            }
-            studName[j] = '\0';
-            ptrStud1 = find_student(studName);
-            j = 0;
-            while ((lastCharacter = fgetc(fileptr)) != '\n'){
-                studName[j] = lastCharacter;
-                j++;
-            }
-            studName[j] = '\0';
-            ptrStud2 = find_student(studName);
-            add_follow(ptrStud1, ptrStud2);
-        }
-        fclose(fileptr);
-    } else {
-        printf("The followers file has not been found\n");
-    }
-}
-
-/******************************************************************************/
 
 int delete_student(Student *stud){
     // Finding the right chapter in the glossary
     char readChar = stud->name[0];
+
+    errase_student(researching_student(stud->name));
+
     int i = 0;
     while (readChar != glossary[i].letter && i < 27){
         i++;
@@ -485,7 +378,7 @@ int delete_student(Student *stud){
     return 1;
 }
 
-// Remove the pointers which point to stud
+
 void clear_links(Student *stud){
     for (int i = 0; i < 27; i++){
         Student *ptr = glossary[i].beginList;
@@ -500,6 +393,7 @@ void clear_links(Student *stud){
     }
     free(stud->follower.listFollower);
 }
+
 
 void quit(){
     for (int i = 0; i < 27; i++){

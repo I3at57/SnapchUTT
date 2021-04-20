@@ -7,9 +7,10 @@ All the fonctions relative to display. If a feature have to display something
 the relative fonction is here.
 *******************************************************************************/
 
-void array_char_display(char tab[]){
-    /*This fonction is used to display an entire array of character at screen.
-    This fonction dont include '\n' so we must use some print in complement*/
+void array_char_display(char tab[])
+{/*This fonction is used to display an entire array of character at screen.
+  This fonction dont include '\n' so we must use some print in complement*/
+
     if(tab[0] != '\0'){
         int i=0;
         char nextChar = tab[i];
@@ -23,17 +24,19 @@ void array_char_display(char tab[]){
 
 /******************************************************************************/
 
-void display_interest() {
+void display_interest()
+{/*Displays all field of interest of a specific student*/
+
     int i;
     for (i=0; i<nbrInterest; i++){
-      printf("%d- %s\n", i+1, tabOfInterest[i].field);
+        printf("%d- %s\n", i+1, tabOfInterest[i].field);
     }
 }
 
 /******************************************************************************/
 
 void menu_display(){
-    /*This fonction display the main menu of Snapch'UTT. */
+
     printf("***************************************************************\n");
     printf("***************************************************************\n");
     printf("**                                                           **\n");
@@ -53,6 +56,7 @@ void menu_display(){
 }
 
 void find_menu_display(){
+
     printf("***************************************************************\n");
     printf("***************************************************************\n");
     printf("**                                                           **\n");
@@ -73,6 +77,7 @@ void find_menu_display(){
 }
 
 void display_perway_menu_display(){
+
     printf("***************************************************************\n");
     printf("***************************************************************\n");
     printf("**                                                           **\n");
@@ -91,6 +96,7 @@ void display_perway_menu_display(){
 }
 
 void modify_menu_display(){
+
     printf("***************************************************************\n");
     printf("***************************************************************\n");
     printf("**                                                           **\n");
@@ -110,9 +116,9 @@ void modify_menu_display(){
 
 /******************************************************************************/
 
-void student_display(Student *stu){
-    /*This fonction display all information about a student, exept the follow
-    List.*/
+void student_display(Student *stu)
+{/*This fonction display all information about a student*/
+
     if (stu != NULL){
         printf("**   ");
         array_char_display(stu->name);
@@ -139,7 +145,9 @@ void student_display(Student *stu){
 
 /******************************************************************************/
 
-void display_follow_list(Student *stud){
+void display_follow_list(Student *stud)
+{/*Displays all student that a student follow*/
+
     for (int i = 0; i < stud->follower.nbrFollower; i++){
         student_display(stud->follower.listFollower[i]);
         printf("\n\n");
