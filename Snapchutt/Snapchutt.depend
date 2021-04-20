@@ -13,7 +13,7 @@
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618949168 c:\users\batto\documents\github\snapchutt\snapchutt\functions.h
+1618951977 c:\users\batto\documents\github\snapchutt\snapchutt\functions.h
 	"CONST.h"
 	"STRUCTURES.h"
 
@@ -22,22 +22,22 @@
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618943988 source:c:\users\batto\documents\github\snapchutt\snapchutt\main.c
+1618951652 source:c:\users\batto\documents\github\snapchutt\snapchutt\main.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618923935 source:c:\users\batto\documents\github\snapchutt\snapchutt\menu_functions.c
+1618949527 source:c:\users\batto\documents\github\snapchutt\snapchutt\menu_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618949179 source:c:\users\batto\documents\github\snapchutt\snapchutt\read_file.c
+1618951993 source:c:\users\batto\documents\github\snapchutt\snapchutt\read_file.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618948359 source:c:\users\batto\documents\github\snapchutt\snapchutt\students_functions.c
+1618952279 source:c:\users\batto\documents\github\snapchutt\snapchutt\students_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"

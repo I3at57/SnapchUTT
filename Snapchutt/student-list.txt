@@ -1,4 +1,4 @@
-11
+9
 
 *
 Florimond LALANDE
@@ -9,16 +9,6 @@ Lille
 14
 5
 7
-*
-*
-Clemence COTTIGNY
-18
-2020
-Medicine
-Loos
-7
-9
-6
 *
 *
 Tancrede CATTEAU
@@ -59,16 +49,6 @@ Rouen
 3
 2
 9
-*
-*
-Bob DYLAN
-18
-2019
-Cellular Biology
-Caen
-5
-10
-8
 *
 *
 Alix SCHARER

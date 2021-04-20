@@ -222,10 +222,3 @@ int ecrire_student(Student* stud)
     fprintf(openFile, "*");
     fclose(openFile);
 }
-
-
-int change_student(int positon, Student* stud)
-{/*Change the information of a student a cording to his news*/
-
-    
-}

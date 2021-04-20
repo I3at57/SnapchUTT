@@ -6,6 +6,10 @@ int main()
 {
     //Un commentaire
     /*Put every student of STUDENTS_LIST in glossary*/
+    printf("~~~~ Loading ~~~~\n\n");
+    printf("~~~~ Loading ~~~~\n\n");
+    printf("~~~~ Loading ~~~~\n\n");
+    printf("~~~~ Loading ~~~~\n\n");
     init_glossary();
     //init_followers();
     main_menu();//The main menu of the application
