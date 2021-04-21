@@ -164,16 +164,71 @@ void add_follow(Student *stud, Student *follow){
             stud->follower.listFollower[stud->follower.nbrFollower] = follow;
             stud->follower.nbrFollower++;
         }
-        FILE* fileptr = fopen("followers.txt", "w");
+        FILE* fileptr = fopen("followers.txt", "a+");
         if (fileptr){
-            fseek(fileptr, 0, SEEK_END);
-            fprintf("%s>%s", stud->name, follow->name);
+            fprintf(fileptr, "%s>%s", stud->name, follow->name);
+            fseek(fileptr, 0, SEEK_SET);
+            int nbrStudent;
+            fscanf(fileptr, "%d", &nbrStudent);
+            fprintf(fileptr, "%d", nbrStudent - 1);
             fclose(fileptr);
         } else {
             printf("The followers file has not been found\n");
         }
     } else {
-        //printf("you cannot follow yourself");
+        printf("You cannot follow yourself\n");
+    }
+}
+
+void delete_follow(Student* stud, Student* follow){
+    int i = 0;
+    while (stud->follower.listFollower[i] != follow && i < stud->follower.nbrFollower){
+        i++;
+    }
+    if (stud->follower.listFollower[i] == follow){
+        for (int j = i; j < stud->follower.nbrFollower; j++){
+            stud->follower.listFollower[j] = stud->follower.listFollower[j+1];
+        }
+        stud->follower.listFollower[i] = NULL;
+        stud->follower.nbrFollower--;
+        FILE* fileptr = fopen("followers.txt", "r+");
+        if (fileptr){
+            int nbrFollow;
+            fscanf(fileptr, "%d", &nbrFollow);
+            int found = 0;
+            int j = 2, k;
+            char lastCharacter;
+            char studName[50];
+            char followName[50];
+            getc(fileptr); getc(fileptr);
+            while (found == 0 && j < nbrFollow && !feof(fileptr)){
+                k = 0;
+                while ((lastCharacter = getc(fileptr)) != '>'){
+                    studName[k] = lastCharacter;
+                    k++;
+                }
+                studName[k] = '\0';
+                k = 0;
+                while ((lastCharacter = getc(fileptr)) != '\n'){
+                    followName[k] = lastCharacter;
+                    k++;
+                }
+                followName[k] = '\0';
+                if (compare_strings(studName, followName) == 0){
+                    found = 1;
+                    fremove_line(fileptr, j);
+                } else {
+                    j++;
+                }
+            }
+            printf("This student got removed from your follows\n");
+            fclose(fileptr);
+
+        } else {
+            printf("This file does not exist\n");
+        }
+    } else {
+        printf("You are not currently following this student\n");
     }
 }
 

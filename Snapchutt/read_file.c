@@ -210,3 +210,67 @@ int ecrire_student(Student* stud)
     fprintf(openFile, "*");
     fclose(openFile);
 }
+
+void init_followers(){
+    FILE* fptr = fopen("follows.txt", "r+");
+    if (fptr){
+        int i, k;
+        int j = 2;
+        char studName[50];
+        char followName[50];
+        char c = fgetc(fptr);
+        fscanf(fptr, "%d", &i);
+        while (!feof(fptr) && j < i+2){
+            k = 0;
+            while ((c = fgetc(fptr)) != '>'){
+                studName[k] = c;
+                k++;
+            }
+            studName[k] = '\0';
+            k = 0;
+            while ((c = fgetc(fptr)) != '\n'){
+                followName[k] = c;
+                k++;
+            }
+            followName[k] = '\0';
+            Student* stud = find_student(studName);
+            Student* follow = find_student(followName);
+            if (stud != NULL && follow != NULL){
+                add_student(stud, follow);
+            } else {
+                fremove_line(fptr, j);
+            }
+            j++;
+        }
+    fclose(fptr);
+    } else {
+        printf("This file does not exist\n");
+    }
+}
+
+
+void fremove_line(FILE* fptr, int line){
+    FILE* transFile = fopen("tran.txt", "w+");
+    int i = 0;
+    char c;
+    while (i < line && !feof(fptr)){
+        while ((c = getc(fptr)) != '\n'){
+            fprintf(transFile, "%c", c);
+        }
+        fprintf(transFile, "%c", c);
+        i++;
+    }
+    while ((c = getc(fptr)) != '\n'){
+    }
+    while (!feof(fptr)){
+        c = getc(fptr);
+        fprintf(transFile, "%c", c);
+    }
+    fseek(transFile, 0, SEEK_SET);
+    while (!feof(transFile)){
+        c = fgetc(transFile);
+        fprintf(fptr, "%c", c);
+    }
+    fclose(transFile);
+    remove("tran.txt");
+}

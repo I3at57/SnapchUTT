@@ -96,4 +96,6 @@ extern void errase_student(int position);
 
 extern int ecrire_student(Student* stud);
 
+extern void fremove_line(FILE* fptr, int line);
+
 #endif // FUNCTIONS_H_INCLUDED
