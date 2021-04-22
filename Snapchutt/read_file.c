@@ -226,8 +226,7 @@ int ecrire_student(Student* stud)
 void init_followers(){
     FILE* fptr = fopen("follows.txt", "r+");
     if (fptr){
-        int i, k;
-        int j = 2;
+        int i, k, j = 2;
         char studName[50];
         char followName[50];
         char c;
@@ -248,7 +247,6 @@ void init_followers(){
             followName[k] = '\0';
             Student* stud = find_student(studName);
             Student* follow = find_student(followName);
-
             if (stud != NULL && follow != NULL){
                 add_follow(stud, follow);
             } else {
@@ -261,7 +259,6 @@ void init_followers(){
         printf("This file does not exist\n");
     }
 }
-
 
 void fremove_line(FILE* fptr, int line){
     FILE* transFile = fopen("tran.txt", "w+");

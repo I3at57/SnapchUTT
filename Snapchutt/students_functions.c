@@ -197,9 +197,9 @@ void delete_follow(Student* stud, Student* follow){
         for (int j = i; j < stud->follower.nbrFollower; j++){
             stud->follower.listFollower[j] = stud->follower.listFollower[j+1];
         }
-        stud->follower.listFollower[i] = NULL;
+        stud->follower.listFollower[stud->follower.nbrFollower] = NULL;
         stud->follower.nbrFollower--;
-        FILE* fileptr = fopen("followers.txt", "r+");
+        FILE* fileptr = fopen("follows.txt", "r+");
         if (fileptr){
             int nbrFollow;
             fscanf(fileptr, "%d", &nbrFollow);
@@ -222,7 +222,7 @@ void delete_follow(Student* stud, Student* follow){
                     k++;
                 }
                 followName[k] = '\0';
-                if (compare_strings(studName, followName) == 0){
+                if (compare_strings() && compare_strings(studName, followName) == 0){
                     found = 1;
                     fremove_line(fileptr, j);
                 } else {
