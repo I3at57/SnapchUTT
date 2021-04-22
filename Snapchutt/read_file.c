@@ -159,7 +159,7 @@ void errase_student(int position)
         I have to read 4 student so 8 stars '* '*/
         lastChar = fgetc(openFile);
         fprintf(transFile, "%c", lastChar);
-        if (lastChar == '\*') {
+        if (lastChar == '*') {
             nbrStar++;
         }
     } while (nbrStar < (position-1)*2);
@@ -218,8 +218,9 @@ void init_followers(){
         int j = 2;
         char studName[50];
         char followName[50];
-        char c = fgetc(fptr);
+        char c;
         fscanf(fptr, "%d", &i);
+        getc(fptr); getc(fptr);
         while (!feof(fptr) && j < i+2){
             k = 0;
             while ((c = fgetc(fptr)) != '>'){
@@ -235,8 +236,9 @@ void init_followers(){
             followName[k] = '\0';
             Student* stud = find_student(studName);
             Student* follow = find_student(followName);
+
             if (stud != NULL && follow != NULL){
-                add_student(stud, follow);
+                add_follow(stud, follow);
             } else {
                 fremove_line(fptr, j);
             }
