@@ -126,7 +126,7 @@ Student *find_student(char *name){
                     if (compare == 0){
                         foundStudent = ptr;
                         return (foundStudent);
-                    } else if (compare == 1){
+                    } else if (compare == -1){
                         return (NULL);
                     } else {
                         ptr = ptr->nextAlphaStudent;
