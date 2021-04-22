@@ -7,7 +7,7 @@ All useful fonctions wee use that ar not relative to structure
 *******************************************************************************/
 
 int compare_strings(char *str1, char *str2)
-{/*Return -1 if str1<str2 ; Return 1 if str1>str2 ; Return -1 if str1=str2*/
+{/*Return -1 if str1<str2 ; Return 1 if str1>str2 ; Return 0 if str1=str2*/
 
     int k = 1;
     while (str1[k] == str2[k] && str1[k] != '\0' && str2[k] != '\0'){

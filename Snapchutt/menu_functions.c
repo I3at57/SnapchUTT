@@ -166,12 +166,13 @@ int modify_menu(Student *eleve){
   int action;
   int ind3, ind4, ind5;
   char tab1[sizeFieldStudi], tab2[sizeStudentCity];
+  int posi = researching_student(eleve);
   do {
       printf("%s", menuSep);   //Only display cf DISPLAY_FONC
       student_display(eleve);
       printf("\n\n");
       modify_menu_display();   //Only display cf DISPLAY_FONC
-      printf("\nEnter your choise : ");
+      int posi = researching_student(eleve);
       scanf("%d", &action),
       printf("\n");
       switch(action){
@@ -247,6 +248,8 @@ int modify_menu(Student *eleve){
               );
               break;
        }
+        errase_student(posi);
+        ecrire_student(eleve);
   }while(action !=6);
 }
 

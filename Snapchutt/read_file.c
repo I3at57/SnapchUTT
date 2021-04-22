@@ -139,6 +139,8 @@ int researching_student(Student* target)
     fclose(ptrFile);
 }
 
+/*******************************************************************************/
+
 
 void errase_student(int position)
 {/*take the postion of a student in the file and errase it*/
@@ -197,7 +199,17 @@ void errase_student(int position)
 int ecrire_student(Student* stud)
 {/*Wright a student at the end of the file, take the pointer as argument*/
 
-    FILE* openFile = fopen("student-list.txt", "a");
+    int nbrStudent = 0;
+
+    FILE* openFile = fopen("student-list.txt", "r");
+    fscanf(openFile, "%d", &nbrStudent);
+    fclose(openFile);
+
+    openFile = fopen("student-list.txt", "r+");
+    fprintf(openFile, "%d", nbrStudent+1);
+    fclose(openFile);
+
+    openFile = fopen("student-list.txt", "a");
     fprintf(openFile, "*\n");
     fprintf(openFile, "%s\n", stud->name);
     fprintf(openFile, "%d\n", stud->age);

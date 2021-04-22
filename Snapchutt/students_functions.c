@@ -101,23 +101,31 @@ int add_student(Student *stud){
 }
 
 /******************************************************************************/
-
+/******************************************************************************/
 
 Student *find_student(char *name){
     Student *foundStudent;
     int i = 0;
     while (glossary[i].letter != name[0] && i < 27){
+        //Find the right line in the glossary that match with the
+        //1st letter of the name
         i++;
     }
     if (glossary[i].letter == name[0]){
+        //Enter in the right
         if (glossary[i].beginList == NULL){
+            //The entered student is not existing
             return (NULL);
         } else {
             int compare = compare_strings(glossary[i].beginList->name, name);
+            //Return either 0, 1, -1
             if (compare == 0){
+                // We fund the right student
                 foundStudent = glossary[i].beginList;
                 return (foundStudent);
-            } else if (compare == -1){
+            } else if (compare == 1){
+                //The researching student is before the 1st of the chain
+                //So it doesn't exist because the chain is in right order
                 return (NULL);
             } else {
                 Student *ptr = glossary[i].beginList->nextAlphaStudent;
@@ -138,7 +146,7 @@ Student *find_student(char *name){
             }
         }
     }
-    printf("Invalid syntax\n");
+    printf("Invalid syntax\n"); //The entered name is not a name
     return (NULL);
 }
 

@@ -1,27 +1,7 @@
-6
+9
 
 *
-Lucas MARTINEZ
-19
-2020
-Mechanical Engineering
-Troyes
-11
-13
-10
-*
-*
-Alexis POCHARD
-19
-2020
-Industrial Engineering
-Troyes
-7
-4
-5
-*
-*
-Florimon LALANDE
+Florimond LALANDE
 22
 2016
 Industrial Engineering
@@ -29,16 +9,6 @@ Lille
 14
 5
 7
-*
-*
-Clemence COTTIGNY
-18
-2020
-Medicine
-Loos
-7
-9
-6
 *
 *
 Tancrede CATTEAU
@@ -49,16 +19,6 @@ Tournais
 2
 3
 12
-*
-*
-Louis FERRAND
-17
-2020
-Ingeniering
-Villeneuve d'Ascq
-10
-4
-8
 *
 *
 Jean-Claude VANDAME
@@ -81,12 +41,52 @@ Troyes
 5
 *
 *
-Martin
-15
+Martin JEAN
+19
 2016
-High School
-Marseille
-5
-8
+Arts
+Rouen
+3
+2
+9
+*
+*
+Alix SCHARER
+17
+2021
+Medecine
+Lille
 4
+1
+7
+*
+*
+Baptiste TOUSSAINT
+19
+2020
+Industrial ingeniering
+Troyes
+13
+12
+5
+*
+*
+Alexis POCHARD
+19
+2021
+Math
+Troyes
+10
+2
+5
+*
+*
+Louis FERRAND
+18
+2020
+Ingeniering
+Villeneuve d'Ascq
+10
+4
+8
 *

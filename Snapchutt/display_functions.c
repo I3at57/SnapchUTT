@@ -120,7 +120,7 @@ void student_display(Student *stu)
 {/*This fonction display all information about a student*/
 
     if (stu != NULL){
-        printf("**   ");
+        printf("**   ");  // two '*' for better display
         array_char_display(stu->name);
         printf("\n");
         printf("**   Age : %d\n", stu->age);
