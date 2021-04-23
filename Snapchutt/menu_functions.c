@@ -113,7 +113,7 @@ int find_one_menu() {
                     /*A fontion to add a follow in a followinglist
                     of a student*/
                     fflush(stdin);
-                    printf("\nWho %s want to follow ? : ", eleve->name);
+                    printf("\nWho %s wants to follow ? : ", eleve->name);
                     scanf("%[^\n%]*c", nameStr);
                     printf("\n");
                     eleve2 = find_student(nameStr);
@@ -147,6 +147,16 @@ int find_one_menu() {
                 case 7:
                     /* A test zone only for developer*/
                     //testzone();
+                    fflush(stdin);
+                    printf("\nWho %s, wants to unfollow ? : ", eleve->name);
+                    scanf("%[^\n%]*c", nameStr);
+                    printf("\n");
+                    eleve2 = find_student(nameStr);
+                    if (eleve2 == NULL){
+                        printf("\nThis student doesn't exist :/\n");
+                    } else {
+                        delete_follow(eleve, eleve2);
+                    }
                     break;
                 default:
                     printf(

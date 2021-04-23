@@ -190,7 +190,7 @@ void delete_follow(Student* stud, Student* follow){
         stud->follower.nbrFollower--;
         FILE* fileptr = fopen("follows.txt", "r");
     } else {
-        printf("You are not currently following this student\n");
+        printf("\nYou are not currently following this student\n");
     }
 }
 
