@@ -224,7 +224,7 @@ int ecrire_student(Student* stud)
 }
 
 void init_followers(){
-    FILE* fptr = fopen("follows.txt", "r+");
+    FILE* fptr = fopen("follows.txt", "r");
     if (fptr){
         int i, k, j = 2;
         char studName[50];
@@ -249,8 +249,6 @@ void init_followers(){
             Student* follow = find_student(followName);
             if (stud != NULL && follow != NULL){
                 add_follow(stud, follow);
-            } else {
-                fremove_line(fptr, j);
             }
             j++;
         }
@@ -260,24 +258,58 @@ void init_followers(){
     }
 }
 
+void save_file(){
+    FILE* fptr = fopen("follows.txt", "w");
+    Student* sptr;
+    int linkCount = 0;
+    for (int i = 0; i < 27; i++){
+        sptr = glossary[i].beginList;
+        while (sptr != NULL){
+            linkCount += sptr->follower.nbrFollower;
+            sptr = sptr->nextAlphaStudent;
+        }
+    }
+    fprintf(fptr, "%d\n", linkCount);
+    fprintf(fptr, "\n");
+    for (int i = 0; i < 27; i++){
+        sptr = glossary[i].beginList;
+        while (sptr != NULL){
+            for (int j = 0; j < sptr->follower.nbrFollower; j++){
+                fprintf("%s>%s\n", sptr->follower.listFollower[j]->name);
+            }
+            sptr = sptr->nextAlphaStudent;
+        }
+    }
+    fclose(fptr);
+}
+
+
+/*
+else {
+                fremove_line(fptr, j);
+            }
+
+
 void fremove_line(FILE* fptr, int line){
-    FILE* transFile = fopen("tran.txt", "w+");
+    FILE* transFile = fopen("tran.txt", "w");
+    fseek(fptr, 0, SEEK_SET);
     int i = 0;
     char c;
     while (i < line && !feof(fptr)){
-        while ((c = getc(fptr)) != '\n'){
+        while ((c = fgetc(fptr)) != '\n'){
             fprintf(transFile, "%c", c);
         }
         fprintf(transFile, "%c", c);
         i++;
     }
-    while ((c = getc(fptr)) != '\n'){
+    while ((c = fgetc(fptr)) != '\n' && !feof(fptr)){
     }
-    while (!feof(fptr)){
-        c = getc(fptr);
+    while ((c = fgetc(fptr)) != EOF){
+        //c = fgetc(fptr);
         fprintf(transFile, "%c", c);
     }
     fseek(transFile, 0, SEEK_SET);
+    fseek(fptr, 0, SEEK_SET);
     while (!feof(transFile)){
         c = fgetc(transFile);
         fprintf(fptr, "%c", c);
@@ -285,3 +317,40 @@ void fremove_line(FILE* fptr, int line){
     fclose(transFile);
     remove("tran.txt");
 }
+
+
+if (fileptr){
+            int nbrFollow;
+            fscanf(fileptr, "%d", &nbrFollow);
+            int found = 0;
+            int j = 2, k;
+            char lastCharacter;
+            char studName[50];
+            char followName[50];
+            getc(fileptr); getc(fileptr);
+            while (found == 0 && j < nbrFollow && !feof(fileptr)){
+                k = 0;
+                while ((lastCharacter = getc(fileptr)) != '>'){
+                    studName[k] = lastCharacter;
+                    k++;
+                }
+                studName[k] = '\0';
+                k = 0;
+                while ((lastCharacter = getc(fileptr)) != '\n'){
+                    followName[k] = lastCharacter;
+                    k++;
+                }
+                followName[k] = '\0';
+                if (compare_strings(stud->name, studName) == 0 && compare_strings(follow->name, followName) == 0){
+                    found = 1;
+                    fremove_line(fileptr, j);
+                } else {
+                    j++;
+                }
+            }
+            printf("This student got removed from your follows\n");
+            fclose(fileptr);
+        } else {
+            printf("This file does not exist\n");
+        }
+*/

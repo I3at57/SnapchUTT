@@ -172,17 +172,6 @@ void add_follow(Student *stud, Student *follow){
             stud->follower.listFollower[stud->follower.nbrFollower] = follow;
             stud->follower.nbrFollower++;
         }
-        FILE* fileptr = fopen("followers.txt", "a+");
-        if (fileptr){
-            fprintf(fileptr, "%s>%s", stud->name, follow->name);
-            fseek(fileptr, 0, SEEK_SET);
-            int nbrStudent;
-            fscanf(fileptr, "%d", &nbrStudent);
-            fprintf(fileptr, "%d", nbrStudent - 1);
-            fclose(fileptr);
-        } else {
-            printf("The followers file has not been found\n");
-        }
     } else {
         printf("You cannot follow yourself\n");
     }
@@ -199,42 +188,7 @@ void delete_follow(Student* stud, Student* follow){
         }
         stud->follower.listFollower[stud->follower.nbrFollower] = NULL;
         stud->follower.nbrFollower--;
-        FILE* fileptr = fopen("follows.txt", "r+");
-        if (fileptr){
-            int nbrFollow;
-            fscanf(fileptr, "%d", &nbrFollow);
-            int found = 0;
-            int j = 2, k;
-            char lastCharacter;
-            char studName[50];
-            char followName[50];
-            getc(fileptr); getc(fileptr);
-            while (found == 0 && j < nbrFollow && !feof(fileptr)){
-                k = 0;
-                while ((lastCharacter = getc(fileptr)) != '>'){
-                    studName[k] = lastCharacter;
-                    k++;
-                }
-                studName[k] = '\0';
-                k = 0;
-                while ((lastCharacter = getc(fileptr)) != '\n'){
-                    followName[k] = lastCharacter;
-                    k++;
-                }
-                followName[k] = '\0';
-                if (compare_strings() && compare_strings(studName, followName) == 0){
-                    found = 1;
-                    fremove_line(fileptr, j);
-                } else {
-                    j++;
-                }
-            }
-            printf("This student got removed from your follows\n");
-            fclose(fileptr);
-
-        } else {
-            printf("This file does not exist\n");
-        }
+        FILE* fileptr = fopen("follows.txt", "r");
     } else {
         printf("You are not currently following this student\n");
     }
@@ -303,7 +257,6 @@ void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
                         for (int k = 0; k < stud->follower.listFollower[i]->follower.listFollower[j]->follower.nbrFollower; k++){
                             if (t < 5 && stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.known != 1){
                                 if (stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k]->follower.suggestionCount == max){
-                                    suggestionTab[t] = stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k];
                                     suggestionTab[t] = stud->follower.listFollower[i]->follower.listFollower[j]->follower.listFollower[k];
                                     suggestionTab[t]->follower.known = 1;
                                     t++;
