@@ -1,6 +1,6 @@
 /*******************************************************************************
 STRUCTURES.h contain all personal types we have created.
-It must be imported at firt during execution.
+It must be imported at first during execution.
 *******************************************************************************/
 
 #ifndef STRUCTURES_H_INCLUDED

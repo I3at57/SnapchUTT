@@ -3,7 +3,7 @@
 #include "FUNCTIONS.h"
 
 /*******************************************************************************
-All the fonctions relative to read and wright in the file.
+All the functions relative to read and wright in the file.
 *******************************************************************************/
 
 
@@ -88,8 +88,8 @@ void init_glossary()
 
 
 int researching_student(Student* target)
-{/*This function take a student pointer as argument and find his position.
-  in the file student-list.txt and return it*/
+{/*This function takes a student pointer as argument and find his position.
+  in the file student-list.txt and returns it*/
 
     char lastChar;
     int nbrStudent=0, compt=0, find=0, i=0;
@@ -106,8 +106,8 @@ int researching_student(Student* target)
                 i++;
                 lastChar = fgetc(ptrFile);
             } while (lastChar == target->name[i] || lastChar != '\n');
-            /* the loop break if one letter is different, so it's not the right
-            right student or if the lastChar is '\n' then we fund the rigth
+            /* the loop breaks if one letter is different, so it's not the right
+            right student or if the lastChar is '\n' then we find the right
             student to delete
             */
             if (lastChar == '\n') {
@@ -115,7 +115,7 @@ int researching_student(Student* target)
             }
         } else {
             /*This student can't be the good one so let's read every char until
-            we found the '*' which symbolise the end of this student
+            we found the '*' which represents the end of this student
             in the file
             */
             do {
@@ -143,22 +143,22 @@ int researching_student(Student* target)
 
 
 void errase_student(int position)
-{/*take the postion of a student in the file and errase it*/
+{/*takes the position of a student in the file and erase it*/
 
     FILE* openFile = fopen("student-list.txt", "r");  //Student data-base file
     FILE* transFile = fopen("tran.txt", "w");
-    //Create a file only use in this fonction
+    //Create a file only use in this function
 
     int nbrStar = 0, nbrStudent = 0;
     char lastChar;
 
-    fscanf(openFile, "%d", &nbrStudent);  //Compt the number of student
+    fscanf(openFile, "%d", &nbrStudent);  //Compt the number of students
     fprintf(transFile, "%d", nbrStudent-1); //Copy it on the temporary file
 
     do {
         /*Every student comes with two star '*' to draw limit
-        If I want to delete student in positon 5:
-        I have to read 4 student so 8 stars '* '*/
+        If I want to delete student in position 5:
+        I have to read 4 students so 8 stars '*'*/
         lastChar = fgetc(openFile);
         fprintf(transFile, "%c", lastChar);
         if (lastChar == '*') {
@@ -168,7 +168,7 @@ void errase_student(int position)
     fgetc(openFile); fgetc(openFile);
     //Read a '\n' and the 1st '*' of the erased student
     while (fgetc(openFile) != '*');
-    //read and forget all the information off the reased student
+    //Read and forget all the informations off the erased student
 
     while (feof(openFile)==0) {
         //Copy the rest of the file
@@ -177,7 +177,7 @@ void errase_student(int position)
             fprintf(transFile, "%c", lastChar);
         }
     }
-    //transFile contain now the new file with updates informations
+    //transFile now contains the new file with updated informations
     fclose(openFile); fclose(transFile);
 
     openFile = fopen("student-list.txt", "w");
@@ -197,7 +197,7 @@ void errase_student(int position)
 
 
 int ecrire_student(Student* stud)
-{/*Wright a student at the end of the file, take the pointer as argument*/
+{/*Write a student at the end of the file, takes the pointer as argument*/
 
     int nbrStudent = 0;
 

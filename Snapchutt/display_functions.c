@@ -3,13 +3,13 @@
 #include "FUNCTIONS.h"
 
 /*******************************************************************************
-All the fonctions relative to display. If a feature have to display something
-the relative fonction is here.
+All the functions relative to display. If a feature have to display something
+the relative function is here.
 *******************************************************************************/
 
 void array_char_display(char tab[])
-{/*This fonction is used to display an entire array of character at screen.
-  This fonction dont include '\n' so we must use some print in complement*/
+{/*This function is used to display an entire array of characters on the screen.
+   This function does not include '\n' so we must use some prints in complement*/
 
     if(tab[0] != '\0'){
         int i=0;
@@ -117,7 +117,7 @@ void modify_menu_display(){
 /******************************************************************************/
 
 void student_display(Student *stu)
-{/*This fonction display all information about a student*/
+{/*This function displays all the informations about a student*/
 
     if (stu != NULL){
         printf("**   ");  // two '*' for better display
@@ -146,7 +146,7 @@ void student_display(Student *stu)
 /******************************************************************************/
 
 void display_follow_list(Student *stud)
-{/*Displays all student that a student follow*/
+{/*Displays all students that a student follows*/
 
     for (int i = 0; i < stud->follower.nbrFollower; i++){
         student_display(stud->follower.listFollower[i]);

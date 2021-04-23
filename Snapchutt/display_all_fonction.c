@@ -3,16 +3,16 @@
 #include "FUNCTIONS.h"
 
 /*******************************************************************************
-All the fonctions to display student by a specific criteria from the glossary.
+All the functions to display students by a specific criteria from the glossary.
 *******************************************************************************/
 
 int display_all_alpha() {
-    /*Display all student in the glossary by name*/
+    /*Displays all students in the glossary by name*/
     int ind;
     Student *voy = NULL;
 
     for(ind=0; ind<26; ind++) {
-    //for each letter of the glossary
+    //For each letter of the glossary
         if (glossary[ind].beginList != NULL) {
         //If this letter is not empty
             voy = glossary[ind].beginList;  //the 1st element of the list
@@ -21,8 +21,8 @@ int display_all_alpha() {
                 printf("\n\n");
                 voy = voy->nextAlphaStudent;
             } while(voy != NULL);
-            /*when the last student of this list is display then left the loop
-            and go on the following letter*/
+            /*when the last student of this list is displayed then left the loop
+            and goes on the following letter*/
         }
     }
     return(0);
@@ -31,26 +31,26 @@ int display_all_alpha() {
 /******************************************************************************/
 
 int display_all_age(int dage) {
-    /*Display all student in the glossary whose have the same age 'dage'*/
-    int ind, presence = 1; //at the beginin no student are display
+    /*Displays all students in the glossary who have the same age 'dage'*/
+    int ind, presence = 1; //at the begining no student are displayed
     Student *voy = NULL;
 
     for(ind=0; ind<26; ind++) {
-    //for each letter of the glossary
+    //For each letter of the glossary
         if (glossary[ind].beginList != NULL) {
         //If this letter is not empty
             voy = glossary[ind].beginList;  //the 1st element of the list
             do {
                 if (voy->age == dage) {
-                //Then this student must be display
+                //Then this student must be displayed
                     student_display(voy);
                     presence = 0; //minimum 1 element has been displayed
                     printf("\n\n");
                 }
                 voy = voy->nextAlphaStudent;
             } while(voy != NULL);
-            /*when the last student of this list is test then left the loop
-            and go on the following letter*/
+            /*when the last student of this list is tested then left the loop
+            and goes on the following letter*/
         }
     }
     return(presence);
@@ -59,9 +59,9 @@ int display_all_age(int dage) {
 /******************************************************************************/
 
 int display_all_year(int dyear) {
-    /*Display all student in the glossary whose have the same
+    /*Displays all students in the glossary who have the same
     year of study 'dyear'*/
-    int ind, presence = 1;  //at the beginin no student are display
+    int ind, presence = 1;  //at the begining no student are displayed
     Student *voy = NULL;
 
     for(ind=0; ind<26; ind++) {
@@ -71,15 +71,15 @@ int display_all_year(int dyear) {
             voy = glossary[ind].beginList;  //the 1st element of the list
             do {
                 if (voy->yearStudy == dyear) {
-                //Then this student must be display
+                //Then this student must be displayed
                     student_display(voy);
                     presence = 0; //minimum 1 element has been displayed
                     printf("\n\n");
                 }
                 voy = voy->nextAlphaStudent;
             } while(voy != NULL);
-            /*when the last student of this list is test then left the loop
-            and go on the following letter*/
+            /*when the last student of this list is tested then left the loop
+            and goes on the following letter*/
         }
     }
     return(presence);
@@ -88,8 +88,8 @@ int display_all_year(int dyear) {
 /******************************************************************************/
 
 int display_all_city(char *dcity) {
-    /*Display all student in the glossary whose have the same city 'dcity'*/
-    int ind, presence = 1;  //at the beginin no student are display
+    /*Displays all students in the glossary whose have the same city 'dcity'*/
+    int ind, presence = 1;  //at the begining no student are displayed
     Student *voy = NULL;
 
     for(ind=0; ind<26; ind++) {
@@ -99,15 +99,15 @@ int display_all_city(char *dcity) {
             voy = glossary[ind].beginList;  //the 1st element of the list
             do {
                 if (compare_strings_simple(voy->cityResidence, dcity) == 0) {
-                    //Then this student must be display
+                    //Then this student must be displayed
                     student_display(voy);
                     presence = 0; //minimum 1 element has been displayed
                     printf("\n\n");
                 }
                 voy = voy->nextAlphaStudent;
             } while(voy != NULL);
-            /*when the last student of this list is test then left the loop
-            and go on the following letter*/
+            /*when the last student of this list is tested then left the loop
+            and goes on the following letter*/
         }
     }
     return(presence);
@@ -116,9 +116,9 @@ int display_all_city(char *dcity) {
 /******************************************************************************/
 
 int display_all_field(char *dfield) {
-    /*Display all student in the glossary whose have the same
-    fiel of studies 'dfield'*/
-    int ind, presence = 1;  //at the beginin no student are display
+    /*Display all students in the glossary who have the same
+    field of studies 'dfield'*/
+    int ind, presence = 1;  //at the begining no student are displayed
     Student *voy = NULL;
 
     for(ind=0; ind<26; ind++) {
@@ -128,15 +128,15 @@ int display_all_field(char *dfield) {
             voy = glossary[ind].beginList;  //the 1st element of the list
             do {
                 if (compare_strings_simple(voy->fieldStudy, dfield) == 0) {
-                //Then this student must be display
+                //Then this student must be displayed
                     student_display(voy);
                     presence = 0; //minimum 1 element has been displayed
                     printf("\n\n");
                 }
                 voy = voy->nextAlphaStudent;
             } while(voy != NULL);
-            /*when the last student of this list is test then left the loop
-            and go on the following letter*/
+            /*when the last student of this list is tested then left the loop
+            and goes on the following letter*/
         }
     }
     return(presence);
@@ -145,9 +145,9 @@ int display_all_field(char *dfield) {
 /******************************************************************************/
 
 int display_all_inter(int dinter) {
-    /*Display all student in the glossary whose
+    /*Displays all students in the glossary who
     have the same interest 'dinter'*/
-    int ind, ix, presence = 1;  //at the beginin no student are display
+    int ind, ix, presence = 1;  //at the begining no students are displayed
     Student *voy = NULL;
 
     for(ind=0; ind<26; ind++) {
@@ -166,13 +166,13 @@ int display_all_inter(int dinter) {
                         printf("\n\n");
                     }
                 } while (voy->interest[ix].nbr != dinter && ix<2);
-                /*If the researching FieldOfInterest is find don't test the
-                other. This loop is left if the 3 element have been testing or
-                wee found the researcing element*/
+                /*If the researching FieldOfInterest is found does't test the
+                other. This loop is left if the third element has been tested or
+                we found the researching element*/
                 voy = voy->nextAlphaStudent;
             } while(voy != NULL);
-            /*when the last student of this list is test then left the loop
-            and go on the following letter*/
+            /*when the last student of this list is tested then left the loop
+            and goes on the following letter*/
         }
     }
     return(presence);

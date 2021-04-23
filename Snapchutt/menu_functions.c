@@ -3,11 +3,11 @@
 #include "FUNCTIONS.h"
 
 /*******************************************************************************
-MENU.h contain all the menu fonction which call other functions
+MENU.h contain all the menu function which call other functions
 *******************************************************************************/
 
 int main_menu()
-{/*main_menu() is the main menu loop. Allow to navigate into othersub-menu*/
+{/*main_menu() is the main menu loop. Allows to navigate into othersub-menu*/
 
     int action;
     char valid;
@@ -18,11 +18,11 @@ int main_menu()
         scanf("%d", &action);
         switch(action){
             case 1:
-                /*Fonction to add a student into glossary */
+                /*Function to add a student in the glossary*/
                 add_student(create_student());
                 break;
             case 2:
-                /*sub-menu find student, only on name based research*/
+                /*sub-menu finds student, only on name-based research*/
                 find_one_menu();
                 break;
             case 3:
@@ -30,7 +30,7 @@ int main_menu()
                 find_all_menu();
                 break;
             case 4:
-                /*sub-menu to display all by name*/
+                /*sub-menu to display all students by name*/
                 printf("%s", actionSep);
                 display_all_alpha();
 
@@ -72,11 +72,11 @@ int find_one_menu() {
     int action;
 
     do {
-        /* A loop to research for a specific student by name*/
+        /* A loop to research a specific student by name*/
         fflush(stdin);
         printf("\nEnter a name : ");
         scanf("%[^\n%]*c", nameStr);
-        eleve = find_student(nameStr);    // give the pointer of a student
+        eleve = find_student(nameStr);    // gives the pointer of a student
         if (eleve == NULL) {
             printf("\nThis student doesn't exist :/\n");
             printf("Enter 'Quit' to quit.\n");
@@ -84,8 +84,8 @@ int find_one_menu() {
             printf("\n");
         }
     }while(eleve == NULL && compare_strings_simple(nameStr, quitString));
-    /* If nameStr is 'Quit' the loop end and eleve = NULL
-    else eleve point on a student in glossary. */
+    /* If nameStr is 'Quit' the loop ends and eleve = NULL
+    else eleve points on a student in glossary. */
 
     if (compare_strings_simple(nameStr, quitString) == 0) {
         return(1);
@@ -110,7 +110,7 @@ int find_one_menu() {
                     /*Delete the current student*/
                     break;
                 case 3:
-                    /*A fontion to add a follow in a followinglist
+                    /*A function to add a follow in a followinglist
                     of a student*/
                     fflush(stdin);
                     printf("\nWho %s wants to follow ? : ", eleve->name);
@@ -136,8 +136,7 @@ int find_one_menu() {
                 }
                     break;
                 case 5:
-                    /*Display all student that the current student
-                    'eleve' follow*/
+                    /*Display all students followed by 'eleve'*/
                     display_follow_list(eleve);
                     break;
                 case 6:
@@ -172,7 +171,7 @@ int find_one_menu() {
 /******************************************************************************/
 
 int modify_menu(Student *eleve){
-  /*This menu is used to modify some information about a student *eleve*/
+  /*This menu is used to modify some informations about a student *eleve*/
   int action;
   int ind3, ind4, ind5;
   char tab1[sizeFieldStudi], tab2[sizeStudentCity];
@@ -279,7 +278,7 @@ int find_all_menu() {
         printf("\n");
         switch(action){
             case 1:
-                /*Display all student in the glossary whose have the same age*/
+                /*Display all students in the glossary who have the same age*/
                 fflush(stdin);
                 printf("Enter an age : ");
                 scanf("%d", &aGe);
@@ -294,7 +293,7 @@ int find_all_menu() {
                 scanf("%c", &valid); //enter a letter to continue
                 break;
             case 2:
-                /*Display all student in the glossary whose have the same
+                /*Display all students in the glossary who have the same
                 year of study*/
                 fflush(stdin);
                 printf("Enter an year of study : ");
@@ -310,7 +309,7 @@ int find_all_menu() {
                 scanf("%c", &valid); //enter a letter to continue
                 break;
             case 3:
-                /*Display all student in the glossary whose have the same city*/
+                /*Display all students in the glossary who have the same city*/
                 fflush(stdin);
                 printf("Enter city of residence : ");
                 scanf("%[^\n%]*c", cIt);
@@ -325,8 +324,8 @@ int find_all_menu() {
                 scanf("%c", &valid); //enter a letter to continue
                 break;
             case 4:
-                /*Display all student in the glossary whose have the same
-                fiel of studies*/
+                /*Display all students in the glossary who have the same
+                field of studies*/
                 fflush(stdin);
                 printf("Enter field of studies : ");
                 scanf("%[^\n%]*c", sTu);
@@ -341,7 +340,7 @@ int find_all_menu() {
                 scanf("%c", &valid); //enter a letter to continue
                 break;
             case 5:
-                /*Display all student in the glossary whose
+                /*Display all students in the glossary who
                 have the same interest*/
                 display_interest(); printf("\n");
                 printf("- "); scanf("%d", &iTn); printf("\n");

@@ -7,7 +7,7 @@ All useful fonctions wee use that ar not relative to structure
 *******************************************************************************/
 
 int compare_strings(char *str1, char *str2)
-{/*Return -1 if str1<str2 ; Return 1 if str1>str2 ; Return 0 if str1=str2*/
+{/*Returns -1 if str1<str2 ; Returns 1 if str1>str2 ; Returns 0 if str1=str2*/
 
     int k = 1;
     while (str1[k] == str2[k] && str1[k] != '\0' && str2[k] != '\0'){
@@ -25,7 +25,7 @@ int compare_strings(char *str1, char *str2)
 /******************************************************************************/
 
 int compare_strings_simple(char str1[], char str2[])
-{/*Return 0 if str1 = str2 else return 1*/
+{/*Returns 0 if str1 = str2 otherwise returns 1*/
 
     int k = 1;
     while (str1[k] == str2[k] && str1[k] != '\0' && str2[k] != '\0'){
@@ -41,7 +41,7 @@ int compare_strings_simple(char str1[], char str2[])
 /******************************************************************************/
 
 int copy_array_char(char *targetArray, char *contentArray, int lth1, int lth2)
-{/*Copy the content of 'contentArray' in 'targetArray'*/
+{/*Copies the content of 'contentArray' in 'targetArray'*/
 
     if (lth2 > lth1){
         return 1;
@@ -59,7 +59,7 @@ int copy_array_char(char *targetArray, char *contentArray, int lth1, int lth2)
 /******************************************************************************/
 
 int compare_fields_of_interest(Student * stud1, Student *stud2)
-{/*Return the number a interests in common beetwen two student*/
+{/*Returns the number of interests in common between two students*/
 
     int sameInterest = 0;
     for (int i = 0; i < 3; i++){

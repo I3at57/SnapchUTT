@@ -8,14 +8,14 @@ STUDENTS_FONC.h contain all the fonction relative to the gestion of a student.
 
 
 Student *create_student(){
-    /*This fonction is used to create a Student variable and return is pointer*/
+    /*This function is used to create a Student variable and return its pointer*/
     Student *stud;
     stud = malloc(sizeof(Student));
     char str1[sizeName], str2[sizeFieldStudi], str3[sizeStudentCity];
     int ind1, ind2, ind3, ind4, ind5;
 
     fflush(stdin);  //Security
-    /* Enter all information of the new student */
+    /* Enter all informations of the new student */
     printf("\nName : "); scanf("%[^\n%]*c", str1);
     printf("\nAge : "); scanf("%d", &ind1);
     printf("\nYear of study : "); scanf("%d", &ind2);
@@ -42,7 +42,7 @@ Student *create_student(){
         stur.cityResidence, str3, sizeStudentCity, sizeStudentCity
     );
 
-    /* Copy of the new student in the returned adress */
+    /* Copy of the new student in the returned address */
     *stud = stur;
     ecrire_student(stud);
     return(stud);
@@ -70,7 +70,6 @@ int add_student(Student *stud){
                 stud->nextAlphaStudent = glossary[i].beginList;
                 glossary[i].beginList = stud;
                 // necessary step because glossary[i].beginList is not a Student
-                // element
                 return 0;
             } else {
                 while (ptr->nextAlphaStudent != NULL){
@@ -107,14 +106,14 @@ Student *find_student(char *name){
     Student *foundStudent;
     int i = 0;
     while (glossary[i].letter != name[0] && i < 27){
-        //Find the right line in the glossary that match with the
-        //1st letter of the name
+        // Find the right line in the glossary that matchs with the
+        // 1st letter of the name
         i++;
     }
     if (glossary[i].letter == name[0]){
-        //Enter in the right
+        // Enter in the right chapter
         if (glossary[i].beginList == NULL){
-            //The entered student is not existing
+            //The entered student does not exist
             return (NULL);
         } else {
             int compare = compare_strings(glossary[i].beginList->name, name);
@@ -188,7 +187,7 @@ void delete_follow(Student* stud, Student* follow){
         }
         stud->follower.listFollower[stud->follower.nbrFollower] = NULL;
         stud->follower.nbrFollower--;
-        FILE* fileptr = fopen("follows.txt", "r");
+        printf("\nThis student got removed from your list of follows\n");
     } else {
         printf("\nYou are not currently following this student\n");
     }
