@@ -1,5 +1,5 @@
 /*******************************************************************************
-This file is used to declare global variables.
+CONST.h is used to declare global variables.
 *******************************************************************************/
 
 #ifndef CONST_H_INCLUDED

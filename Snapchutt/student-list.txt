@@ -1,4 +1,4 @@
-9
+8
 
 *
 Florimond LALANDE
@@ -59,16 +59,6 @@ Lille
 4
 1
 7
-*
-*
-Baptiste TOUSSAINT
-19
-2020
-Industrial ingeniering
-Troyes
-13
-12
-5
 *
 *
 Alexis POCHARD

@@ -3,12 +3,13 @@
 #include "FUNCTIONS.h"
 
 /*******************************************************************************
-All useful fonctions wee use that ar not relative to structure
+All useful functions we use that are not related to structures.
 *******************************************************************************/
 
-int compare_strings(char *str1, char *str2)
-{/*Returns -1 if str1<str2 ; Returns 1 if str1>str2 ; Returns 0 if str1=str2*/
 
+/*The compare_strings returns -1 if str1<str2 ; Returns 1 if str1>str2 ; Returns 0 if str1=str2*/
+int compare_strings(char *str1, char *str2)
+{
     int k = 1;
     while (str1[k] == str2[k] && str1[k] != '\0' && str2[k] != '\0'){
         k++;
@@ -24,9 +25,9 @@ int compare_strings(char *str1, char *str2)
 
 /******************************************************************************/
 
+/*The compare_strings_simple returns 0 if str1 = str2 else returns 1*/
 int compare_strings_simple(char str1[], char str2[])
-{/*Returns 0 if str1 = str2 otherwise returns 1*/
-
+{
     int k = 1;
     while (str1[k] == str2[k] && str1[k] != '\0' && str2[k] != '\0'){
         k++;
@@ -40,9 +41,9 @@ int compare_strings_simple(char str1[], char str2[])
 
 /******************************************************************************/
 
+/*The copy_array_char function copies the content of contentArray in targetArray*/
 int copy_array_char(char *targetArray, char *contentArray, int lth1, int lth2)
-{/*Copies the content of 'contentArray' in 'targetArray'*/
-
+{
     if (lth2 > lth1){
         return 1;
     }
@@ -58,9 +59,9 @@ int copy_array_char(char *targetArray, char *contentArray, int lth1, int lth2)
 
 /******************************************************************************/
 
+/*The compare_fields_of_interest returns the number of interests in common between two students*/
 int compare_fields_of_interest(Student * stud1, Student *stud2)
-{/*Returns the number of interests in common between two students*/
-
+{
     int sameInterest = 0;
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 3; j++){
@@ -73,6 +74,7 @@ int compare_fields_of_interest(Student * stud1, Student *stud2)
 }
 
 /******************************************************************************/
+
 
 void fget_line(FILE* fptr, char* str){
     char lastCharacter;

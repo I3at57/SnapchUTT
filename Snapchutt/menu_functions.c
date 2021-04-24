@@ -3,42 +3,43 @@
 #include "FUNCTIONS.h"
 
 /*******************************************************************************
-MENU.h contain all the menu function which call other functions
+All the menu functions which call other functions.
 *******************************************************************************/
 
-int main_menu()
-{/*main_menu() is the main menu loop. Allows to navigate into othersub-menu*/
 
+/*The main_menu is the main menu loop. It allows to navigate in othersub-menu*/
+int main_menu()
+{
     int action;
     char valid;
     do {
-        printf("%s", menuSep);   //Only display cf DISPLAY_FONC
-        menu_display();   //Only display cf DISPLAY_FONC
+        printf("%s", menuSep); //Only display cf DISPLAY_FONC
+        menu_display(); //Only display cf DISPLAY_FONC
         printf("\nEnter your choise : ");
         scanf("%d", &action);
         switch(action){
             case 1:
-                /*Function to add a student in the glossary*/
+                /*Sub-menu to add a student to the glossary*/
                 add_student(create_student());
                 break;
             case 2:
-                /*sub-menu finds student, only on name-based research*/
+                /*Sub-menu to find a student only on name-based research*/
                 find_one_menu();
                 break;
             case 3:
-                /*sub menu to make a research by other field (age, field...)*/
+                /*Sub-menu to make a research by other field (age, field...)*/
                 find_all_menu();
                 break;
             case 4:
-                /*sub-menu to display all students by name*/
+                /*Sub-menu to display all students by name*/
                 printf("%s", actionSep);
                 display_all_alpha();
 
                 fflush(stdin);
-                scanf("%c", &valid); //enter a letter to continue
+                scanf("%c", &valid); //Enter a letter to continue
                 break;
             case 5:
-                /* quit() is the only way to quit the application */
+                /*quit is the only way to quit the application*/
                 //quit();
                 return(0);
                 break;
@@ -57,6 +58,7 @@ int main_menu()
 }
 
 /******************************************************************************/
+
 /*
 int add_menu() {
     add_student(create_student());
@@ -65,18 +67,19 @@ int add_menu() {
 
 /******************************************************************************/
 
-int find_one_menu() {
-
+/*The find_one_menu function finds a student on name-based research*/
+int find_one_menu()
+{
     Student *eleve, *eleve2;
     char nameStr[sizeName];
     int action;
 
     do {
-        /* A loop to research a specific student by name*/
+        /*A loop to research a specific student by name*/
         fflush(stdin);
         printf("\nEnter a name : ");
         scanf("%[^\n%]*c", nameStr);
-        eleve = find_student(nameStr);    // gives the pointer of a student
+        eleve = find_student(nameStr); //Give the pointer of a student
         if (eleve == NULL) {
             printf("\nThis student doesn't exist :/\n");
             printf("Enter 'Quit' to quit.\n");
@@ -84,17 +87,17 @@ int find_one_menu() {
             printf("\n");
         }
     }while(eleve == NULL && compare_strings_simple(nameStr, quitString));
-    /* If nameStr is 'Quit' the loop ends and eleve = NULL
-    else eleve points on a student in glossary. */
+    /*If nameStr is 'Quit' the loop ends and eleve = NULL
+    else eleve points on a student in glossary*/
 
     if (compare_strings_simple(nameStr, quitString) == 0) {
         return(1);
     } else {
         do {
-            printf("%s", menuSep);   //Only display cf DISPLAY_FONC
+            printf("%s", menuSep); //Only display cf DISPLAY_FONC
             student_display(eleve);
             printf("\n\n");
-            find_menu_display();   //Only display cf DISPLAY_FONC
+            find_menu_display(); //Only display cf DISPLAY_FONC
             printf("\nEnter your choise : ");
             scanf("%d", &action),
             printf("\n");
@@ -104,13 +107,13 @@ int find_one_menu() {
                     modify_menu(eleve);
                     break;
                 case 2:
+                    /*Sub-menu to delete the current student*/
                     printf("\n%s got removed\n", eleve->name);
                     delete_student(eleve);
                     return 0;
-                    /*Delete the current student*/
                     break;
                 case 3:
-                    /*A function to add a follow in a followinglist
+                    /*A function to add a follow in the list of follows
                     of a student*/
                     fflush(stdin);
                     printf("\nWho %s wants to follow ? : ", eleve->name);
@@ -125,8 +128,10 @@ int find_one_menu() {
                     break;
                 case 4:
                 {
+                    /*Sub-menu to suggest a list of follows*/
                     Student *suggestTab[5];
                     suggest_follows(eleve, suggestTab, 5);
+                    printf("The computer suggests you to follow :\n\n");
                     for (int i = 0; i < 5; i++){
                         if (suggestTab[i] != NULL){
                             student_display(suggestTab[i]);
@@ -140,7 +145,7 @@ int find_one_menu() {
                     display_follow_list(eleve);
                     break;
                 case 6:
-                    /* quit() is the only way to quit the application */
+                    /*Quit this menu*/
                     return(0);
                     break;
                 case 7:
@@ -170,17 +175,18 @@ int find_one_menu() {
 
 /******************************************************************************/
 
-int modify_menu(Student *eleve){
-  /*This menu is used to modify some informations about a student *eleve*/
+/*The modify_menu function is used to modify some informations about a student *eleve*/
+int modify_menu(Student *eleve)
+{
   int action;
   int ind3, ind4, ind5;
   char tab1[sizeFieldStudi], tab2[sizeStudentCity];
   int posi = researching_student(eleve);
   do {
-      printf("%s", menuSep);   //Only display cf DISPLAY_FONC
+      printf("%s", menuSep); //Only display cf DISPLAY_FONC
       student_display(eleve);
       printf("\n\n");
-      modify_menu_display();   //Only display cf DISPLAY_FONC
+      modify_menu_display(); //Only display cf DISPLAY_FONC
       int posi = researching_student(eleve);
       scanf("%d", &action),
       printf("\n");
@@ -203,7 +209,7 @@ int modify_menu(Student *eleve){
               printf("\n");
               break;
           case 3:
-              /*Change the field of Studies*/
+              /*Change the field of studies*/
               printf(
                   "Current field of studies : %s\nEnter field of studies : ",
                   eleve->fieldStudy
@@ -216,7 +222,7 @@ int modify_menu(Student *eleve){
               printf("\n");
               break;
           case 4:
-              /*sub-menu to display all */
+              /*Sub-menu to display all */
               printf(
                   "Current city of residence : %s\nEnter city of residence : ",
                   eleve->cityResidence
@@ -264,21 +270,24 @@ int modify_menu(Student *eleve){
 
 /******************************************************************************/
 
-int find_all_menu() {
+/*The find_all_menu function finds students on various type of research*/
+int find_all_menu()
+{
     int action, aGe, yAe, iTn;
     char valid;
     char cIt[sizeStudentCity];
     char sTu[sizeStudentCity];
 
     do {
-        printf("%s", menuSep);   //Only display cf DISPLAY_FONC
-        display_perway_menu_display();   //Only display cf DISPLAY_FONC
+        printf("%s", menuSep); //Only display cf DISPLAY_FONC
+        display_perway_menu_display(); //Only display cf DISPLAY_FONC
         printf("\nEnter your choise : ");
         scanf("%d", &action),
         printf("\n");
         switch(action){
             case 1:
-                /*Display all students in the glossary who have the same age*/
+                /*Display all students in the glossary
+                who have the same age*/
                 fflush(stdin);
                 printf("Enter an age : ");
                 scanf("%d", &aGe);
@@ -290,11 +299,11 @@ int find_all_menu() {
 
                 printf("\n");
                 fflush(stdin);
-                scanf("%c", &valid); //enter a letter to continue
+                scanf("%c", &valid); //Enter a letter to continue
                 break;
             case 2:
-                /*Display all students in the glossary who have the same
-                year of study*/
+                /*Display all students in the glossary
+                who have the same year of study*/
                 fflush(stdin);
                 printf("Enter an year of study : ");
                 scanf("%d", &yAe);
@@ -306,10 +315,11 @@ int find_all_menu() {
 
                 printf("\n");
                 fflush(stdin);
-                scanf("%c", &valid); //enter a letter to continue
+                scanf("%c", &valid); //Enter a letter to continue
                 break;
             case 3:
-                /*Display all students in the glossary who have the same city*/
+                /*Display all students in the glossary
+                who have the same city*/
                 fflush(stdin);
                 printf("Enter city of residence : ");
                 scanf("%[^\n%]*c", cIt);
@@ -321,11 +331,11 @@ int find_all_menu() {
 
                 printf("\n");
                 fflush(stdin);
-                scanf("%c", &valid); //enter a letter to continue
+                scanf("%c", &valid); //Enter a letter to continue
                 break;
             case 4:
-                /*Display all students in the glossary who have the same
-                field of studies*/
+                /*Display all students in the glossary
+                who have the same field of studies*/
                 fflush(stdin);
                 printf("Enter field of studies : ");
                 scanf("%[^\n%]*c", sTu);
@@ -337,11 +347,11 @@ int find_all_menu() {
 
                 printf("\n");
                 fflush(stdin);
-                scanf("%c", &valid); //enter a letter to continue
+                scanf("%c", &valid); //Enter a letter to continue
                 break;
             case 5:
-                /*Display all students in the glossary who
-                have the same interest*/
+                /*Display all students in the glossary
+                who have the same interest*/
                 display_interest(); printf("\n");
                 printf("- "); scanf("%d", &iTn); printf("\n");
 
@@ -351,10 +361,10 @@ int find_all_menu() {
 
                 printf("\n");
                 fflush(stdin);
-                scanf("%c", &valid); //enter a letter to continue
+                scanf("%c", &valid); //Enter a letter to continue
                 break;
             case 6:
-                /*Quit*/
+                /*Quit this menu*/
                 return(0);
                 break;
             default:

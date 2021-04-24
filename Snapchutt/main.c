@@ -4,7 +4,6 @@
 
 int main()
 {
-    //Un commentaire
     /*Put every student of STUDENTS_LIST in glossary*/
     init_glossary();
     init_followers();

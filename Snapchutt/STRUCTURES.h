@@ -1,5 +1,5 @@
 /*******************************************************************************
-STRUCTURES.h contain all personal types we have created.
+STRUCTURES.h contains all personal types we have created.
 It must be imported at first during execution.
 *******************************************************************************/
 
@@ -31,14 +31,14 @@ typedef struct Student
 {
     /*This is the main structure of the project.*/
 
-    char name [50];   //name of this student
-    int age;    //age of this student
-    int yearStudy;    //year of studies begin
-    char fieldStudy [50];   //name of the fild studied
-    char cityResidence [50];   //city of this student
+    char name [50]; //name of this student
+    int age; //age of this student
+    int yearStudy; //year of studies begin
+    char fieldStudy [50]; //name of the field studied
+    char cityResidence [50]; //city of this student
     struct Student *nextAlphaStudent; //Next student per alphabetic.
-    Follow follower;    //pointer to the follow list.
-    FieldOfInterest interest[3];    //hobbys
+    Follow follower; //pointer to the follow list.
+    FieldOfInterest interest[3]; //hobbies
 }Student;
 
 typedef struct LineGlossary

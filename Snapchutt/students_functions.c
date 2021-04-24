@@ -3,19 +3,21 @@
 #include "FUNCTIONS.h"
 
 /*******************************************************************************
-STUDENTS_FONC.h contain all the fonction relative to the gestion of a student.
+All the functions related to the management of students variables.
 *******************************************************************************/
 
 
-Student *create_student(){
-    /*This function is used to create a Student variable and return its pointer*/
+/*The create_student function creates a Student variable
+and returns its pointer*/
+Student *create_student()
+{
     Student *stud;
     stud = malloc(sizeof(Student));
     char str1[sizeName], str2[sizeFieldStudi], str3[sizeStudentCity];
     int ind1, ind2, ind3, ind4, ind5;
 
     fflush(stdin);  //Security
-    /* Enter all informations of the new student */
+    //The user enters all informations about the new student
     printf("\nName : "); scanf("%[^\n%]*c", str1);
     printf("\nAge : "); scanf("%d", &ind1);
     printf("\nYear of study : "); scanf("%d", &ind2);
@@ -29,7 +31,7 @@ Student *create_student(){
     printf("- "); scanf("%d", &ind4);
     printf("- "); scanf("%d", &ind5);
 
-    /* Create this new student */
+    //Create this new student
     Student stur={
         .age = ind1, .yearStudy = ind2, .interest = {
         tabOfInterest[ind3-1], tabOfInterest[ind4-1], tabOfInterest[ind5-1]},
@@ -49,15 +51,18 @@ Student *create_student(){
 }
 
 
-int add_student(Student *stud){
-    // Finding the right chapter in the glossary
+/*The add_student function takes the pointer of a student as argument
+and adds this student to the glossary*/
+int add_student(Student *stud)
+{
+    //Finding the right chapter in the glossary
     char readChar = stud->name[0];
     int i = 0;
     while (readChar != glossary[i].letter && i < 27){
         i++;
     }
     if (readChar == glossary[i].letter){
-        // If the chapter of glossary does not contain any element
+        //If the chapter of glossary does not contain any element
         if (glossary[i].beginList == NULL){
             stud->nextAlphaStudent = NULL;
             glossary[i].beginList = stud;
@@ -65,27 +70,27 @@ int add_student(Student *stud){
         } else {
             Student *ptr = glossary[i].beginList;
             int compare = compare_strings(stud->name, ptr->name);
-            // If the chapter contains 1 element that comes after stud
+            //If the chapter contains one element that comes after stud
             if (compare == -1 || compare == 0){
                 stud->nextAlphaStudent = glossary[i].beginList;
                 glossary[i].beginList = stud;
-                // necessary step because glossary[i].beginList is not a Student
+                //Necessary step because glossary[i].beginList is not a Student
                 return 0;
             } else {
                 while (ptr->nextAlphaStudent != NULL){
                     Student nextElement = *(ptr->nextAlphaStudent);
                     int compare = compare_strings(stud->name, nextElement.name);
-                    // If stud comes before nextElement
+                    //If stud comes before nextElement
                     if (compare == -1 || compare == 0){
                         stud->nextAlphaStudent = ptr->nextAlphaStudent;
                         ptr->nextAlphaStudent = stud;
                         return 0;
                     } else {
-                        // If stud comes after nextElement
+                        //If stud comes after nextElement
                         ptr = ptr->nextAlphaStudent;
                     }
                 }
-                // If stud is the last element of the chapter
+                //If stud is the last element of the chapter
                 if (ptr->nextAlphaStudent == NULL){
                     stud->nextAlphaStudent = NULL;
                     ptr->nextAlphaStudent = stud;
@@ -94,52 +99,59 @@ int add_student(Student *stud){
             }
         }
     } else {
-        // The chapter for stud has not been found
+        //The chapter for stud has not been found
         return 1;
     }
 }
 
 /******************************************************************************/
-/******************************************************************************/
 
-Student *find_student(char *name){
+/*The find_student function takes a character string as argument
+and returns wether the pointer to the student who have the character string as name
+or NULL if none of the students have the character string as name*/
+Student *find_student(char *name)
+{
     Student *foundStudent;
     int i = 0;
+    //Find the right chapter in the glossary that matches with the 1st letter of the name
     while (glossary[i].letter != name[0] && i < 27){
-        // Find the right line in the glossary that matchs with the
-        // 1st letter of the name
         i++;
     }
     if (glossary[i].letter == name[0]){
-        // Enter in the right chapter
         if (glossary[i].beginList == NULL){
-            //The entered student does not exist
+            //The student does not exist
             return (NULL);
         } else {
+            /*This section compares the name given as parameter
+            with the first element of the right chapter in the glossary*/
             int compare = compare_strings(glossary[i].beginList->name, name);
-            //Return either 0, 1, -1
+            //Return wether 0, 1 or -1
             if (compare == 0){
-                // We fund the right student
+                //The student has been found
                 foundStudent = glossary[i].beginList;
                 return (foundStudent);
-            } else if (compare == 1){
-                //The researching student is before the 1st of the chain
-                //So it doesn't exist because the chain is in right order
+            } else if (compare == -1){
+                //The student does not exist because the glossary is in alphabetical order
                 return (NULL);
             } else {
+                /*This section compares the name given as parameter
+                with every element of the right chapter in the glossary*/
                 Student *ptr = glossary[i].beginList->nextAlphaStudent;
                 while (ptr != NULL){
                     compare = compare_strings(ptr->name, name);
                     if (compare == 0){
+                        //The student has been found
                         foundStudent = ptr;
                         return (foundStudent);
                     } else if (compare == -1){
+                        //The student does not exist because the glossary is in alphabetical order
                         return (NULL);
                     } else {
                         ptr = ptr->nextAlphaStudent;
                     }
                 }
                 if (ptr == NULL){
+                    //The student does not exist in the chapter where he was supposed to be
                     return (NULL);
                 }
             }
@@ -151,24 +163,31 @@ Student *find_student(char *name){
 
 /******************************************************************************/
 
-
-void add_follow(Student *stud, Student *follow){
+/*The add_follow function takes two pointers of students as arguments
+and adds the *follow student to the list of follows of the *stud student*/
+void add_follow(Student *stud, Student *follow)
+{
     if (follow != stud){
         if (stud->follower.maxElement == 0){
-            stud->follower.listFollower = (
-                Student **)malloc(10 * sizeof(Student *));
+            /*
+            If *stud has no space in its list of follows
+            10 follow slots are allocated
+            */
+            stud->follower.listFollower = (Student**)malloc(10 * sizeof(Student*));
             stud->follower.maxElement = 10;
-            stud->follower.listFollower[stud->follower.nbrFollower] = follow;
+            stud->follower.listFollower[stud->follower.nbrFollower] = follow; //Add follow to the list of follows of *stud
             stud->follower.nbrFollower++;
         } else if (stud->follower.nbrFollower < stud->follower.maxElement){
-            stud->follower.listFollower[stud->follower.nbrFollower] = follow;
+            /*If *stud has enough space in its list of follows*/
+            stud->follower.listFollower[stud->follower.nbrFollower] = follow; //Add follow to the list of follows of *stud
             stud->follower.nbrFollower++;
         } else {
-            stud->follower.listFollower = (
-                Student **)realloc(
-                    stud->follower.listFollower, 5 * sizeof(Student *));
+            /*If *stud has not enough space in its list of follows
+            5 follow slots are allocated
+            */
+            stud->follower.listFollower = (Student**)realloc(stud->follower.listFollower, 5 * sizeof(Student*));
             stud->follower.maxElement += 5;
-            stud->follower.listFollower[stud->follower.nbrFollower] = follow;
+            stud->follower.listFollower[stud->follower.nbrFollower] = follow; //Add follow to the list of follows of *stud
             stud->follower.nbrFollower++;
         }
     } else {
@@ -176,12 +195,18 @@ void add_follow(Student *stud, Student *follow){
     }
 }
 
-void delete_follow(Student* stud, Student* follow){
+
+/*The delete_follow function takes two pointers of students as arguments
+and deletes the *follow student from the list of follows of the *stud student*/
+void delete_follow(Student* stud, Student* follow)
+{
     int i = 0;
+    //Find follow in the list of follow of *stud
     while (stud->follower.listFollower[i] != follow && i < stud->follower.nbrFollower){
         i++;
     }
     if (stud->follower.listFollower[i] == follow){
+        //Remove the follow and reorganize the list of follows of *stud
         for (int j = i; j < stud->follower.nbrFollower; j++){
             stud->follower.listFollower[j] = stud->follower.listFollower[j+1];
         }
@@ -194,6 +219,7 @@ void delete_follow(Student* stud, Student* follow){
 }
 
 
+/*The suggest_follows function takes */
 void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
     for (int t = 0; t < nbrSuggestion; t++){
         suggestionTab[t] = NULL;
@@ -348,43 +374,46 @@ void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
 
 /******************************************************************************/
 
-
-int delete_student(Student *stud){
-    // Finding the right chapter in the glossary
-    char readChar = stud->name[0];
+/*The delete_student function takes a pointer as argument
+and delete the student pointed to the pointer in the glossary*/
+int delete_student(Student *stud)
+{
 
     errase_student(researching_student(stud->name));
 
+    char readChar = stud->name[0];
     int i = 0;
+    //Find the right chapter in the glossary
     while (readChar != glossary[i].letter && i < 27){
         i++;
     }
     if (readChar == glossary[i].letter){
         if (glossary[i].beginList == NULL){
+            //There is no student in the chapter of the glossary
             return 1;
         } else {
             Student *ptr = glossary[i].beginList;
             if (ptr == stud){
+                //The student has been found
                 glossary[i].beginList = stud->nextAlphaStudent;
-                clear_links(stud);
-                free(stud);
+                clear_links(stud); //Remove the student in avery list of follows of every student
+                free(stud); //Free the pointer
                 return 0;
             } else {
-                while (ptr->nextAlphaStudent != stud
-                    && ptr->nextAlphaStudent != NULL && compare_strings(
-                        stud->name, ptr->nextAlphaStudent->name) >= 0)
-                {
+                while (ptr->nextAlphaStudent != stud &&
+                       ptr->nextAlphaStudent != NULL &&
+                       compare_strings(stud->name, ptr->nextAlphaStudent->name) >= 0){
                     ptr = ptr->nextAlphaStudent;
                 }
                 if (ptr->nextAlphaStudent == stud){
+                    //The student has been found
                     ptr->nextAlphaStudent = stud->nextAlphaStudent;
-                    clear_links(stud);
-                    free(stud);
+                    clear_links(stud); //Remove the student in avery list of follows of every student
+                    free(stud); //Free the pointer
                     return 0;
-                } else if (ptr->nextAlphaStudent == NULL
-                      || compare_strings(
-                          stud->name, ptr->nextAlphaStudent->name) < 0)
-                {
+                } else if (ptr->nextAlphaStudent == NULL ||
+                           compare_strings(stud->name, ptr->nextAlphaStudent->name) < 0){
+                    //The student has not been found
                     return 1;
                 }
             }
@@ -393,8 +422,13 @@ int delete_student(Student *stud){
     return 1;
 }
 
+/******************************************************************************/
 
-void clear_links(Student *stud){
+/*The clear_links function takes a pointer to a student as argument
+and remove all pointers equal to this one in every list of follows of every student
+(this function allows to close the application properly)*/
+void clear_links(Student *stud)
+{
     for (int i = 0; i < 27; i++){
         Student *ptr = glossary[i].beginList;
         while (ptr != NULL){
@@ -410,7 +444,11 @@ void clear_links(Student *stud){
 }
 
 
+/*The quit function saves the student-list.txt and follows.txt files
+with the current state of variables and for each student, it clears all pointers
+and free the pointer to the variables*/
 void quit(){
+    save_follows();
     for (int i = 0; i < 27; i++){
         while (glossary[i].beginList != NULL){
             Student *ptr = glossary[i].beginList;
