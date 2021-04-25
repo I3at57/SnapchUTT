@@ -43,6 +43,10 @@ int main_menu()
                 //quit();
                 return(0);
                 break;
+            case 6:
+                /*A test zone only for developer*/
+                testzone();
+                break;
             default:
                 printf(
                     "%sPlease enter a valid propostion !\n",
@@ -157,6 +161,10 @@ int find_one_menu()
                 case 7:
                     /*Quit this menu*/
                     return(0);
+                    break;
+                case 8:
+                    /*A test zone only for developer*/
+                    testzone();
                     break;
                 default:
                     printf(
@@ -383,9 +391,3 @@ int testzone () {
     errase_student(researching_student(find_student("Baptiste TOUSSAINT")));
     return(0);
 }
-
-/*
-            case 6:
-                 A test zone only for developer
-                testzone();
-                break;*/
