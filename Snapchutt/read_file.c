@@ -228,6 +228,40 @@ int ecrire_student(Student* stud)
     fclose(openFile);
 }
 
+void save_students(){
+    int nbrStudent = 0;
+    Student* ptr;
+    for (int i = 0; i < 27; i++){
+        ptr = glossary[i].beginList;
+        while (ptr != NULL){
+            nbrStudent++;
+            ptr = ptr->nextAlphaStudent;
+        }
+    }
+    FILE* fptr = fopen("student-list.txt", "w");
+    if (fptr){
+        fprintf(fptr, "%d\n", nbrStudent);
+        fprintf(fptr, "\n");
+        for (int i = 0; i < 27; i++){
+            ptr = glossary[i].beginList;
+            while (glossary != NULL){
+                fprintf(openFile, "*\n");
+                fprintf(openFile, "%s\n", ptr->name);
+                fprintf(openFile, "%d\n", ptr->age);
+                fprintf(openFile, "%d\n", ptr->yearStudy);
+                fprintf(openFile, "%s\n", ptr->fieldStudy);
+                fprintf(openFile, "%s\n", ptr->cityResidence);
+                fprintf(openFile, "%d\n", ptr->interest[0].nbr);
+                fprintf(openFile, "%d\n", ptr->interest[1].nbr);
+                fprintf(openFile, "%d\n", ptr->interest[2].nbr);
+                fprintf(openFile, "*\n");
+                ptr = ptr->nextAlphaStudent;
+            }
+        }
+        fclose(fptr);
+    }
+}
+
 /*******************************************************************************/
 
 /*The init_followers function reads the follows.txt file and adds every follow
@@ -274,7 +308,7 @@ void init_followers()
 
 /*The save_follows function saves the updated follows.txt file
 when the application is closed*/
-void save_follows()
+void save_followers()
 {
     FILE* fptr = fopen("follows.txt", "w");
     if (fptr){
