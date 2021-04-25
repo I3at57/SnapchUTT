@@ -219,12 +219,328 @@ void delete_follow(Student* stud, Student* follow)
 }
 
 
+/*The suggest_follows function takes a pointer to a student, an array of pointers to students
+and a number of suggestions as arguments, it returns the array containing follows suggestions.
+The number of suggestions is can reach a maximum of nbrSuggestion
+depending on the number of links already existing.
+If the student whose pointer is given does not follow anyone
+then the suggestions will be based on fields of interest*/
+void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
+    //Initialize the array of suggestions
+    for (int t = 0; t < nbrSuggestion; t++){
+        suggestionTab[t] = NULL;
+    }
+    if (stud->follower.nbrFollower > 0){
+        //If *stud follows at least one student
+        int max = 0;
+        Student *bestFollow = NULL;
+        Student *linkDeg1, *linkDeg2, *linkDeg3, *linkDeg4;
+        /*Every student in the list of follows of *stud are spotted*/
+        stud->follower.known = 1;
+        for (int i = 0; i < stud->follower.nbrFollower; i++){
+            stud->follower.listFollower[i]->follower.known = 1;
+        }
+
+        /*This part gives every student amongst the follows of follows of follows of follows of *stud
+        a score that corresponds to the chance he has to be known by *stud*/
+        for (int i = 0; i < stud->follower.nbrFollower; i++){
+            linkDeg1 = stud->follower.listFollower[i];
+            /*Browse the follows of *stud follows*/
+            for (int j = 0; j < linkDeg1->follower.nbrFollower; j++){
+                linkDeg2 = linkDeg1->follower.listFollower[j];
+                if (linkDeg2->follower.known != 1){
+                    //If this student is not already followed
+                    linkDeg2->follower.suggestionCount += 3; //Increase the chances that *stud would know this student
+                    if (linkDeg2->follower.suggestionCount > max){
+                        //If this student has the highest chance to be known
+                        max = linkDeg2->follower.suggestionCount; //Increase the highest chance
+                        bestFollow = linkDeg2;
+                    }
+                }
+                if (linkDeg2 != stud){
+                    for (int k = 0; k < linkDeg2->follower.nbrFollower; k++){
+                        linkDeg3 = linkDeg2->follower.listFollower[k];
+                        /*Browse the follows of the follows of *stud follows*/
+                        if (linkDeg3->follower.known != 1){
+                            //If this student is not already followed
+                            linkDeg3->follower.suggestionCount += 2; //Increase the chances that *stud would know this student
+                            if (linkDeg3->follower.suggestionCount > max){
+                                //If this student has the highest chance to be known
+                                max = linkDeg3->follower.suggestionCount; //Increase the highest chance
+                                bestFollow = linkDeg3;
+                            }
+                        }
+                        if (linkDeg3 != stud){
+                            for (int l = 0; l < linkDeg3->follower.nbrFollower; l++){
+                                linkDeg4 = linkDeg3->follower.listFollower[l];
+                                /*Browse the follows of the follows of the follows of *stud follows*/
+                                if (linkDeg4->follower.known != 1){
+                                    //If this student is not already followed
+                                    linkDeg4->follower.suggestionCount += 1; //Increase the chances that *stud would know this student
+                                    if (linkDeg4->follower.suggestionCount > max){
+                                        //If this student has the highest chance to be known
+                                        max = linkDeg4->follower.suggestionCount; //Increase the highest chance
+                                        bestFollow = linkDeg4;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        bestFollow->follower.known = 1;
+        suggestionTab[0] = bestFollow; //Put the best suggestion of follow in the first place of the array
+
+        /*This part searches for the best students to suggest
+        and fill the array with them*/
+        int t = 1;
+        while (max > 0 && t < nbrSuggestion){
+            for (int i = 0; i < stud->follower.nbrFollower; i++){
+                linkDeg1 = stud->follower.listFollower[i];
+                if (t < nbrSuggestion && linkDeg1 != stud){
+                    //If the array is not full yet and the student is not *stud
+                    for (int j = 0; j < linkDeg1->follower.nbrFollower; j++){
+                        linkDeg2 = linkDeg1->follower.listFollower[j];
+                        /*Browse the follows of *stud follows*/
+                        if (linkDeg2->follower.known != 1){
+                            //If the student is not known
+                            if (linkDeg2->follower.suggestionCount == max){
+                                //If this student has the highest chance to be known
+                                suggestionTab[t] = linkDeg2; //Fill the array
+                                suggestionTab[t]->follower.known = 1;
+                                t++;
+                            }
+                        }
+                    }
+                    if (t < nbrSuggestion && linkDeg2 != stud){
+                        //If the array is not full yet and the student is not *stud
+                        for (int k = 0; k < linkDeg2->follower.nbrFollower; k++){
+                            linkDeg3 = linkDeg2->follower.listFollower[k];
+                            /*Browse the follows of the follows of *stud follows*/
+                            if (linkDeg3->follower.known != 1){
+                                //If the student is not known
+                                if (linkDeg3->follower.suggestionCount == max){
+                                    //If this student has the highest chance to be known
+                                    suggestionTab[t] = linkDeg3; //Fill the array
+                                    suggestionTab[t]->follower.known = 1;
+                                    t++;
+                                }
+                            }
+                            if (t < nbrSuggestion && linkDeg3 != stud){
+                                //If the array is not full yet and the student is not *stud
+                                for (int l = 0; l < linkDeg3->follower.nbrFollower; l++){
+                                    linkDeg4 = linkDeg3->follower.listFollower[l];
+                                    /*Browse the follows of the follows of the follows of *stud follows*/
+                                    if (linkDeg4->follower.known != 1){
+                                        //If student is not known
+                                        if (linkDeg4->follower.suggestionCount == max){
+                                            //If this student has the highest chance to be known
+                                            suggestionTab[t] = linkDeg4; //Fill the array
+                                            suggestionTab[t]->follower.known = 1;
+                                            t++;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            max--; //Decrease the highest chance for someone to be known
+        }
+
+        /*This part puts to 0 every suggestionCount and every known fields
+        of every manipulated student*/
+        stud->follower.known = 0;
+        for (int i = 0; i < stud->follower.nbrFollower; i++){
+            linkDeg1 = stud->follower.listFollower[i];
+            /*Browse *stud follows*/
+            linkDeg1->follower.suggestionCount = 0;
+            linkDeg1->follower.known = 0;
+            for (int j = 0; j < linkDeg1->follower.nbrFollower; j++){
+                linkDeg2 = linkDeg1->follower.listFollower[j];
+                /*Browse the follows of *stud follows*/
+                if (linkDeg2->follower.suggestionCount != 0
+                    || linkDeg2->follower.known !=0){
+                    linkDeg2->follower.suggestionCount = 0;
+                    linkDeg2->follower.known = 0;
+                }
+                if (linkDeg2 != stud){
+                    for (int k = 0; k < linkDeg2->follower.nbrFollower; k++){
+                        linkDeg3 = linkDeg2->follower.listFollower[k];
+                        /*Browse the follows of the follows of *stud follows*/
+                        if (linkDeg3->follower.suggestionCount != 0
+                            || linkDeg3->follower.known != 0){
+                            linkDeg3->follower.suggestionCount = 0;
+                            linkDeg3->follower.known = 0;
+                        }
+                        if (linkDeg3 != stud){
+                            for (int l = 0; l < linkDeg3->follower.nbrFollower; l++){
+                                linkDeg4 = linkDeg3->follower.listFollower[l];
+                                /*Browse the follows of the follows of the follows of *stud follows*/
+                                if (linkDeg4->follower.suggestionCount != 0
+                                    || linkDeg4->follower.known != 0){
+                                    linkDeg4->follower.suggestionCount = 0;
+                                    linkDeg4->follower.known = 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        //If *stud does not follow anyone
+        int max = 0;
+        stud->follower.known = 1;
+
+        /*This part compare the fields of interest of *stud and every student
+        of the glossary in order to find a good suggestion*/
+        for (int i = 0; i < 27; i++){
+            /*Browse the students of the glossary*/
+            Student *ptr = glossary[i].beginList;
+            while (ptr != NULL){
+                int compare = compare_fields_of_interest(stud, ptr); //Compare fields of interest
+                if (ptr->follower.known != 1 && compare > max){
+                    max = compare; //Increase the highest score
+                    ptr->follower.known = 1;
+                    if (suggestionTab[0] != NULL){
+                        suggestionTab[0]->follower.known = 0;
+                    }
+                    suggestionTab[0] = ptr; //Put the best suggestion of follow in the first place of the array
+                }
+                ptr = ptr->nextAlphaStudent;
+            }
+        }
+
+        /*This part searches for the best students to suggest
+        and fill the array with them*/
+        int t = 1;
+        while (max > 0 && t < nbrSuggestion){
+            for (int i = 0; i < 27; i++){
+                /*Browse the students of the glossary*/
+                Student *ptr = glossary[i].beginList;
+                while (t < nbrSuggestion && ptr != NULL){
+                    //While the array in not full yet
+                    int compare = compare_fields_of_interest(stud, ptr); //Compare fields of interest
+                    if (ptr->follower.known != 1 && compare == max){
+                        //If the student is not in the array and has the highest score
+                        ptr->follower.known = 1;
+                        suggestionTab[t] = ptr; //Fill the array
+                        t++;
+                    }
+                    ptr = ptr->nextAlphaStudent;
+                }
+            }
+            max--; //Decrease the highest score
+        }
+
+        /*This part puts to 0 every known field of every manipulated student*/
+        stud->follower.known = 0;
+        for (int i = 0; i < nbrSuggestion; i++){
+            if (suggestionTab[i] != NULL){
+                suggestionTab[i]->follower.known = 0;
+            }
+        }
+    }
+}
+
+/******************************************************************************/
+
+/*The delete_student function takes a pointer as argument
+and delete the student pointed to the pointer in the glossary*/
+int delete_student(Student *stud)
+{
+
+    errase_student(researching_student(stud->name));
+
+    char readChar = stud->name[0];
+    int i = 0;
+    //Find the right chapter in the glossary
+    while (readChar != glossary[i].letter && i < 27){
+        i++;
+    }
+    if (readChar == glossary[i].letter){
+        if (glossary[i].beginList == NULL){
+            //There is no student in the chapter of the glossary
+            return 1;
+        } else {
+            Student *ptr = glossary[i].beginList;
+            if (ptr == stud){
+                //The student has been found
+                glossary[i].beginList = stud->nextAlphaStudent;
+                clear_links(stud); //Remove the student in avery list of follows of every student
+                free(stud); //Free the pointer
+                return 0;
+            } else {
+                while (ptr->nextAlphaStudent != stud &&
+                       ptr->nextAlphaStudent != NULL &&
+                       compare_strings(stud->name, ptr->nextAlphaStudent->name) >= 0){
+                    ptr = ptr->nextAlphaStudent;
+                }
+                if (ptr->nextAlphaStudent == stud){
+                    //The student has been found
+                    ptr->nextAlphaStudent = stud->nextAlphaStudent;
+                    clear_links(stud); //Remove the student in avery list of follows of every student
+                    free(stud); //Free the pointer
+                    return 0;
+                } else if (ptr->nextAlphaStudent == NULL ||
+                           compare_strings(stud->name, ptr->nextAlphaStudent->name) < 0){
+                    //The student has not been found
+                    return 1;
+                }
+            }
+        }
+    }
+    return 1;
+}
+
+/******************************************************************************/
+
+/*The clear_links function takes a pointer to a student as argument
+and remove all pointers equal to this one in every list of follows of every student
+(this function allows to close the application properly)*/
+void clear_links(Student *stud)
+{
+    for (int i = 0; i < 27; i++){
+        Student *ptr = glossary[i].beginList;
+        while (ptr != NULL){
+            for (int j = 0; j < ptr->follower.nbrFollower; j++){
+                if (ptr->follower.listFollower[j] == stud){
+                    ptr->follower.listFollower[j] = NULL;
+                }
+            }
+            ptr = ptr->nextAlphaStudent;
+        }
+    }
+    free(stud->follower.listFollower);
+}
+
+
+/*The quit function saves the student-list.txt and follows.txt files
+with the current state of variables and for each student, it clears all pointers
+and free the pointer to the variables*/
+void quit(){
+    save_follows();
+    for (int i = 0; i < 27; i++){
+        while (glossary[i].beginList != NULL){
+            Student *ptr = glossary[i].beginList;
+            clear_links(ptr);
+            glossary[i].beginList = glossary[i].beginList->nextAlphaStudent;
+            free(ptr);
+        }
+    }
+}
+
+
 /*The suggest_follows function takes */
+/*
 void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
     for (int t = 0; t < nbrSuggestion; t++){
         suggestionTab[t] = NULL;
     }
-    if (stud->follower.nbrFollower != 0){
+    if (stud->follower.nbrFollower > 0){
         int max = 0;
         Student *bestFollow = NULL;
         stud->follower.known = 1;
@@ -371,90 +687,5 @@ void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
         }
     }
 }
+*/
 
-/******************************************************************************/
-
-/*The delete_student function takes a pointer as argument
-and delete the student pointed to the pointer in the glossary*/
-int delete_student(Student *stud)
-{
-
-    errase_student(researching_student(stud->name));
-
-    char readChar = stud->name[0];
-    int i = 0;
-    //Find the right chapter in the glossary
-    while (readChar != glossary[i].letter && i < 27){
-        i++;
-    }
-    if (readChar == glossary[i].letter){
-        if (glossary[i].beginList == NULL){
-            //There is no student in the chapter of the glossary
-            return 1;
-        } else {
-            Student *ptr = glossary[i].beginList;
-            if (ptr == stud){
-                //The student has been found
-                glossary[i].beginList = stud->nextAlphaStudent;
-                clear_links(stud); //Remove the student in avery list of follows of every student
-                free(stud); //Free the pointer
-                return 0;
-            } else {
-                while (ptr->nextAlphaStudent != stud &&
-                       ptr->nextAlphaStudent != NULL &&
-                       compare_strings(stud->name, ptr->nextAlphaStudent->name) >= 0){
-                    ptr = ptr->nextAlphaStudent;
-                }
-                if (ptr->nextAlphaStudent == stud){
-                    //The student has been found
-                    ptr->nextAlphaStudent = stud->nextAlphaStudent;
-                    clear_links(stud); //Remove the student in avery list of follows of every student
-                    free(stud); //Free the pointer
-                    return 0;
-                } else if (ptr->nextAlphaStudent == NULL ||
-                           compare_strings(stud->name, ptr->nextAlphaStudent->name) < 0){
-                    //The student has not been found
-                    return 1;
-                }
-            }
-        }
-    }
-    return 1;
-}
-
-/******************************************************************************/
-
-/*The clear_links function takes a pointer to a student as argument
-and remove all pointers equal to this one in every list of follows of every student
-(this function allows to close the application properly)*/
-void clear_links(Student *stud)
-{
-    for (int i = 0; i < 27; i++){
-        Student *ptr = glossary[i].beginList;
-        while (ptr != NULL){
-            for (int j = 0; j < ptr->follower.nbrFollower; j++){
-                if (ptr->follower.listFollower[j] == stud){
-                    ptr->follower.listFollower[j] = NULL;
-                }
-            }
-            ptr = ptr->nextAlphaStudent;
-        }
-    }
-    free(stud->follower.listFollower);
-}
-
-
-/*The quit function saves the student-list.txt and follows.txt files
-with the current state of variables and for each student, it clears all pointers
-and free the pointer to the variables*/
-void quit(){
-    save_follows();
-    for (int i = 0; i < 27; i++){
-        while (glossary[i].beginList != NULL){
-            Student *ptr = glossary[i].beginList;
-            clear_links(ptr);
-            glossary[i].beginList = glossary[i].beginList->nextAlphaStudent;
-            free(ptr);
-        }
-    }
-}

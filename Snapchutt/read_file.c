@@ -291,8 +291,7 @@ void save_follows()
                 sptr = sptr->nextAlphaStudent;
             }
         }
-        printf("%d\n", linkCount); //Write the number of links between all students
-        fprintf(fptr, "%d\n", linkCount);
+        fprintf(fptr, "%d\n", linkCount); //Write the number of links between all students
         fprintf(fptr, "\n");
         for (int i = 0; i < 27; i++){
             sptr = glossary[i].beginList;

@@ -41,15 +41,15 @@ void menu_display()
     printf("***************************************************************\n");
     printf("***************************************************************\n");
     printf("**                                                           **\n");
-    printf("**            ----- Welcome in Snapch'UTT ! -----            **\n");
+    printf("**            ----- Welcome to Snapch'UTT ! -----            **\n");
     printf("**                                                           **\n");
     printf("**                                                           **\n");
     printf("**   There is several things to do here :                    **\n");
     printf("**                                                           **\n");
     printf("**   1. Add a student in the database                        **\n");
     printf("**   2. Find a specific student                              **\n");
-    printf("**   3. Do a research by cathegorize                         **\n");
-    printf("**   4. Display student by name                              **\n");
+    printf("**   3. Do a research by category                            **\n");
+    printf("**   4. Display all students by name                         **\n");
     printf("**   5. Quit                                                 **\n");
     printf("**                                                           **\n");
     printf("***************************************************************\n");
@@ -61,17 +61,18 @@ void find_menu_display()
     printf("***************************************************************\n");
     printf("***************************************************************\n");
     printf("**                                                           **\n");
-    printf("**            ----- What do you want to do ? -----           **\n");
+    printf("**            ----- What do you want to Do ? -----           **\n");
     printf("**                                                           **\n");
     printf("**                                                           **\n");
-    printf("**   There is several things to with this Student :          **\n");
+    printf("**   There is several things to do with this Student :       **\n");
     printf("**                                                           **\n");
     printf("**   1. Modify                                               **\n");
     printf("**   2. Delete                                               **\n");
     printf("**   3. Add a Follow                                         **\n");
-    printf("**   4. Propose Student to Follows                           **\n");
-    printf("**   5. Display the list of follow                           **\n");
-    printf("**   6. Quit                                                 **\n");
+    printf("**   4. Delete a follow                                      **\n");
+    printf("**   5. Suggest some Students to follow                      **\n");
+    printf("**   6. Display the list of follows                          **\n");
+    printf("**   7. Quit                                                 **\n");
     printf("**                                                           **\n");
     printf("***************************************************************\n");
     printf("***************************************************************\n");
@@ -86,7 +87,7 @@ void display_perway_menu_display()
     printf("**                                                           **\n");
     printf("**                                                           **\n");
     printf("**   1. Age                                                  **\n");
-    printf("**   2. Year of Studies                                      **\n");
+    printf("**   2. Year of studies                                      **\n");
     printf("**   3. City of residence                                    **\n");
     printf("**   4. Field of studies                                     **\n");
     printf("**   5. Field of interest                                    **\n");
@@ -150,7 +151,6 @@ void student_display(Student *stu)
 /*The display_follow_list displays all students that a student follows*/
 void display_follow_list(Student *stud)
 {
-
     for (int i = 0; i < stud->follower.nbrFollower; i++){
         student_display(stud->follower.listFollower[i]);
         printf("\n\n");

@@ -43,10 +43,6 @@ int main_menu()
                 //quit();
                 return(0);
                 break;
-            case 6:
-                /* A test zone only for developer*/
-                testzone();
-                break;
             default:
                 printf(
                     "%sPlease enter a valid propostion !\n",
@@ -127,6 +123,20 @@ int find_one_menu()
                     }
                     break;
                 case 4:
+                    /*A function to delete a follow in the list of follows
+                    of a student*/
+                    fflush(stdin);
+                    printf("\nWho %s, wants to unfollow ? : ", eleve->name);
+                    scanf("%[^\n%]*c", nameStr);
+                    printf("\n");
+                    eleve2 = find_student(nameStr);
+                    if (eleve2 == NULL){
+                        printf("\nThis student doesn't exist :/\n");
+                    } else {
+                        delete_follow(eleve, eleve2);
+                    }
+                    break;
+                case 5:
                 {
                     /*Sub-menu to suggest a list of follows*/
                     Student *suggestTab[5];
@@ -138,29 +148,15 @@ int find_one_menu()
                             printf("\n\n");
                         }
                     }
-                }
                     break;
-                case 5:
+                }
+                case 6:
                     /*Display all students followed by 'eleve'*/
                     display_follow_list(eleve);
                     break;
-                case 6:
+                case 7:
                     /*Quit this menu*/
                     return(0);
-                    break;
-                case 7:
-                    /* A test zone only for developer*/
-                    //testzone();
-                    fflush(stdin);
-                    printf("\nWho %s, wants to unfollow ? : ", eleve->name);
-                    scanf("%[^\n%]*c", nameStr);
-                    printf("\n");
-                    eleve2 = find_student(nameStr);
-                    if (eleve2 == NULL){
-                        printf("\nThis student doesn't exist :/\n");
-                    } else {
-                        delete_follow(eleve, eleve2);
-                    }
                     break;
                 default:
                     printf(
@@ -387,3 +383,9 @@ int testzone () {
     errase_student(researching_student(find_student("Baptiste TOUSSAINT")));
     return(0);
 }
+
+/*
+            case 6:
+                 A test zone only for developer
+                testzone();
+                break;*/
