@@ -244,17 +244,17 @@ void save_students(){
         fprintf(fptr, "\n");
         for (int i = 0; i < 27; i++){
             ptr = glossary[i].beginList;
-            while (glossary != NULL){
-                fprintf(openFile, "*\n");
-                fprintf(openFile, "%s\n", ptr->name);
-                fprintf(openFile, "%d\n", ptr->age);
-                fprintf(openFile, "%d\n", ptr->yearStudy);
-                fprintf(openFile, "%s\n", ptr->fieldStudy);
-                fprintf(openFile, "%s\n", ptr->cityResidence);
-                fprintf(openFile, "%d\n", ptr->interest[0].nbr);
-                fprintf(openFile, "%d\n", ptr->interest[1].nbr);
-                fprintf(openFile, "%d\n", ptr->interest[2].nbr);
-                fprintf(openFile, "*\n");
+            while (ptr != NULL){
+                fprintf(fptr, "*\n");
+                fprintf(fptr, "%s\n", ptr->name);
+                fprintf(fptr, "%d\n", ptr->age);
+                fprintf(fptr, "%d\n", ptr->yearStudy);
+                fprintf(fptr, "%s\n", ptr->fieldStudy);
+                fprintf(fptr, "%s\n", ptr->cityResidence);
+                fprintf(fptr, "%d\n", ptr->interest[0].nbr);
+                fprintf(fptr, "%d\n", ptr->interest[1].nbr);
+                fprintf(fptr, "%d\n", ptr->interest[2].nbr);
+                fprintf(fptr, "*\n");
                 ptr = ptr->nextAlphaStudent;
             }
         }

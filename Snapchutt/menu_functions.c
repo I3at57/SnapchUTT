@@ -173,7 +173,7 @@ int find_one_menu()
                     );
                     break;
             }
-        }while(action !=6);
+        }while(action !=7);
     }
 }
 

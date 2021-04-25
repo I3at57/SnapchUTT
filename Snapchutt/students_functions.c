@@ -514,7 +514,7 @@ void clear_links(Student *stud)
             ptr = ptr->nextAlphaStudent;
         }
     }
-    free(stud->follower.listFollower);
+    free(stud);
 }
 
 

@@ -51,12 +51,12 @@
 	<stdlib.h>
 	"CONST.h"
 
-1619288641 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\const.h
+1619365485 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\const.h
 	"STRUCTURES.h"
 
-1619288638 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\structures.h
+1619365485 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\structures.h
 
-1619280731 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\display_all_fonction.c
+1619365485 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\display_all_fonction.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
@@ -65,32 +65,32 @@
 	"CONST.h"
 	"STRUCTURES.h"
 
-1619204326 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\display_functions.c
+1619365485 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\display_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1619122752 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\main.c
+1619365485 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\main.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1619286375 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\menu_functions.c
+1619368147 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\menu_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1619284202 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\read_file.c
+1619367760 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\read_file.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1619204323 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\utilitary_functions.c
+1619365486 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\utilitary_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1619272945 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\students_functions.c
+1619367900 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\students_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
