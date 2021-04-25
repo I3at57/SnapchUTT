@@ -1,6 +1,26 @@
 8
 
 *
+Alexis POCHARD
+19
+2021
+Math
+Troyes
+10
+2
+5
+*
+*
+Alix SCHARER
+17
+2021
+Medecine
+Lille
+4
+1
+7
+*
+*
 Florimond LALANDE
 22
 2016
@@ -11,16 +31,6 @@ Lille
 7
 *
 *
-Tancrede CATTEAU
-17
-2020
-Cinema
-Tournais
-2
-3
-12
-*
-*
 Jean-Claude VANDAME
 46
 1984
@@ -29,6 +39,16 @@ New York
 2
 6
 4
+*
+*
+Louis FERRAND
+18
+2020
+Ingeniering
+Villeneuve d'Ascq
+10
+4
+8
 *
 *
 Mael GAUDIN
@@ -51,32 +71,12 @@ Rouen
 9
 *
 *
-Alix SCHARER
+Tancrede CATTEAU
 17
-2021
-Medecine
-Lille
-4
-1
-7
-*
-*
-Alexis POCHARD
-19
-2021
-Math
-Troyes
-10
-2
-5
-*
-*
-Louis FERRAND
-18
 2020
-Ingeniering
-Villeneuve d'Ascq
-10
-4
-8
+Cinema
+Tournais
+2
+3
+12
 *

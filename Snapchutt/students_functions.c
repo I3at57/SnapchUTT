@@ -522,6 +522,7 @@ void clear_links(Student *stud)
 with the current state of variables and for each student, it clears all pointers
 and free the pointer to the variables*/
 void quit(){
+    save_students();
     save_followers();
     for (int i = 0; i < 27; i++){
         while (glossary[i].beginList != NULL){
@@ -532,5 +533,3 @@ void quit(){
         }
     }
 }
-
-
