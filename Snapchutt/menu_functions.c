@@ -15,7 +15,7 @@ void main_menu()
     do {
         printf("%s", menuSep); //Only display cf DISPLAY_FONC
         menu_display(); //Only display cf DISPLAY_FONC
-        printf("\nEnter your choise : ");
+        printf("\nEnter your choice : ");
         scanf("%d", &action);
         switch(action){
             case 1:
@@ -49,7 +49,7 @@ void main_menu()
                 break;
             default:
                 printf(
-                    "%sPlease enter a valid propostion !\n",
+                    "%sPlease enter a valid choice !\n",
                     actionSep
                 );
                 break;
@@ -83,7 +83,7 @@ void find_one_menu()
         scanf("%[^\n%]*c", nameStr);
         eleve = find_student(nameStr); //Give the pointer of a student
         if (eleve == NULL) {
-            printf("\nThis student doesn't exist :/\n");
+            printf("\nThis student does not exist :/\n");
             printf("Enter 'Quit' to quit.\n");
         } else {
             printf("\n");
@@ -100,7 +100,7 @@ void find_one_menu()
             student_display(eleve);
             printf("\n\n");
             find_menu_display(); //Only display cf DISPLAY_FONC
-            printf("\nEnter your choise : ");
+            printf("\nEnter your choice : ");
             scanf("%d", &action),
             printf("\n");
             switch(action){
@@ -122,7 +122,7 @@ void find_one_menu()
                     printf("\n");
                     eleve2 = find_student(nameStr);
                     if (eleve2 == NULL){
-                        printf("\nThis student doesn't exist :/\n");
+                        printf("\nThis student does not exist :/\n");
                     } else {
                         add_follow(eleve, eleve2);
                         printf("\n%s follows %s\n", eleve->name, eleve2->name);
@@ -176,7 +176,7 @@ void find_one_menu()
                     break;
                 default:
                     printf(
-                        "%sPlease enter a valid propostion !\n",
+                        "%sPlease enter a valid choice !\n",
                         actionSep
                     );
                     break;
@@ -250,8 +250,8 @@ void modify_menu(Student *eleve)
           case 5:
               /*Change field of interest*/
               printf(
-                  "Current fiel of interest :\n%s\n%s\n%s\n\n"
-                  "Enter nex field of interest :\n",
+                  "Current fiels of interest :\n%s\n%s\n%s\n\n"
+                  "Enter next field of interest :\n",
                   eleve->interest[0].field,
                   eleve->interest[1].field,
                   eleve->interest[2].field
@@ -271,7 +271,7 @@ void modify_menu(Student *eleve)
               break;
           default:
               printf(
-                  "%sPlease enter a valid propostion !\n",
+                  "%sPlease enter a valid choice !\n",
                   actionSep
               );
               break;
@@ -295,7 +295,7 @@ void find_all_menu()
     do {
         printf("%s", menuSep); //Only display cf DISPLAY_FONC
         display_perway_menu_display(); //Only display cf DISPLAY_FONC
-        printf("\nEnter your choise : ");
+        printf("\nEnter your choice : ");
         scanf("%d", &action),
         printf("\n");
         switch(action){
@@ -388,7 +388,7 @@ void find_all_menu()
                 break;
             default:
                 printf(
-                    "%sPlease enter a valid propostion !\n",
+                    "%sPlease enter a valid choice !\n",
                     actionSep
                 );
                 break;
