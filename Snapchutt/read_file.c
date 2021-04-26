@@ -88,23 +88,28 @@ void init_glossary()
 }
 
 
-void save_students(){
-    int nbrStudent = 0;
-    Student* ptr;
-    for (int i = 0; i < 27; i++){
-        ptr = glossary[i].beginList;
-        while (ptr != NULL){
-            nbrStudent++;
-            ptr = ptr->nextAlphaStudent;
-        }
-    }
+/*The save_students function saves the updated student-list.txt file
+when the application is closed*/
+void save_students()
+{
     FILE* fptr = fopen("student-list.txt", "w");
     if (fptr){
-        fprintf(fptr, "%d\n", nbrStudent);
+        int nbrStudent = 0;
+        Student* ptr;
+        /*Count every student in the database*/
+        for (int i = 0; i < 27; i++){
+            ptr = glossary[i].beginList;
+            while (ptr != NULL){
+                nbrStudent++;
+                ptr = ptr->nextAlphaStudent;
+            }
+        }
+        fprintf(fptr, "%d\n", nbrStudent); //Write the number of links between all students
         fprintf(fptr, "\n");
         for (int i = 0; i < 27; i++){
             ptr = glossary[i].beginList;
             while (ptr != NULL){
+                //Write each student in the file
                 fprintf(fptr, "*\n");
                 fprintf(fptr, "%s\n", ptr->name);
                 fprintf(fptr, "%d\n", ptr->age);
