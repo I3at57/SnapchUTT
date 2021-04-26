@@ -47,11 +47,11 @@
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1619453356 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\const.c
+1619465314 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\const.c
 	<stdlib.h>
 	"CONST.h"
 
-1619365485 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\const.h
+1619465314 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\const.h
 	"STRUCTURES.h"
 
 1619365485 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\structures.h
@@ -61,11 +61,11 @@
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1619457922 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\functions.h
+1619465899 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\functions.h
 	"CONST.h"
 	"STRUCTURES.h"
 
-1619365485 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\display_functions.c
+1619463849 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\display_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
@@ -75,22 +75,22 @@
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1619458559 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\menu_functions.c
+1619465362 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\menu_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1619458240 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\read_file.c
+1619463403 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\read_file.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1619458240 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\utilitary_functions.c
+1619464573 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\utilitary_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1619458240 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\students_functions.c
+1619466321 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\students_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"

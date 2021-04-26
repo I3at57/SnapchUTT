@@ -72,15 +72,3 @@ int compare_fields_of_interest(Student * stud1, Student *stud2)
     }
     return sameInterest;
 }
-
-/******************************************************************************/
-
-
-void fget_line(FILE* fptr, char* str){
-    char lastCharacter;
-    int i = 0;
-    while ((lastCharacter = fgetc(fptr)) != '\n'){
-        str[i] = lastCharacter;
-        i++;
-    }
-}

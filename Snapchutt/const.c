@@ -12,7 +12,7 @@ const int sizeFieldStudi = 50;
 const int sizeStudentCity = 100;
 
 
-const char quitString[] = "Quit";
+char quitString[] = "Quit";
 const char menuSep[]=
       "\n           ~~~~~     *********************     ~~~~~           \n\n";
 const char actionSep[]=
@@ -31,7 +31,7 @@ const FieldOfInterest interst9 = {9, "Sing"};
 const FieldOfInterest interst10 = {10, "Videos Games"};
 const FieldOfInterest interst11 = {11, "Reading"};
 const FieldOfInterest interst12 = {12, "Politic"};
-const FieldOfInterest interst13 = {13, "Economie"};
+const FieldOfInterest interst13 = {13, "Economy"};
 const FieldOfInterest interst14 = {14, "Robotic"};
 
 const FieldOfInterest tabOfInterest [14] = {

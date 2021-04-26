@@ -10,7 +10,7 @@ extern const int sizeName;
 extern const int sizeFieldStudi;
 extern const int sizeStudentCity;
 
-extern const char quitString[];
+extern char quitString[];
 extern const char menuSep[];
 extern const char actionSep[];
 

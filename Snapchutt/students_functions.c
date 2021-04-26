@@ -25,6 +25,7 @@ Student *create_student()
     printf("\nField of study : "); scanf("%[^\n%]*c", str2);
     fflush(stdin);
     printf("\nCity of residence : "); scanf("%[^\n%]*c", str3);
+    printf("\n");
     display_interest(); printf("\n");
     fflush(stdin);
     printf("- "); scanf("%d", &ind3);
@@ -46,7 +47,7 @@ Student *create_student()
 
     /* Copy of the new student in the returned address */
     *stud = stur;
-    ecrire_student(stud);
+    //ecrire_student(stud);
     return(stud);
 }
 
@@ -446,9 +447,8 @@ void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
 
 /*The delete_student function takes a pointer as argument
 and delete the student pointed to the pointer in the glossary*/
-int delete_student(Student *stud)
+void delete_student(Student *stud)
 {
-
     //errase_student(researching_student(stud->name));
 
     char readChar = stud->name[0];
@@ -460,7 +460,7 @@ int delete_student(Student *stud)
     if (readChar == glossary[i].letter){
         if (glossary[i].beginList == NULL){
             //There is no student in the chapter of the glossary
-            return 1;
+            printf("\n%s could not be removed\n", stud->name);
         } else {
             Student *ptr = glossary[i].beginList;
             if (ptr == stud){
@@ -468,7 +468,7 @@ int delete_student(Student *stud)
                 glossary[i].beginList = stud->nextAlphaStudent;
                 clear_links(stud); //Remove the student in avery list of follows of every student
                 free(stud); //Free the pointer
-                return 0;
+                printf("\n%s got removed\n", stud->name);
             } else {
                 while (ptr->nextAlphaStudent != stud &&
                        ptr->nextAlphaStudent != NULL &&
@@ -480,16 +480,17 @@ int delete_student(Student *stud)
                     ptr->nextAlphaStudent = stud->nextAlphaStudent;
                     clear_links(stud); //Remove the student in avery list of follows of every student
                     free(stud); //Free the pointer
-                    return 0;
+                    printf("\n%s got removed\n", stud->name);
                 } else if (ptr->nextAlphaStudent == NULL ||
                            compare_strings(stud->name, ptr->nextAlphaStudent->name) < 0){
-                    //The student has not been found
-                    return 1;
+                            //The student has not been found
+                            printf("\n%s could not be removed\n", stud->name);
                 }
             }
         }
+    } else {
+        printf("\n%s could not be removed\n", stud->name);
     }
-    return 1;
 }
 
 /******************************************************************************/

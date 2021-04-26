@@ -1,4 +1,4 @@
-9
+11
 
 *
 Alexis POCHARD
@@ -51,6 +51,16 @@ New York
 4
 *
 *
+Loann BONNOT
+17
+2020
+Music
+Nancy
+1
+2
+3
+*
+*
 Louis FERRAND
 18
 2020
@@ -89,4 +99,14 @@ Rouen
 3
 2
 9
+*
+*
+Morgane MEISSONIER
+18
+2020
+Psychology
+Dijon
+6
+5
+2
 *

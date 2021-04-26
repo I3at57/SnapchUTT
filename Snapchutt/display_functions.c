@@ -44,11 +44,11 @@ void menu_display()
     printf("**            ----- Welcome to Snapch'UTT ! -----            **\n");
     printf("**                                                           **\n");
     printf("**                                                           **\n");
-    printf("**   There is several things to do here :                    **\n");
+    printf("**   There are several things to do here :                   **\n");
     printf("**                                                           **\n");
-    printf("**   1. Add a student in the database                        **\n");
-    printf("**   2. Find a specific student                              **\n");
-    printf("**   3. Do a research by category                            **\n");
+    printf("**   1. Add a student to the database                        **\n");
+    printf("**   2. Find and edit a specific student                     **\n");
+    printf("**   3. Search by category                                   **\n");
     printf("**   4. Display all students by name                         **\n");
     printf("**   5. Quit                                                 **\n");
     printf("**                                                           **\n");
@@ -70,7 +70,7 @@ void find_menu_display()
     printf("**   2. Delete                                               **\n");
     printf("**   3. Add a Follow                                         **\n");
     printf("**   4. Delete a follow                                      **\n");
-    printf("**   5. Suggest some Students to follow                      **\n");
+    printf("**   5. Suggest some students to follow                      **\n");
     printf("**   6. Display the list of follows                          **\n");
     printf("**   7. Quit                                                 **\n");
     printf("**                                                           **\n");
@@ -89,7 +89,7 @@ void display_perway_menu_display()
     printf("**   1. Age                                                  **\n");
     printf("**   2. Year of studies                                      **\n");
     printf("**   3. City of residence                                    **\n");
-    printf("**   4. Field of studies                                     **\n");
+    printf("**   4. Field of study                                       **\n");
     printf("**   5. Field of interest                                    **\n");
     printf("**   6. Quit                                                 **\n");
     printf("**                                                           **\n");
@@ -107,8 +107,8 @@ void modify_menu_display()
     printf("**                                                           **\n");
     printf("**   1. Age                                                  **\n");
     printf("**   2. Year of studies                                      **\n");
-    printf("**   3. Field of studies                                     **\n");
-    printf("**   4. City of residence                                     **\n");
+    printf("**   3. Field of study                                       **\n");
+    printf("**   4. City of residence                                    **\n");
     printf("**   5. Field of interest                                    **\n");
     printf("**   6. Quit                                                 **\n");
     printf("**                                                           **\n");

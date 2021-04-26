@@ -8,7 +8,7 @@ All the menu functions which call other functions.
 
 
 /*The main_menu is the main menu loop. It allows to navigate in othersub-menu*/
-int main_menu()
+void main_menu()
 {
     int action;
     char valid;
@@ -34,18 +34,18 @@ int main_menu()
                 /*Sub-menu to display all students by name*/
                 printf("%s", actionSep);
                 display_all_alpha();
-
+                printf("\nPress enter to continue\n");
                 fflush(stdin);
                 scanf("%c", &valid); //Enter a letter to continue
                 break;
             case 5:
                 /*quit is the only way to quit the application*/
                 //quit();
-                return(0);
+                return;
                 break;
             case 6:
                 /*A test zone only for developer*/
-                testzone();
+                //testzone();
                 break;
             default:
                 printf(
@@ -55,7 +55,7 @@ int main_menu()
                 break;
          }
     }while(action !=5);
-    return 0;
+    return;
 }
 
 /******************************************************************************/
@@ -69,7 +69,7 @@ int add_menu() {
 /******************************************************************************/
 
 /*The find_one_menu function finds a student on name-based research*/
-int find_one_menu()
+void find_one_menu()
 {
     Student *eleve, *eleve2;
     char nameStr[sizeName];
@@ -93,7 +93,7 @@ int find_one_menu()
     else eleve points on a student in glossary*/
 
     if (compare_strings_simple(nameStr, quitString) == 0) {
-        return(1);
+        return;
     } else {
         do {
             printf("%s", menuSep); //Only display cf DISPLAY_FONC
@@ -110,9 +110,8 @@ int find_one_menu()
                     break;
                 case 2:
                     /*Sub-menu to delete the current student*/
-                    printf("\n%s got removed\n", eleve->name);
                     delete_student(eleve);
-                    return 0;
+                    return;
                     break;
                 case 3:
                     /*A function to add a follow in the list of follows
@@ -138,7 +137,7 @@ int find_one_menu()
                     printf("\n");
                     eleve2 = find_student(nameStr);
                     if (eleve2 == NULL){
-                        printf("\nThis student doesn't exist :/\n");
+                        printf("\nThis student does not exist :/\n");
                     } else {
                         delete_follow(eleve, eleve2);
                         printf("\n%s unfollows %s\n", eleve->name, eleve2->name);
@@ -163,16 +162,17 @@ int find_one_menu()
                 case 6:
                     /*Display all students followed by 'eleve'*/
                     display_follow_list(eleve);
+                    printf("\nPress enter to continue\n");
                     fflush(stdin);
                     scanf("%c", &valid); //Enter a letter to continue
                     break;
                 case 7:
                     /*Quit this menu*/
-                    return 0;
+                    return;
                     break;
                 case 8:
                     /*A test zone only for developer*/
-                    testzone();
+                    //testzone();
                     break;
                 default:
                     printf(
@@ -183,13 +183,13 @@ int find_one_menu()
             }
         }while(action !=7);
     }
-    return 0;
+    return;
 }
 
 /******************************************************************************/
 
 /*The modify_menu function is used to modify some informations about a student *eleve*/
-int modify_menu(Student *eleve)
+void modify_menu(Student *eleve)
 {
   int action;
   int ind3, ind4, ind5;
@@ -267,7 +267,7 @@ int modify_menu(Student *eleve)
               break;
           case 6:
               /*Quit this menu*/
-              return 0;
+              return;
               break;
           default:
               printf(
@@ -279,13 +279,13 @@ int modify_menu(Student *eleve)
         //errase_student(posi);
         //ecrire_student(eleve);
   }while(action !=6);
-  return 0;
+  return;
 }
 
 /******************************************************************************/
 
 /*The find_all_menu function finds students on various type of research*/
-int find_all_menu()
+void find_all_menu()
 {
     int action, aGe, yAe, iTn;
     char valid;
@@ -312,6 +312,7 @@ int find_all_menu()
                 }
 
                 printf("\n");
+                printf("\nPress enter to continue\n");
                 fflush(stdin);
                 scanf("%c", &valid); //Enter a letter to continue
                 break;
@@ -328,6 +329,7 @@ int find_all_menu()
                 }
 
                 printf("\n");
+                printf("\nPress enter to continue\n");
                 fflush(stdin);
                 scanf("%c", &valid); //Enter a letter to continue
                 break;
@@ -344,6 +346,7 @@ int find_all_menu()
                 }
 
                 printf("\n");
+                printf("\nPress enter to continue\n");
                 fflush(stdin);
                 scanf("%c", &valid); //Enter a letter to continue
                 break;
@@ -360,6 +363,7 @@ int find_all_menu()
                 }
 
                 printf("\n");
+                printf("\nPress enter to continue\n");
                 fflush(stdin);
                 scanf("%c", &valid); //Enter a letter to continue
                 break;
@@ -374,12 +378,13 @@ int find_all_menu()
                 }
 
                 printf("\n");
+                printf("\nPress enter to continue\n");
                 fflush(stdin);
                 scanf("%c", &valid); //Enter a letter to continue
                 break;
             case 6:
                 /*Quit this menu*/
-                return(0);
+                return;
                 break;
             default:
                 printf(
@@ -389,11 +394,11 @@ int find_all_menu()
                 break;
         }
     }while(action !=6);
-    return(0);
+    return;
 }
 
 /******************************************************************************/
-
+/*
 int testzone () {
     printf("%d\n", researching_student(find_student("Clemence COTTIGNY")));
     errase_student(researching_student(find_student("Clemence COTTIGNY")));
@@ -401,3 +406,4 @@ int testzone () {
     errase_student(researching_student(find_student("Baptiste TOUSSAINT")));
     return(0);
 }
+*/

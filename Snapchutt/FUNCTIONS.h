@@ -18,21 +18,19 @@ extern int copy_array_char(char *targetArray, char *contentArray, int lth1, int 
 
 extern int compare_fields_of_interest(Student * stud1, Student *stud2);
 
-extern void fget_line(FILE* fptr, char* str);
-
 /* Menu functions */
 
-extern int main_menu();
+extern void main_menu();
 
-extern int add_menu();
+extern void add_menu();
 
-extern int find_one_menu();
+extern void find_one_menu();
 
-extern int modify_menu(Student *eleve);
+extern void modify_menu(Student *eleve);
 
-extern int find_all_menu();
+extern void find_all_menu();
 
-extern int testzone();
+extern void testzone();
 
 /* To display */
 
@@ -58,17 +56,15 @@ extern Student *create_student();
 
 extern void add_student(Student *stud);
 
-extern void init_glossary();
-
-extern void init_followers();
-
 extern Student *find_student(char *name);
 
 extern void add_follow(Student *stud, Student *follow);
 
+extern void delete_follow(Student* stud, Student* follow);
+
 extern void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion);
 
-extern int delete_student(Student *stud);
+extern void delete_student(Student *stud);
 
 extern void clear_links(Student *stud);
 
@@ -88,14 +84,14 @@ extern int display_all_field(char *dfield);
 
 extern int display_all_inter(int dinter);
 
-/* To read and wright in the file for student*/
+/* To read and write in the files*/
 
-extern int researching_student(Student* target);
+extern void init_glossary();
 
-extern void errase_student(int position);
+extern void init_followers();
 
-extern void ecrire_student(Student* stud);
+extern void save_students();
 
-extern void fremove_line(FILE* fptr, int line);
+extern void save_followers();
 
 #endif // FUNCTIONS_H_INCLUDED
