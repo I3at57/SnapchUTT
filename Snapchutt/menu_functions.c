@@ -73,6 +73,7 @@ int find_one_menu()
 {
     Student *eleve, *eleve2;
     char nameStr[sizeName];
+    char valid;
     int action;
 
     do {
@@ -125,6 +126,7 @@ int find_one_menu()
                         printf("\nThis student doesn't exist :/\n");
                     } else {
                         add_follow(eleve, eleve2);
+                        printf("\n%s follows %s\n", eleve->name, eleve2->name);
                     }
                     break;
                 case 4:
@@ -139,6 +141,7 @@ int find_one_menu()
                         printf("\nThis student doesn't exist :/\n");
                     } else {
                         delete_follow(eleve, eleve2);
+                        printf("\n%s unfollows %s\n", eleve->name, eleve2->name);
                     }
                     break;
                 case 5:
@@ -153,11 +156,15 @@ int find_one_menu()
                             printf("\n\n");
                         }
                     }
+                    fflush(stdin);
+                    scanf("%c", &valid); //Enter a letter to continue
                     break;
                 }
                 case 6:
                     /*Display all students followed by 'eleve'*/
                     display_follow_list(eleve);
+                    fflush(stdin);
+                    scanf("%c", &valid); //Enter a letter to continue
                     break;
                 case 7:
                     /*Quit this menu*/

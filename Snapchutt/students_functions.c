@@ -126,7 +126,7 @@ Student *find_student(char *name)
                 //The student has been found
                 foundStudent = glossary[i].beginList;
                 return (foundStudent);
-            } else if (compare == -1){
+            } else if (compare == 1){
                 //The student does not exist because the glossary is in alphabetical order
                 return (NULL);
             } else {
@@ -139,7 +139,7 @@ Student *find_student(char *name)
                         //The student has been found
                         foundStudent = ptr;
                         return (foundStudent);
-                    } else if (compare == -1){
+                    } else if (compare == 1){
                         //The student does not exist because the glossary is in alphabetical order
                         return (NULL);
                     } else {
