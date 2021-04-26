@@ -61,7 +61,7 @@
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1619465899 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\functions.h
+1619474559 c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\functions.h
 	"CONST.h"
 	"STRUCTURES.h"
 
@@ -75,7 +75,7 @@
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1619465362 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\menu_functions.c
+1619474804 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\menu_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
@@ -90,7 +90,7 @@
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1619466321 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\students_functions.c
+1619474744 source:c:\users\lucas\onedrive\documents\github\snapchutt\snapchutt\students_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"

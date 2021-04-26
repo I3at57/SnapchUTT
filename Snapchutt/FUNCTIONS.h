@@ -64,6 +64,8 @@ extern void delete_follow(Student* stud, Student* follow);
 
 extern void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion);
 
+extern void suggest_follows_interests(Student *stud,Student **suggestionTab, int nbrSuggestion);
+
 extern void delete_student(Student *stud);
 
 extern void clear_links(Student *stud);

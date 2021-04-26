@@ -147,14 +147,26 @@ void find_one_menu()
                 {
                     /*Sub-menu to suggest a list of follows*/
                     Student *suggestTab[5];
-                    suggest_follows(eleve, suggestTab, 5);
                     printf("The computer suggests you to follow :\n\n");
-                    for (int i = 0; i < 5; i++){
-                        if (suggestTab[i] != NULL){
-                            student_display(suggestTab[i]);
-                            printf("\n\n");
+                    suggest_follows(eleve, suggestTab, 5);
+                    if (suggestTab[0] != NULL){
+                        //If there is at least one suggestion
+                        for (int i = 0; i < 5; i++){
+                            if (suggestTab[i] != NULL){
+                                student_display(suggestTab[i]);
+                                printf("\n\n");
+                            }
+                        }
+                    } else {
+                        suggest_follows_interests(eleve, suggestTab, 5);
+                        for (int i = 0; i < 5; i++){
+                            if (suggestTab[i] != NULL){
+                                student_display(suggestTab[i]);
+                                printf("\n\n");
+                            }
                         }
                     }
+                    printf("\nPress enter to continue\n");
                     fflush(stdin);
                     scanf("%c", &valid); //Enter a letter to continue
                     break;

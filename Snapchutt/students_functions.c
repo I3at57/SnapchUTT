@@ -215,10 +215,70 @@ void delete_follow(Student* stud, Student* follow)
     }
 }
 
+/*The suggest_follows_interests function takes a pointer to a student, an array of pointers to students
+and a number of suggestions as arguments, it returns the array containing follows suggestions.
+The number of suggestions can reach a maximum of nbrSuggestion
+depending on the number of links already existing.
+The suggestions are based on fields of interest*/
+void suggest_follows_interests(Student *stud,Student **suggestionTab, int nbrSuggestion){
+    //If *stud does not follow anyone
+    int max = 0;
+    stud->follower.known = 1;
+
+    /*This part compare the fields of interest of *stud and every student
+    of the glossary in order to find a good suggestion*/
+    for (int i = 0; i < 27; i++){
+        /*Browse the students of the glossary*/
+        Student *ptr = glossary[i].beginList;
+        while (ptr != NULL){
+            int compare = compare_fields_of_interest(stud, ptr); //Compare fields of interest
+            if (ptr->follower.known != 1 && compare > max){
+                max = compare; //Increase the highest score
+                ptr->follower.known = 1;
+                if (suggestionTab[0] != NULL){
+                    suggestionTab[0]->follower.known = 0;
+                }
+                suggestionTab[0] = ptr; //Put the best suggestion of follow in the first place of the array
+            }
+            ptr = ptr->nextAlphaStudent;
+        }
+    }
+
+    /*This part searches for the best students to suggest
+    and fill the array with them*/
+    int t = 1;
+    while (max > 0 && t < nbrSuggestion){
+        for (int i = 0; i < 27; i++){
+            /*Browse the students of the glossary*/
+            Student *ptr = glossary[i].beginList;
+            while (t < nbrSuggestion && ptr != NULL){
+                //While the array in not full yet
+                int compare = compare_fields_of_interest(stud, ptr); //Compare fields of interest
+                if (ptr->follower.known != 1 && compare == max){
+                    //If the student is not in the array and has the highest score
+                    ptr->follower.known = 1;
+                    suggestionTab[t] = ptr; //Fill the array
+                    t++;
+                }
+                ptr = ptr->nextAlphaStudent;
+            }
+        }
+        max--; //Decrease the highest score
+    }
+
+    /*This part puts to 0 every known field of every manipulated student*/
+    stud->follower.known = 0;
+    for (int i = 0; i < nbrSuggestion; i++){
+        if (suggestionTab[i] != NULL){
+            suggestionTab[i]->follower.known = 0;
+        }
+    }
+}
+
 
 /*The suggest_follows function takes a pointer to a student, an array of pointers to students
 and a number of suggestions as arguments, it returns the array containing follows suggestions.
-The number of suggestions is can reach a maximum of nbrSuggestion
+The number of suggestions can reach a maximum of nbrSuggestion
 depending on the number of links already existing.
 If the student whose pointer is given does not follow anyone
 then the suggestions will be based on fields of interest*/
@@ -286,9 +346,10 @@ void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
                 }
             }
         }
-        bestFollow->follower.known = 1;
-        suggestionTab[0] = bestFollow; //Put the best suggestion of follow in the first place of the array
-
+        if (bestFollow != NULL){
+            bestFollow->follower.known = 1;
+            suggestionTab[0] = bestFollow; //Put the best suggestion of follow in the first place of the array
+        }
         /*This part searches for the best students to suggest
         and fill the array with them*/
         int t = 1;
@@ -388,60 +449,10 @@ void suggest_follows(Student *stud,Student **suggestionTab, int nbrSuggestion){
             }
         }
     } else {
-        //If *stud does not follow anyone
-        int max = 0;
-        stud->follower.known = 1;
-
-        /*This part compare the fields of interest of *stud and every student
-        of the glossary in order to find a good suggestion*/
-        for (int i = 0; i < 27; i++){
-            /*Browse the students of the glossary*/
-            Student *ptr = glossary[i].beginList;
-            while (ptr != NULL){
-                int compare = compare_fields_of_interest(stud, ptr); //Compare fields of interest
-                if (ptr->follower.known != 1 && compare > max){
-                    max = compare; //Increase the highest score
-                    ptr->follower.known = 1;
-                    if (suggestionTab[0] != NULL){
-                        suggestionTab[0]->follower.known = 0;
-                    }
-                    suggestionTab[0] = ptr; //Put the best suggestion of follow in the first place of the array
-                }
-                ptr = ptr->nextAlphaStudent;
-            }
-        }
-
-        /*This part searches for the best students to suggest
-        and fill the array with them*/
-        int t = 1;
-        while (max > 0 && t < nbrSuggestion){
-            for (int i = 0; i < 27; i++){
-                /*Browse the students of the glossary*/
-                Student *ptr = glossary[i].beginList;
-                while (t < nbrSuggestion && ptr != NULL){
-                    //While the array in not full yet
-                    int compare = compare_fields_of_interest(stud, ptr); //Compare fields of interest
-                    if (ptr->follower.known != 1 && compare == max){
-                        //If the student is not in the array and has the highest score
-                        ptr->follower.known = 1;
-                        suggestionTab[t] = ptr; //Fill the array
-                        t++;
-                    }
-                    ptr = ptr->nextAlphaStudent;
-                }
-            }
-            max--; //Decrease the highest score
-        }
-
-        /*This part puts to 0 every known field of every manipulated student*/
-        stud->follower.known = 0;
-        for (int i = 0; i < nbrSuggestion; i++){
-            if (suggestionTab[i] != NULL){
-                suggestionTab[i]->follower.known = 0;
-            }
-        }
+        suggest_follows_interests(stud,suggestionTab, nbrSuggestion);
     }
 }
+
 
 /******************************************************************************/
 
