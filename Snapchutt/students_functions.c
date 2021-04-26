@@ -53,7 +53,7 @@ Student *create_student()
 
 /*The add_student function takes the pointer of a student as argument
 and adds this student to the glossary*/
-int add_student(Student *stud)
+void add_student(Student *stud)
 {
     //Finding the right chapter in the glossary
     char readChar = stud->name[0];
@@ -66,7 +66,6 @@ int add_student(Student *stud)
         if (glossary[i].beginList == NULL){
             stud->nextAlphaStudent = NULL;
             glossary[i].beginList = stud;
-            return 0;
         } else {
             Student *ptr = glossary[i].beginList;
             int compare = compare_strings(stud->name, ptr->name);
@@ -75,7 +74,6 @@ int add_student(Student *stud)
                 stud->nextAlphaStudent = glossary[i].beginList;
                 glossary[i].beginList = stud;
                 //Necessary step because glossary[i].beginList is not a Student
-                return 0;
             } else {
                 while (ptr->nextAlphaStudent != NULL){
                     Student nextElement = *(ptr->nextAlphaStudent);
@@ -84,7 +82,6 @@ int add_student(Student *stud)
                     if (compare == -1 || compare == 0){
                         stud->nextAlphaStudent = ptr->nextAlphaStudent;
                         ptr->nextAlphaStudent = stud;
-                        return 0;
                     } else {
                         //If stud comes after nextElement
                         ptr = ptr->nextAlphaStudent;
@@ -94,13 +91,12 @@ int add_student(Student *stud)
                 if (ptr->nextAlphaStudent == NULL){
                     stud->nextAlphaStudent = NULL;
                     ptr->nextAlphaStudent = stud;
-                    return 0;
                 }
             }
         }
     } else {
         //The chapter for stud has not been found
-        return 1;
+        printf("\nIncorrect syntax\n");
     }
 }
 
@@ -453,7 +449,7 @@ and delete the student pointed to the pointer in the glossary*/
 int delete_student(Student *stud)
 {
 
-    errase_student(researching_student(stud->name));
+    //errase_student(researching_student(stud->name));
 
     char readChar = stud->name[0];
     int i = 0;

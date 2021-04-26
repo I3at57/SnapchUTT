@@ -56,7 +56,7 @@ extern void display_follow_list(Student *stud);
 
 extern Student *create_student();
 
-extern int add_student(Student *stud);
+extern void add_student(Student *stud);
 
 extern void init_glossary();
 
@@ -94,7 +94,7 @@ extern int researching_student(Student* target);
 
 extern void errase_student(int position);
 
-extern int ecrire_student(Student* stud);
+extern void ecrire_student(Student* stud);
 
 extern void fremove_line(FILE* fptr, int line);
 

@@ -202,7 +202,7 @@ void errase_student(int position)
 
 /*The ecrire_student function takes the pointer of a student as argument
 and writes the informations about this student at the end of the file*/
-int ecrire_student(Student* stud)
+void ecrire_student(Student* stud)
 {
     int nbrStudent = 0;
 

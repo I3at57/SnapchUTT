@@ -55,6 +55,7 @@ int main_menu()
                 break;
          }
     }while(action !=5);
+    return 0;
 }
 
 /******************************************************************************/
@@ -160,7 +161,7 @@ int find_one_menu()
                     break;
                 case 7:
                     /*Quit this menu*/
-                    return(0);
+                    return 0;
                     break;
                 case 8:
                     /*A test zone only for developer*/
@@ -175,6 +176,7 @@ int find_one_menu()
             }
         }while(action !=7);
     }
+    return 0;
 }
 
 /******************************************************************************/
@@ -185,13 +187,13 @@ int modify_menu(Student *eleve)
   int action;
   int ind3, ind4, ind5;
   char tab1[sizeFieldStudi], tab2[sizeStudentCity];
-  int posi = researching_student(eleve);
+  //int posi = researching_student(eleve);
   do {
       printf("%s", menuSep); //Only display cf DISPLAY_FONC
       student_display(eleve);
       printf("\n\n");
       modify_menu_display(); //Only display cf DISPLAY_FONC
-      int posi = researching_student(eleve);
+      //int posi = researching_student(eleve);
       scanf("%d", &action),
       printf("\n");
       switch(action){
@@ -258,7 +260,7 @@ int modify_menu(Student *eleve)
               break;
           case 6:
               /*Quit this menu*/
-              return(0);
+              return 0;
               break;
           default:
               printf(
@@ -267,9 +269,10 @@ int modify_menu(Student *eleve)
               );
               break;
        }
-        errase_student(posi);
-        ecrire_student(eleve);
+        //errase_student(posi);
+        //ecrire_student(eleve);
   }while(action !=6);
+  return 0;
 }
 
 /******************************************************************************/

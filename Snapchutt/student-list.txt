@@ -1,4 +1,4 @@
-8
+9
 
 *
 Alexis POCHARD
@@ -31,6 +31,16 @@ Lille
 7
 *
 *
+JL
+25
+1898
+Computer Sciences
+Melbourn
+6
+2
+2
+*
+*
 Jean-Claude VANDAME
 46
 1984
@@ -51,6 +61,16 @@ Villeneuve d'Ascq
 8
 *
 *
+Lucas MARTINEZ
+19
+2020
+Engineering
+Troyes
+10
+1
+5
+*
+*
 Mael GAUDIN
 19
 2020
@@ -69,14 +89,4 @@ Rouen
 3
 2
 9
-*
-*
-Tancrede CATTEAU
-17
-2020
-Cinema
-Tournais
-2
-3
-12
 *
