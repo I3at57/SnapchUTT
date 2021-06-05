@@ -1,4 +1,4 @@
-11
+13
 
 *
 Alexis POCHARD
@@ -19,6 +19,26 @@ Lille
 4
 1
 7
+*
+*
+Baptiste TOUSSAINT
+19
+2021
+Ingeniering
+Troyes
+12
+13
+3
+*
+*
+Clemence COTTIGNY
+18
+2021
+Medecin
+Loos
+4
+7
+9
 *
 *
 Florimond LALANDE

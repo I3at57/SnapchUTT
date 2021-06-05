@@ -1,48 +1,48 @@
 # depslib dependency file v1.0
-1618432863 source:c:\users\batto\documents\github\snapchutt\snapchutt\const.c
+1620312820 source:c:\users\batto\documents\github\snapchutt\snapchutt\const.c
 	<stdlib.h>
 	"CONST.h"
 
-1618432863 c:\users\batto\documents\github\snapchutt\snapchutt\const.h
+1620312820 c:\users\batto\documents\github\snapchutt\snapchutt\const.h
 	"STRUCTURES.h"
 
-1618924635 c:\users\batto\documents\github\snapchutt\snapchutt\structures.h
+1620312820 c:\users\batto\documents\github\snapchutt\snapchutt\structures.h
 
-1618432863 source:c:\users\batto\documents\github\snapchutt\snapchutt\display_all_fonction.c
+1620312820 source:c:\users\batto\documents\github\snapchutt\snapchutt\display_all_fonction.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618951977 c:\users\batto\documents\github\snapchutt\snapchutt\functions.h
+1620312820 c:\users\batto\documents\github\snapchutt\snapchutt\functions.h
 	"CONST.h"
 	"STRUCTURES.h"
 
-1618923751 source:c:\users\batto\documents\github\snapchutt\snapchutt\display_functions.c
+1620312820 source:c:\users\batto\documents\github\snapchutt\snapchutt\display_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618951652 source:c:\users\batto\documents\github\snapchutt\snapchutt\main.c
+1620312820 source:c:\users\batto\documents\github\snapchutt\snapchutt\main.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618949527 source:c:\users\batto\documents\github\snapchutt\snapchutt\menu_functions.c
+1620312820 source:c:\users\batto\documents\github\snapchutt\snapchutt\menu_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618951993 source:c:\users\batto\documents\github\snapchutt\snapchutt\read_file.c
+1620312820 source:c:\users\batto\documents\github\snapchutt\snapchutt\read_file.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618952279 source:c:\users\batto\documents\github\snapchutt\snapchutt\students_functions.c
+1620312820 source:c:\users\batto\documents\github\snapchutt\snapchutt\students_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
 
-1618948048 source:c:\users\batto\documents\github\snapchutt\snapchutt\utilitary_functions.c
+1620312820 source:c:\users\batto\documents\github\snapchutt\snapchutt\utilitary_functions.c
 	<stdio.h>
 	<stdlib.h>
 	"FUNCTIONS.h"
